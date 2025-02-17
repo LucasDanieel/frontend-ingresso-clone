@@ -1,0 +1,25 @@
+.terms {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 9px;
+  padding-bottom: 16px;
+  margin-left: 10px;
+  letter-spacing: 0.1px;
+
+  p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 18px;
+    color: rgb(212, 216, 235);
+  }
+
+  a {
+    text-decoration: none;
+    color: rgb(157, 173, 253);
+
+    &:hover {
+      color: rgb(68, 97, 246);
+    }
+  }
+}

@@ -1,0 +1,179 @@
+.wrapper-form-login {
+  .form-login {
+    padding-left: 26px;
+    padding-right: 26px;
+    margin-top: 22px;
+    letter-spacing: -0.3px;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+
+    .form-title {
+      text-align: left;
+
+      h3 {
+        font-size: 23px;
+        margin-bottom: 5px;
+      }
+
+      span {
+        display: block;
+        font-size: 18px;
+        padding-bottom: 24px;
+      }
+    }
+
+    .maintain-connected {
+      display: flex;
+      margin-bottom: 23px;
+
+      input[type="checkbox"] {
+        width: 21px;
+        height: 21px;
+        margin-top: 0;
+        margin-left: 0;
+        margin-bottom: 0;
+        margin-right: 8px;
+        outline: none;
+        cursor: pointer;
+      }
+
+      span {
+        font-size: 16px;
+        line-height: 21px;
+        color: rgb(212, 216, 235);
+      }
+    }
+
+    .wrong-login {
+      display: flex;
+      gap: 10px;
+      padding-right: 2px;
+      margin-top: 30px;
+      margin-bottom: 25px;
+
+      svg {
+        min-width: 9px;
+        margin-left: 2px;
+        color: rgb(240, 37, 37);
+      }
+
+      span {
+        font-size: 14px;
+        line-height: 1;
+        color: rgb(240, 120, 84);
+      }
+    }
+
+    .wrong-code {
+      display: flex;
+      justify-content: center;
+      gap: 11px;
+      padding-right: 2px;
+      margin-top: 30px;
+      margin-bottom: 22px;
+
+      svg {
+        min-width: 18px;
+        margin-left: 2px;
+        color: rgb(240, 37, 37);
+      }
+
+      span {
+        font-size: 14px;
+        color: rgb(240, 120, 84);
+      }
+    }
+
+    .form-submit {
+      display: flex;
+      width: 95%;
+      justify-self: center;
+
+      button{
+        width: 100%;
+        height: 43px;
+        font-size: 21px;
+      }
+    }
+
+    .issues-login {
+      text-align: center;
+      margin-top: 16px;
+      margin-bottom: 22px;
+
+      a {
+        font-size: 17px;
+        letter-spacing: -0.8px;
+        font-weight: bold;
+        text-decoration: none;
+        color: rgb(145, 163, 252);
+      }
+    }
+  }
+
+  .login-another-way {
+    display: flex;
+    align-items: center;
+    margin-bottom: 23px;
+
+    .mark-line {
+      width: 19%;
+      height: 2px;
+      background-color: rgb(46, 52, 59);
+    }
+
+    .login-another-way-text {
+      width: 62%;
+      text-align: center;
+      font-size: 13px;
+    }
+  }
+
+  .wrapper-login-with-google {
+    padding-left: 11px;
+    padding-right: 8px;
+    margin-bottom: 16px;
+
+    .login-with-google {
+      display: flex;
+      align-items: center;
+      box-sizing: content-box;
+      width: 100%;
+      height: 38px;
+      gap: 18px;
+      padding: 0;
+      border-radius: 4px;
+      border: 1px solid white;
+      cursor: pointer;
+      background-color: transparent;
+
+      svg {
+        width: 22px;
+        height: 22px;
+        margin-left: 8px;
+      }
+
+      span {
+        color: white;
+        font-size: 15.4px;
+        letter-spacing: 0.2px;
+      }
+    }
+  }
+
+  .create-account {
+    text-align: center;
+    margin-bottom: 42px;
+
+    span {
+      font-size: 14px;
+    }
+
+    a {
+      font-size: 15px;
+      letter-spacing: -1px;
+      font-weight: bold;
+      text-decoration: none;
+      color: rgb(145, 163, 252);
+    }
+  }
+}

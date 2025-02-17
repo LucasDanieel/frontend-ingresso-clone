@@ -1,0 +1,142 @@
+.container-movie-scroll {
+  width: 100%;
+  user-select: none;
+
+  a {
+    text-decoration: none;
+  }
+
+  .title-link {
+    display: flex;
+    gap: 7px;
+    align-items: baseline;
+    text-decoration: none;
+    margin-top: 11px;
+    margin-bottom: 6px;
+
+    svg {
+      fill: rgb(152, 170, 236);
+    }
+
+    h3 {
+      margin-top: 3px;
+      margin-bottom: 9px;
+      color: white;
+      font-size: 24px;
+    }
+  }
+
+  h3 {
+    margin-top: 33px;
+    margin-bottom: 11px;
+    color: white;
+    font-size: 24px;
+  }
+
+  .wrapper-movie-scroll {
+    position: relative;
+    margin-bottom: 20px;
+
+    .wrapper-buttons {
+      opacity: 0;
+
+      button {
+        position: absolute;
+        top: 130px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        z-index: 3;
+
+        svg {
+          width: 24px;
+          height: 24px;
+          color: rgb(152, 170, 236);
+        }
+      }
+
+      .left {
+        left: 7px;
+      }
+
+      .right {
+        right: 12px;
+      }
+    }
+
+    &:hover {
+      .wrapper-buttons {
+        opacity: 1;
+      }
+    }
+
+    .movie-scroll {
+      display: flex;
+      gap: 16px;
+      padding-right: 16px;
+      overflow-x: hidden;
+
+      &.active {
+        .movie {
+          pointer-events: none;
+        }
+        .new-wrapper-movie {
+          pointer-events: none;
+        }
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      width: 250px;
+      height: 100%;
+      background-image: linear-gradient(
+        to left,
+        rgb(4, 18, 24, 0.98),
+        rgb(4, 18, 24, 0)
+      );
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0px;
+      width: 250px;
+      height: 100%;
+      background-image: linear-gradient(
+        to right,
+        rgb(4, 18, 24, 0.98),
+        rgb(4, 18, 24, 0)
+      );
+      z-index: 2;
+      pointer-events: none;
+    }
+  }
+
+  .hidden-before {
+    .wrapper-buttons {
+      .left {
+        display: none;
+      }
+    }
+    &::before {
+      display: none;
+    }
+  }
+
+  .hidden-after {
+    .wrapper-buttons {
+      .right {
+        display: none;
+      }
+    }
+    &::after {
+      display: none;
+    }
+  }
+}

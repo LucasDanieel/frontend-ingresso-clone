@@ -1,0 +1,152 @@
+.wrapper-form-input {
+  width: 100%;
+
+  .wrapper-input {
+    display: flex;
+    width: 100%;
+    height: 48px;
+    margin-bottom: 16px;
+    align-items: center;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 1px 1px 1px 6px;
+    border-color: rgb(173, 182, 194);
+    border-radius: 4px;
+    background-color: white;
+
+    .simple-input {
+      display: flex;
+      flex-direction: column-reverse;
+      width: 100%;
+      padding-left: 10px;
+      padding-right: 10px;
+
+      label {
+        display: block;
+        height: 0px;
+        font-size: 13px;
+        letter-spacing: 0.1px;
+        color: rgb(147, 154, 177);
+        opacity: 0;
+        z-index: 0;
+        user-select: none;
+        transition: all 0.1s;
+      }
+
+      input {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        border-width: 0;
+        outline: none;
+        z-index: 1;
+
+        &:focus + label {
+          height: 19px;
+          opacity: 1;
+        }
+      }
+
+      &.hasValue {
+        label {
+          height: 19px;
+          opacity: 1;
+        }
+      }
+    }
+
+    &:focus-within {
+      border-color: rgb(50, 122, 222);
+    }
+
+    &.disable {
+      background-color: rgb(173, 182, 194);
+
+      .simple-input {
+        input {
+          background-color: rgb(173, 182, 194);
+          cursor: no-drop;
+        }
+
+        label {
+          color: rgb(50, 50, 60);
+        }
+      }
+    }
+  }
+
+  .wrapper-icon-password {
+    min-width: 32px;
+    height: 26px;
+
+    svg {
+      width: 26px;
+      height: 26px;
+      color: rgb(114, 133, 147);
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .change-password {
+    min-width: 94px;
+
+    span {
+      font-size: 15px;
+      color: rgb(50, 85, 226);
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .find-zip-code {
+    min-width: 120px;
+
+    a {
+      font-size: 15px;
+      text-decoration: none;
+      color: rgb(50, 85, 226);
+    }
+  }
+
+  &.wrong-input {
+    .wrapper-input {
+      margin-bottom: 6px;
+      border-color: rgb(50, 122, 222);
+
+      &:focus-within {
+        border-color: rgb(240, 57, 37);
+      }
+    }
+
+    .error-hidden {
+      margin-bottom: 16px;
+    }
+  }
+
+  .wrapper-warning {
+    display: flex;
+
+    svg {
+      color: rgb(240, 37, 37);
+    }
+
+    span {
+      padding: 8px;
+      margin-bottom: 16px;
+      font-size: 14px;
+      color: rgb(240, 100, 84);
+    }
+
+    &.warning-form-login {
+      span {
+        font-size: 16px;
+        line-height: 1;
+      }
+    }
+  }
+}

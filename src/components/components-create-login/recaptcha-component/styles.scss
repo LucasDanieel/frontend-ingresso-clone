@@ -1,0 +1,45 @@
+.wrapper-recaptcha {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 10px;
+  padding-bottom: 15px;
+  letter-spacing: 0.1px;
+
+  &.align-center {
+    align-items: center;
+  }
+
+  &.not-align {
+    p {
+      word-spacing: 2px;
+      line-height: 19px;
+      margin-bottom: 18px;
+    }
+  }
+
+  &.no-margin{
+    margin-left: 0px;
+
+    p{
+      margin-bottom: 13px;
+    }
+  }
+
+  p {
+    font-size: 13px;
+    line-height: 20px;
+    margin: 0;
+    margin-bottom: 15px;
+    color: rgb(212, 216, 235);
+  }
+
+  a {
+    text-decoration: none;
+    color: rgb(157, 173, 253);
+
+    &:hover {
+      color: rgb(68, 97, 246);
+    }
+  }
+}

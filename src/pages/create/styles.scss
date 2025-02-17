@@ -1,0 +1,64 @@
+.create-login-main-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+  margin-bottom: 44px;
+
+  .create-login-main-wrapper {
+    width: 500px;
+    box-sizing: border-box;
+    padding-top: 39px;
+    padding-left: 61px;
+    padding-right: 61px;
+    border-radius: 12px;
+    background-color: rgb(31, 36, 43);
+
+    .create-login-main-header {
+      width: 100%;
+
+      h2 {
+        margin: 0;
+        margin-bottom: 14px;
+        letter-spacing: -0.9px;
+      }
+
+      span {
+        line-height: 1.5;
+      }
+    }
+
+    .controll-loading-create-login {
+      .loading-create-login {
+        display: flex;
+      }
+
+      .controll-form-create-login {
+        display: none;
+      }
+    }
+
+    .loading-create-login {
+      display: none;
+      width: 100%;
+      height: 500px;
+      justify-content: center;
+      align-items: center;
+
+      .spinner-create-login {
+        width: 44px;
+        height: 44px;
+        border: 8px solid rgb(138, 147, 164);
+        border-top: 8px solid rgb(203, 171, 9);
+        border-radius: 50%;
+        margin-bottom: 8px;
+        animation: spinner-create-login 1.5s linear infinite;
+      }
+
+      @keyframes spinner-create-login {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    }
+  }
+}

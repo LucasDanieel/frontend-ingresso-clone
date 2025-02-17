@@ -1,0 +1,145 @@
+.wrapper-confirm-code {
+  width: 100%;
+
+  .lock-icon {
+    width: 100%;
+    text-align: center;
+
+    svg {
+      margin-top: 24px;
+    }
+  }
+
+  h2 {
+    margin-top: 0px;
+    letter-spacing: -0.6px;
+    text-align: center;
+  }
+
+  .message-sent-email {
+    margin-top: 26px;
+    line-height: 20px;
+    color: rgb(169, 174, 182);
+
+    strong {
+      color: white;
+    }
+  }
+
+  .code-input {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 28px;
+    margin-bottom: 24px;
+
+    input {
+      width: 32px;
+      height: 50px;
+      text-align: center;
+      font-size: 18px;
+      border-radius: 6px;
+      border: 2px solid transparent;
+
+      &::placeholder {
+        color: #9c9c9c;
+        font-weight: bold;
+      }
+    }
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    margin-top: 27px;
+    color: rgb(169, 174, 182);
+  }
+
+  .confirm-email-button {
+    width: 100%;
+    margin-top: 24px;
+
+    button{
+      width: 100%;
+      height: 44px;
+      font-size: 21px;
+      font-weight: 400;
+    }
+  }
+
+  .send-again {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+
+    .wrraper-send-click {
+      display: flex;
+      align-items: center;
+      width: 136px;
+      color: rgb(138, 156, 242);
+      margin-top: 24px;
+      margin-bottom: 24px;
+
+      span {
+        font-weight: bold;
+        letter-spacing: -0.8px;
+        padding-left: 6px;
+      }
+
+      &:hover {
+        span {
+          color: rgb(68, 97, 246);
+        }
+      }
+    }
+  }
+
+  .sent-new-code {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    gap: 7px;
+
+    .sent-new-code-confirmation {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: rgb(9, 178, 9);
+
+      span {
+        font-weight: bold;
+        color: inherit;
+        letter-spacing: -0.5px;
+      }
+    }
+
+    span {
+      font-size: 14px;
+      letter-spacing: -0.5px;
+      color: rgb(169, 174, 182);
+    }
+  }
+
+  .come-back-button {
+    text-align: center;
+
+    button {
+      font-size: 19px;
+      font-weight: bold;
+      border: 0px;
+      color: rgb(138, 156, 242);
+      background-color: transparent;
+      cursor: pointer;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      letter-spacing: -0.8px;
+
+      &:hover {
+        color: rgb(68, 97, 246);
+      }
+    }
+  }
+}

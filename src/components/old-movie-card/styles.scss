@@ -1,0 +1,132 @@
+.movie {
+  display: flex;
+  flex-direction: column;
+  width: 160px;
+  flex-shrink: 0;
+
+  a {
+    text-decoration: none;
+    color: rgb(196, 196, 196);
+  }
+
+  .wrapper-movie-img {
+    position: relative;
+
+    .movie-img {
+      height: 240px;
+      overflow: hidden;
+      border-radius: 8px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition-duration: 0.5s;
+        -webkit-user-drag: none;
+      }
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.2);
+      }
+    }
+
+    .age {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 8px;
+      left: 10px;
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+      font-weight: 700;
+      color: white;
+
+      &.BGL {
+        background-color: rgb(0 166 81);
+      }
+
+      &.BG10 {
+        background-color: rgb(0 149 218);
+      }
+
+      &.BG12 {
+        background-color: rgb(251 193 21);
+      }
+
+      &.BG14 {
+        background-color: rgb(245 130 32);
+      }
+
+      &.BG16 {
+        background-color: rgb(236 29 37);
+      }
+
+      &.BG18 {
+        background-color: rgb(0 0 0);
+      }
+    }
+
+    .pre-venda {
+      background-origin: border-box;
+      box-sizing: border-box;
+      border-width: 4px;
+      border-bottom-width: 32px;
+      border-color: transparent;
+      border-style: solid;
+      background-image: linear-gradient(
+        to bottom left,
+        #ff7300,
+        #9560a4,
+        #3478c1
+      );
+
+      &:after {
+        content: "PRÉ-VENDA";
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        left: 0;
+        bottom: 5px;
+        z-index: 10;
+        color: white;
+        font-size: 17px;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .wrapper-name-movie {
+    span {
+      margin-top: 7px;
+      margin-bottom: 2px;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+
+  .premiere {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    border-radius: 16px;
+    margin-top: 10px;
+    background-color: rgb(52, 60, 70);
+
+    span {
+      font-size: 12px;
+      color: rgb(196, 196, 196);
+    }
+  }
+}

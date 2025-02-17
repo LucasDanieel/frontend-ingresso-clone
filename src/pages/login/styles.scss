@@ -1,0 +1,134 @@
+.wrapper-confirmed-account{
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.42);
+  z-index: 10;
+
+  .confirmed-account{
+    width: 266px;
+    // height: 350px;
+    padding: 20px 23px 40px 23px;
+    border-radius: 14px;
+    background-color: rgb(29, 37, 47);
+    font-family: Arial, sans-serif;
+
+    .confirmed-account-close-button{
+      text-align: right;
+
+      svg:hover{
+        cursor: pointer;
+      }
+    }
+
+    .confirmed-account-icon{
+      text-align: center;
+      margin-top: 16px;
+      
+      img{
+        width: 100px;
+        height: 100px;
+        margin-bottom: 4px;
+      }
+    }
+
+    .confirmed-account-button{
+      text-align: center;
+
+      h3{
+        font-size: 24px;
+        font-weight: 400;
+        margin-bottom: 30px;
+      }
+    
+      button{
+        width: 100%;
+        height: 44px;
+        font-size: 21px;
+      }
+    }
+  }
+}
+
+.container-main-login {
+  display: flex;
+  width: 942px;
+  align-self: center;
+  justify-self: center;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  margin-bottom: 140px;
+
+  .login-text {
+    width: 400px;
+    margin-top: 106px;
+
+    span {
+      font-size: 26px;
+      line-height: 1.4;
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    }
+  }
+
+  .wrapper-main-login {
+    width: 385px;
+    box-sizing: border-box;
+    padding-left: 41px;
+    padding-right: 41px;
+    border-radius: 16px;
+    background-color: rgb(31, 36, 43);
+
+    .controll-loading-login {
+      .loading-login {
+        display: flex;
+      }
+
+      .controll-form-login {
+        display: none;
+      }
+
+      .controll-confirm-code-login {
+        display: none;
+      }
+    }
+
+    .hidden-form-login {
+      display: none;
+    }
+
+    .controll-confirm-code-login {
+      display: none;
+    }
+
+    .show-confirm-code {
+      display: block;
+    }
+
+    .loading-login {
+      display: none;
+      width: 100%;
+      height: 462px;
+      align-items: center;
+      justify-content: center;
+
+      .spinner-login {
+        width: 44px;
+        height: 44px;
+        border: 8px solid rgb(138, 147, 164);
+        border-top: 8px solid rgb(203, 171, 9);
+        border-radius: 50%;
+        animation: spinner-login 1.5s linear infinite;
+
+        @keyframes spinner-login {
+          to {
+            transform: rotate(360deg);
+          }
+        }
+      }
+    }
+  }
+}

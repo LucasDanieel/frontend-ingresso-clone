@@ -1,0 +1,53 @@
+.container-my-orders-events {
+  margin-top: 42px;
+  margin-left: 58px;
+
+  h3 {
+    font-size: 26px;
+    letter-spacing: -1.4px;
+    padding-bottom: 2px;
+  }
+
+  .wrapper-see-my-tickets {
+    width: 100%;
+    border: 0;
+    border-top-width: 1px;
+    border-color: rgb(53, 61, 72);
+    border-style: solid;
+
+    .see-my-tickets {
+      display: flex;
+      gap: 32px;
+      margin-top: 32px;
+
+      svg {
+        margin-top: 15px;
+        min-width: 180px;
+        min-height: 151px;
+      }
+
+      .my-tickets {
+        width: 300px;
+
+        p{
+          font-size: 19px;
+          font-weight: 500;
+          margin-top: 0px;
+          margin-bottom: 29px;
+        }
+
+        span{
+          display: block;
+          font-size: 14px;
+          line-height: 24px;
+          margin-bottom: 24px;
+        }
+
+        button{
+          padding: 7px 51px;
+          font-size: 21px;
+        }
+      }
+    }
+  }
+}
