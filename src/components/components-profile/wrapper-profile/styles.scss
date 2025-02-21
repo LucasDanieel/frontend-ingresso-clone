@@ -1,0 +1,19 @@
+.container-profile {
+  width: 100%;
+  line-height: 18px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  .wrapper-profile-main {
+    display: flex;
+    width: 1140px;
+    height: 850px;
+    margin: 0 auto;
+    padding-right: 32px;
+    box-sizing: border-box;
+
+    .content-profile {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

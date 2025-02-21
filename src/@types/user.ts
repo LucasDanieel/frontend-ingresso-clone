@@ -31,3 +31,24 @@ export type UserDTO = {
   receiveNotification: boolean;
   userValid?: boolean
 };
+
+export type FormState = {
+  id?: string;
+  name: string;
+  CPF: string;
+  maskedCPF: string;
+  DDD: string;
+  phone: string;
+  email: string;
+  password?: string;
+  month: string;
+  day: string;
+  CEP: string;
+  street: string;
+  number: string;
+  complement: string;
+  neighborhood: string;
+  state: string;
+  city: string;
+  recieveNews: boolean;
+};

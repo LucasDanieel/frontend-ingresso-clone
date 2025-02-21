@@ -4,7 +4,7 @@ import "./styles.scss";
 import HeaderFooter from "../../components/header-footer";
 import FormLogin from "../../components/components-login/form-login";
 import ConfirmCode from "../../components/components-login/confirm-code";
-import { UserContext } from "../../context/user-context";
+import { UserContext } from "../../providers/user-provider";
 import { UserContextType } from "../../@types/user";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -15,10 +15,8 @@ export type maskedUser = {
   maskedEmail: string;
 };
 
-const url_backend: string = import.meta.env.VITE_URL_BACKEND;
-
 const Login = () => {
-  const [loading, setLoading] = useState<boolean>(false);
+  const [isLoading, setLoading] = useState<boolean>(false);
   const [wrongCode, setWrongCode] = useState<boolean>(false);
   const [confirmCode, setConfirmCode] = useState<boolean>(false);
   const [maskedUser, setMaskedUser] = useState<maskedUser>({ email: "", maskedEmail: "" });
@@ -36,7 +34,7 @@ const Login = () => {
   useEffect(() => {
     if (token_confirmacao_email) {
       axios
-        .post(`${url_backend}/user/confirm-email?token=${token_confirmacao_email}`)
+        .post(`/user/confirm-email?token=${token_confirmacao_email}`)
         .then((resp) => {
           if (resp.data.isSuccess) {
             setConfirmedAccount(true);
@@ -94,7 +92,7 @@ const Login = () => {
             <span>Encontre filmes e eventos com facilidade e a qualquer hora!</span>
           </div>
           <div className="wrapper-main-login">
-            <div className={loading ? "controll-loading-login" : ""}>
+            <div className={isLoading ? "controll-loading-login" : ""}>
               <div className="loading-login">
                 <div className="spinner-login"></div>
               </div>

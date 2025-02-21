@@ -1,18 +1,18 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { createContext, PropsWithChildren, useEffect, useState } from "react";
 import { User, UserContextType } from "../@types/user";
 import Cookies from "js-cookie";
 import axios from "axios";
 
-export const UserContext = createContext<UserContextType | null>(null);
+export const UserContext = createContext<UserContextType>({} as UserContextType);
 
-const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+const UserProvider = ({ children }: PropsWithChildren) => {
   const [user, setUser] = useState<User | null>(null);
   const token = Cookies.get("token");
 
   useEffect(() => {
     if (token) {
       axios
-        .get<User>(`${import.meta.env.VITE_URL_BACKEND}/user/auth?token=${token}`)
+        .get<User>(`/user/auth?token=${token}`)
         .then((resp) => {
           setUser(resp.data);
         })

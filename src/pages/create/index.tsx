@@ -27,7 +27,7 @@ const Create = () => {
     name: "",
     isCompleted: false,
   });
-  const [loading, setLoading] = useState<boolean>(false);
+  const [isLoading, setLoading] = useState<boolean>(false);
 
   const closeConfirmEmail = () => {
     setUserCreated({ name: "", isCompleted: false });
@@ -43,12 +43,12 @@ const Create = () => {
               <h2>Cadastre-se</h2>
               <span>Compre ingressos e combos de pipoca com conforto e comodidade.</span>
             </div>
-            <div className={loading ? "controll-loading-create-login" : ""}>
+            <div className={isLoading ? "controll-loading-create-login" : ""}>
               <div className="loading-create-login">
                 <div className="spinner-create-login"></div>
               </div>
               <div className="controll-form-create-login">
-                <FormCreateLogin loading={loading} setLoading={setLoading} setUserCreated={setUserCreated} />
+                <FormCreateLogin isLoading={isLoading} setLoading={setLoading} setUserCreated={setUserCreated} />
               </div>
             </div>
           </div>

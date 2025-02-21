@@ -1,5 +1,5 @@
 import { BrowserRouter, matchPath, Route, Routes, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { PropsWithChildren, useEffect } from "react";
 
 import Home from "../pages/home";
 import Login from "../pages/login";
@@ -12,11 +12,11 @@ import Theaters from "../pages/theaters";
 import News from "../pages/news";
 import Events from "../pages/events";
 import Film from "../pages/film";
-import UserProvider from "../context/user-context";
 import Profile from "../pages/profile";
 import MyOrders from "../pages/my-orders";
-import BodyHeader from "../components/components-profile/body-header";
+import WrapperProfile from "../components/components-profile/wrapper-profile";
 import MyOrdersEvents from "../pages/my-orders-events";
+import UserProvider from "../providers/user-provider";
 
 const routes = [
   {
@@ -65,6 +65,11 @@ const routes = [
     showHeaderFooter: false,
   },
   {
+    path: "/minha-conta/cadastro",
+    element: <Create />,
+    showHeaderFooter: false,
+  },
+  {
     path: "/minha-conta/meus-pedidos",
     element: <MyOrders />,
     showHeaderFooter: false,
@@ -81,11 +86,6 @@ const routes = [
     element: <Profile />,
     showHeaderFooter: false,
     componentProfile: true,
-  },
-  {
-    path: "/minha-conta/cadastro",
-    element: <Create />,
-    showHeaderFooter: false,
   },
   {
     path: "*",
@@ -107,19 +107,18 @@ const routes = [
   },
 ];
 
-const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const Layout = ({ children }: PropsWithChildren) => {
   const location = useLocation();
 
   const currentRoute = routes.find(
-    (route) =>
-      route.path === location.pathname || route.path === "*" || matchPath(route.path, location.pathname)
+    (route) => route.path === location.pathname || route.path === "*" || matchPath(route.path, location.pathname)
   );
 
   const showHeaderAndFooter = currentRoute?.showHeaderFooter;
   const componentProfile = currentRoute?.componentProfile;
 
   if (componentProfile) {
-    return <BodyHeader>{children}</BodyHeader>;
+    return <WrapperProfile>{children}</WrapperProfile>;
   }
 
   return (

@@ -1,4 +1,4 @@
-import { ChangeEvent, Dispatch, FormEvent, KeyboardEvent, SetStateAction, useRef, useState } from "react";
+import { ChangeEvent, FormEvent, KeyboardEvent, useRef, useState } from "react";
 import MonthDayInput from "../../form-inputs/month-day-input";
 import SimpleInput from "../../form-inputs/simple-input";
 import TermsOfUse from "../terms-of-use";
@@ -14,14 +14,12 @@ import { onChangeGeneric, onFocosGeneric, onKeyDownGeneric, validInputPassword }
 import { UserDTO } from "../../../@types/user";
 
 type formCreateLoginProps = {
-  loading: boolean;
-  setLoading: Dispatch<SetStateAction<boolean>>;
-  setUserCreated: Dispatch<SetStateAction<userCreated>>;
+  isLoading: boolean;
+  setLoading: (value: boolean) => void;
+  setUserCreated: (value: userCreated) => void;
 };
 
-const url_backend: string = import.meta.env.VITE_URL_BACKEND;
-
-const FormCreateLogin = ({ loading, setLoading, setUserCreated }: formCreateLoginProps) => {
+const FormCreateLogin = ({ isLoading, setLoading, setUserCreated }: formCreateLoginProps) => {
   const [name, setName] = useState<string>("");
   const [CPF, setCPF] = useState<genericObject>({
     value: "",
@@ -77,14 +75,16 @@ const FormCreateLogin = ({ loading, setLoading, setUserCreated }: formCreateLogi
     minimumLength: false,
   });
 
-  const inputNameRef = useRef<HTMLInputElement>(null);
-  const inputCPFRef = useRef<HTMLInputElement>(null);
-  const inputDDDRef = useRef<HTMLInputElement>(null);
-  const inputPhoneRef = useRef<HTMLInputElement>(null);
-  const inputEmailRef = useRef<HTMLInputElement>(null);
-  const inputConfirmEmailRef = useRef<HTMLInputElement>(null);
-  const inputPasswordRef = useRef<HTMLInputElement>(null);
-  const inputCEPRef = useRef<HTMLInputElement>(null);
+  const inputRefs = useRef({
+    name: null as HTMLInputElement | null,
+    cpf: null as HTMLInputElement | null,
+    ddd: null as HTMLInputElement | null,
+    phone: null as HTMLInputElement | null,
+    email: null as HTMLInputElement | null,
+    confirmEmail: null as HTMLInputElement | null,
+    password: null as HTMLInputElement | null,
+    cep: null as HTMLInputElement | null,
+  });
 
   // NAME
   const onChangeName = (e: ChangeEvent<HTMLInputElement>) => {
@@ -96,7 +96,7 @@ const FormCreateLogin = ({ loading, setLoading, setUserCreated }: formCreateLogi
 
   // CPF
   const onChangeCPF = (e: ChangeEvent<HTMLInputElement>) => {
-    onChangeGeneric(e, "___.___.___-__", 12, setCPF, setInputCPFWrong, inputCPFRef, 11);
+    onChangeGeneric(e, "___.___.___-__", 12, setCPF, setInputCPFWrong, inputRefs.current.cpf, 11);
   };
 
   const onKeyDownCPF = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -104,7 +104,7 @@ const FormCreateLogin = ({ loading, setLoading, setUserCreated }: formCreateLogi
   };
 
   const onFocosCPF = () => {
-    onFocosGeneric(CPF, setCPF, "___.___.___-__", inputCPFRef, setInputCPFWrong);
+    onFocosGeneric(CPF, setCPF, "___.___.___-__", inputRefs.current.cpf, setInputCPFWrong);
   };
 
   const onBlurCPF = () => {
@@ -114,11 +114,11 @@ const FormCreateLogin = ({ loading, setLoading, setUserCreated }: formCreateLogi
 
   // DDD
   const onChangeDDD = (e: ChangeEvent<HTMLInputElement>) => {
-    onChangeGeneric(e, "__", 2, setDDD, null, inputDDDRef, null);
+    onChangeGeneric(e, "__", 2, setDDD, null, inputRefs.current.ddd, null);
   };
 
   const onFocosDDD = () => {
-    onFocosGeneric(DDD, setDDD, "__", inputDDDRef, null);
+    onFocosGeneric(DDD, setDDD, "__", inputRefs.current.ddd, null);
     setInputDDDWrong(false);
   };
 
@@ -130,7 +130,7 @@ const FormCreateLogin = ({ loading, setLoading, setUserCreated }: formCreateLogi
 
   // Phone
   const onChangePhone = (e: ChangeEvent<HTMLInputElement>) => {
-    onChangeGeneric(e, "_____-____", 9, setPhone, null, inputPhoneRef, null);
+    onChangeGeneric(e, "_____-____", 9, setPhone, null, inputRefs.current.phone, null);
   };
 
   const onKeyDownPhone = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -138,7 +138,7 @@ const FormCreateLogin = ({ loading, setLoading, setUserCreated }: formCreateLogi
   };
 
   const onFocosPhone = () => {
-    onFocosGeneric(phone, setPhone, "_____-____", inputPhoneRef, null);
+    onFocosGeneric(phone, setPhone, "_____-____", inputRefs.current.phone, null);
     setInputPhoneWrong(false);
   };
 
@@ -172,12 +172,11 @@ const FormCreateLogin = ({ loading, setLoading, setUserCreated }: formCreateLogi
     const value = e.target.value;
     if (value.length > 0) setPasswordInvalidValue("A senha não atende aos critérios necessários.");
     else setPasswordInvalidValue("A senha é obrigatória");
-    
+
     const IsValidPassword = validInputPassword(value, setRequiredInPassword);
 
     if (IsValidPassword) setInputPasswordWrong(false);
     else setInputPasswordWrong(true);
-
 
     setPassword(value);
   };
@@ -192,7 +191,7 @@ const FormCreateLogin = ({ loading, setLoading, setUserCreated }: formCreateLogi
 
   // CEP
   const onChangeCEP = (e: ChangeEvent<HTMLInputElement>) => {
-    onChangeGeneric(e, "_____-___", 8, setCEP, null, inputCEPRef, null);
+    onChangeGeneric(e, "_____-___", 8, setCEP, null, inputRefs.current.cep, null);
   };
 
   const onKeyDownCEP = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -200,7 +199,7 @@ const FormCreateLogin = ({ loading, setLoading, setUserCreated }: formCreateLogi
   };
 
   const onFocosCEP = () => {
-    onFocosGeneric(CEP, setCEP, "_____-___", inputCEPRef, null);
+    onFocosGeneric(CEP, setCEP, "_____-___", inputRefs.current.cep, null);
   };
 
   const onBlurCEP = () => {
@@ -281,7 +280,7 @@ const FormCreateLogin = ({ loading, setLoading, setUserCreated }: formCreateLogi
 
     setLoading(true);
     axios
-      .post(`${url_backend}/user/create`, user)
+      .post(`/user/create`, user)
       .then(() => {
         setUserCreated({ name: name, isCompleted: true });
         cleanAllInputs();
@@ -313,38 +312,38 @@ const FormCreateLogin = ({ loading, setLoading, setUserCreated }: formCreateLogi
     if (name.length < 3 || name.length > 60) {
       setInputNameWrong(true);
       allValids = false;
-      firstWrong = inputNameRef;
+      firstWrong = inputRefs.current.name;
     } else setInputNameWrong(false);
 
     if (CPF.value.replace(/\D/g, "").length < 11) {
       setInputCPFWrong(true);
       allValids = false;
-      if (firstWrong == undefined) firstWrong = inputCPFRef;
+      if (firstWrong == undefined) firstWrong = inputRefs.current.cpf;
     } else setInputCPFWrong(false);
 
     if (!DDD.hasValue) {
       setInputDDDWrong(true);
       allValids = false;
-      if (firstWrong == undefined) firstWrong = inputDDDRef;
+      if (firstWrong == undefined) firstWrong = inputRefs.current.ddd;
     } else setInputDDDWrong(false);
 
     if (!phone.hasValue) {
       setInputPhoneWrong(true);
       allValids = false;
-      if (firstWrong == undefined) firstWrong = inputPhoneRef;
+      if (firstWrong == undefined) firstWrong = inputRefs.current.phone;
     } else setInputPhoneWrong(false);
 
     if (isEmail(email)) setInputEmailWrong(false);
     else {
       setInputEmailWrong(true);
       allValids = false;
-      if (firstWrong == undefined) firstWrong = inputEmailRef;
+      if (firstWrong == undefined) firstWrong = inputRefs.current.email;
     }
 
     if (email !== confirmEmail) {
       setInputConfirmEmailWrong(true);
       allValids = false;
-      if (firstWrong == undefined) firstWrong = inputConfirmEmailRef;
+      if (firstWrong == undefined) firstWrong = inputRefs.current.confirmEmail;
     } else setInputConfirmEmailWrong(false);
 
     if (
@@ -355,10 +354,10 @@ const FormCreateLogin = ({ loading, setLoading, setUserCreated }: formCreateLogi
     ) {
       setInputPasswordWrong(true);
       allValids = false;
-      if (firstWrong == undefined) firstWrong = inputPasswordRef;
+      if (firstWrong == undefined) firstWrong = inputRefs.current.password;
     } else setInputPasswordWrong(false);
 
-    firstWrong?.current?.focus();
+    firstWrong?.focus();
 
     return allValids;
   };
@@ -416,7 +415,7 @@ const FormCreateLogin = ({ loading, setLoading, setUserCreated }: formCreateLogi
           errorMessage="O nome precisa ter entre 3 e 60 caracteres e não possuir caracteres especiais"
           inputWrong={inputNameWrong}
           handleChange={onChangeName}
-          ref={inputNameRef}
+          ref={(el) => (inputRefs.current.name = el)}
         />
         <SimpleInput
           nameField="*CPF"
@@ -428,7 +427,7 @@ const FormCreateLogin = ({ loading, setLoading, setUserCreated }: formCreateLogi
           handleFocos={onFocosCPF}
           handleBlur={onBlurCPF}
           handleKeyDown={onKeyDownCPF}
-          ref={inputCPFRef}
+          ref={(el) => (inputRefs.current.cpf = el)}
         />
         <div className="wrapper-double-input">
           <div className="wrapper-DDD">
@@ -441,7 +440,7 @@ const FormCreateLogin = ({ loading, setLoading, setUserCreated }: formCreateLogi
               handleChange={onChangeDDD}
               handleFocos={onFocosDDD}
               handleBlur={onBlurDDD}
-              ref={inputDDDRef}
+              ref={(el) => (inputRefs.current.ddd = el)}
             />
           </div>
           <div className="wrapper-phone">
@@ -455,14 +454,13 @@ const FormCreateLogin = ({ loading, setLoading, setUserCreated }: formCreateLogi
               handleFocos={onFocosPhone}
               handleBlur={onBlurPhone}
               handleKeyDown={onKeyDownPhone}
-              ref={inputPhoneRef}
+              ref={(el) => (inputRefs.current.phone = el)}
             />
           </div>
         </div>
         <SimpleInput
           nameField="*E-mail"
           value={email}
-          ref={inputEmailRef}
           errorMessage={`${
             emailInvalidValue
               ? emailInvalidValue
@@ -470,23 +468,24 @@ const FormCreateLogin = ({ loading, setLoading, setUserCreated }: formCreateLogi
           }`}
           inputWrong={inputEmailWrong}
           handleChange={onChangeEmail}
+          ref={(el) => (inputRefs.current.email = el)}
         />
         <SimpleInput
           nameField="*Confirmação de E-mail"
           value={confirmEmail}
-          ref={inputConfirmEmailRef}
           errorMessage="Este campo deve ser igual ao de e-mail"
           inputWrong={inputConfirmEmailWrong}
           handleChange={onChangeConfirmEmail}
+          ref={(el) => (inputRefs.current.confirmEmail = el)}
         />
         <SimpleInput
           nameField="*Senha"
           value={password}
           isPassword
-          ref={inputPasswordRef}
           errorMessage={passwordInvalidValue}
           inputWrong={inputPasswordWrong}
           handleChange={onChangePassword}
+          ref={(el) => (inputRefs.current.password = el)}
         />
         <ValidPassword requiredInPassword={requiredInPassword} />
         <MonthDayInput
@@ -505,7 +504,7 @@ const FormCreateLogin = ({ loading, setLoading, setUserCreated }: formCreateLogi
           handleKeyDown={onKeyDownCEP}
           handleBlur={onBlurCEP}
           handleFocos={onFocosCEP}
-          ref={inputCEPRef}
+          ref={(el) => (inputRefs.current.cep = el)}
         />
         <SimpleInput nameField="Logradouro" value={street} handleChange={(e) => setStreet(e.target.value)} />
         <div className="wrapper-double-input">
@@ -533,7 +532,7 @@ const FormCreateLogin = ({ loading, setLoading, setUserCreated }: formCreateLogi
           <input type="checkbox" name="news" checked={recieveNews} onChange={(e) => setRecieveNews(e.target.checked)} />
           <span>Quero receber novidades e mensagens da Ingresso.com.</span>
         </div>
-        {!loading && (
+        {!isLoading && (
           <>
             <TermsOfUse />
             <RecaptchaComponent setReCAPTCHA={setReCAPTCHA} />

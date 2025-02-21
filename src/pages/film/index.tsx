@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import "./styles.scss";
 import { useContext, useEffect } from "react";
 import { UserContextType } from "../../@types/user";
-import { UserContext } from "../../context/user-context";
+import { UserContext } from "../../providers/user-provider";
 
 const Film = () => {
   const { slug } = useParams();

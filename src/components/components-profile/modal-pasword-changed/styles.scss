@@ -1,0 +1,49 @@
+.wrapper-login-again {
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+  gap: 15px;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 19px 19px 40px 20px;
+  border-radius: 16px;
+  background-color: rgb(29, 37, 47);
+
+  .close-login-again {
+    text-align: right;
+    margin-bottom: 10px;
+
+    svg:hover {
+      cursor: pointer;
+    }
+  }
+
+  .icon-login-again {
+    height: 97px;
+
+    svg {
+      width: 97px;
+      height: 100%;
+    }
+  }
+
+  h3 {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 26px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  span {
+    line-height: 24px;
+    display: block;
+    text-align: left;
+    margin-bottom: 16px;
+  }
+
+  button {
+    font-size: 21px;
+    padding: 10px 90px;
+  }
+}

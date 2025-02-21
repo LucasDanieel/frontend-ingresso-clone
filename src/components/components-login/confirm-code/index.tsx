@@ -1,13 +1,4 @@
-import {
-  ChangeEvent,
-  ClipboardEvent,
-  Dispatch,
-  KeyboardEvent,
-  MouseEvent,
-  SetStateAction,
-  useRef,
-  useState,
-} from "react";
+import { ChangeEvent, ClipboardEvent, KeyboardEvent, MouseEvent, useRef, useState } from "react";
 import ButtonStyle from "../../button-style";
 import { maskedUser } from "../../../pages/login";
 import "./styles.scss";
@@ -18,14 +9,12 @@ import { NavigateFunction } from "react-router-dom";
 
 type confirmCodeProps = {
   maskedUser: maskedUser;
-  setLoading: Dispatch<SetStateAction<boolean>>;
-  setWrongCode: Dispatch<SetStateAction<boolean>>;
-  setConfirmCode: Dispatch<SetStateAction<boolean>>;
+  setLoading: (value: boolean) => void;
+  setWrongCode: (value: boolean) => void;
+  setConfirmCode: (value: boolean) => void;
   handleBackToLogin: () => void;
   navigate: NavigateFunction;
 };
-
-const url_backend: string = import.meta.env.VITE_URL_BACKEND;
 
 const ConfirmCode = ({
   maskedUser,
@@ -86,7 +75,7 @@ const ConfirmCode = ({
 
     setLoading(true);
     axios
-      .post(`${url_backend}/user/verify-code`, { email: maskedUser.email, code })
+      .post(`/user/verify-code`, { email: maskedUser.email, code })
       .then((resp) => {
         Cookies.set("token", resp.data, { expires: 10 });
         navigate("/minha-conta/meus-pedidos");
@@ -101,7 +90,7 @@ const ConfirmCode = ({
 
   const onResendCode = async () => {
     axios
-      .get(`${url_backend}/user/resend-code?email=${maskedUser.email}`)
+      .get(`/user/resend-code?email=${maskedUser.email}`)
       .then(() => {
         setSentNewCode(true);
       })

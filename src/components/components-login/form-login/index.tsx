@@ -1,4 +1,4 @@
-import { Dispatch, KeyboardEvent, MouseEvent, SetStateAction, useEffect, useRef, useState } from "react";
+import { KeyboardEvent, MouseEvent, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import ButtonStyle from "../../button-style";
 import SimpleInput from "../../form-inputs/simple-input";
@@ -17,12 +17,10 @@ type userLoginDTO = {
 
 type formLoginProps = {
   wrongCode: boolean;
-  setLoading: Dispatch<SetStateAction<boolean>>;
-  setMaskedUser: Dispatch<SetStateAction<maskedUser>>;
-  setConfirmCode: Dispatch<SetStateAction<boolean>>;
+  setLoading: (value: boolean) => void;
+  setMaskedUser: (value: maskedUser) => void;
+  setConfirmCode: (value: boolean) => void;
 };
-
-const url_backend: string = import.meta.env.VITE_URL_BACKEND;
 
 const FormLogin = ({ wrongCode, setLoading, setMaskedUser, setConfirmCode }: formLoginProps) => {
   const [username, setUsername] = useState<string>("");
@@ -54,7 +52,7 @@ const FormLogin = ({ wrongCode, setLoading, setMaskedUser, setConfirmCode }: for
 
     if (googleData.data.verified_email) {
       axios
-        .get(`${url_backend}/user/login-via-google?email=${googleData.data.email}`)
+        .get(`/user/login-via-google?email=${googleData.data.email}`)
         .then((resp) => {
           Cookies.set("token", resp.data); // token
         })
@@ -105,7 +103,7 @@ const FormLogin = ({ wrongCode, setLoading, setMaskedUser, setConfirmCode }: for
 
     setLoading(true);
     axios
-      .post(`${url_backend}/user/login`, userLoginDTO)
+      .post(`/user/login`, userLoginDTO)
       .then((resp) => {
         setMaskedUser({ email: resp.data, maskedEmail: maskEmail(resp.data) });
         setWrongLogin(false);

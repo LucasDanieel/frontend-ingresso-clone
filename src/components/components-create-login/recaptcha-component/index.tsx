@@ -11,12 +11,11 @@ type recaptchaComponentProps = {
 };
 
 const recaptcha_key: string = import.meta.env.VITE_RECAPTCHA_KEY;
-const url_backend: string = import.meta.env.VITE_URL_BACKEND;
 
 const RecaptchaComponent = ({ setReCAPTCHA, alignCenter = true, no_margin = false }: recaptchaComponentProps) => {
   const onChangeReCAPTCHA = (token: string | null) => {
     axios
-      .get(`${url_backend}/recaptcha/validate?token_recaptcha=${token}`)
+      .get(`/recaptcha/validate?token_recaptcha=${token}`)
       .then(() => {
         setReCAPTCHA(token);
       })
