@@ -25,18 +25,12 @@ const Instruction = () => {
               <h3>Institucional</h3>
               <ul>
                 <li>
-                  <a
-                    href="https://www.ingresso.com/institucional"
-                    target="_blank"
-                  >
+                  <a href="https://www.ingresso.com/institucional" target="_blank">
                     Quem Somos
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="https://www.ingresso.com/institucional/assessoria-imprensa"
-                    target="_blank"
-                  >
+                  <a href="https://www.ingresso.com/institucional/assessoria-imprensa" target="_blank">
                     Assessoria de Imprensa
                   </a>
                 </li>
@@ -46,10 +40,7 @@ const Instruction = () => {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="https://www.ingresso.com/institucional/ingresso-atende"
-                    target="_blank"
-                  >
+                  <a href="https://www.ingresso.com/institucional/ingresso-atende" target="_blank">
                     Ingresso.com atende
                   </a>
                 </li>
@@ -101,10 +92,7 @@ const Instruction = () => {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="https://atendimento.ingresso.com/portal/pt-br/kb/articles/termos-de-uso"
-                    target="_blank"
-                  >
+                  <a href="https://atendimento.ingresso.com/portal/pt-br/kb/articles/termos-de-uso" target="_blank">
                     Termos de Uso
                   </a>
                 </li>
@@ -114,10 +102,7 @@ const Instruction = () => {
               <h3>Redes Sociais</h3>
               <ul>
                 <li>
-                  <a
-                    href="https://www.facebook.com/ingressocom/"
-                    target="_blank"
-                  >
+                  <a href="https://www.facebook.com/ingressocom/" target="_blank">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="26"
@@ -140,10 +125,7 @@ const Instruction = () => {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="https://www.youtube.com/user/Ingressocom"
-                    target="_blank"
-                  >
+                  <a href="https://www.youtube.com/user/Ingressocom" target="_blank">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="52"
@@ -166,10 +148,7 @@ const Instruction = () => {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="https://www.instagram.com/ingressocom/"
-                    target="_blank"
-                  >
+                  <a href="https://www.instagram.com/ingressocom/" target="_blank">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="48"
@@ -192,10 +171,7 @@ const Instruction = () => {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="https://br.linkedin.com/company/ingressocom"
-                    target="_blank"
-                  >
+                  <a href="https://br.linkedin.com/company/ingressocom" target="_blank">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="44"
@@ -223,10 +199,7 @@ const Instruction = () => {
               <h3>Precisa de Ajuda?</h3>
               <ul>
                 <li>
-                  <a
-                    href="https://atendimento.ingresso.com/portal/pt-br/kb/atendimento-ingresso-com"
-                    target="_blank"
-                  >
+                  <a href="https://atendimento.ingresso.com/portal/pt-br/kb/atendimento-ingresso-com" target="_blank">
                     Atendimento
                   </a>
                 </li>
@@ -239,10 +212,7 @@ const Instruction = () => {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="https://www.ingresso.com/politicas/alerta-emails-sites-falsos"
-                    target="_blank"
-                  >
+                  <a href="https://www.ingresso.com/politicas/alerta-emails-sites-falsos" target="_blank">
                     Sites ou e-mails falsos
                   </a>
                 </li>
@@ -279,35 +249,18 @@ const Instruction = () => {
                       role="img"
                     >
                       <defs>
-                        <linearGradient
-                          id="prefix__c-11"
-                          x1="0%"
-                          x2="100%"
-                          y1="50%"
-                          y2="50%"
-                        >
+                        <linearGradient id="prefix__c-11" x1="0%" x2="100%" y1="50%" y2="50%">
                           <stop offset="0%" stopColor="#1F1F46"></stop>
                           <stop offset="100%" stopColor="#194788"></stop>
                         </linearGradient>
-                        <rect
-                          id="prefix__a"
-                          width="53"
-                          height="40"
-                          x="0"
-                          y="0"
-                          rx="4"
-                        ></rect>
+                        <rect id="prefix__a" width="53" height="40" x="0" y="0" rx="4"></rect>
                       </defs>
                       <g fill="none" fillRule="evenodd">
                         <mask id="prefix__b-12" fill="#fff">
                           <use xlinkHref="#prefix__a"></use>
                         </mask>
                         <g mask="url(#prefix__b-12)">
-                          <path
-                            fill="url(#prefix__c-11)"
-                            fillRule="nonzero"
-                            d="M0 0H53V40H0z"
-                          ></path>
+                          <path fill="url(#prefix__c-11)" fillRule="nonzero" d="M0 0H53V40H0z"></path>
                           <path
                             fill="#FFF"
                             d="M27.857 18.225c-.02 1.717 1.542 2.673 2.72 3.244 1.209.584 1.615.959 1.61 1.481-.009.8-.965 1.153-1.86 1.167-1.56.024-2.467-.42-3.19-.753l-.562 2.612c.726.33 2.065.619 3.454.633 3.264 0 5.398-1.6 5.408-4.079.014-3.145-4.382-3.319-4.352-4.724.01-.428.42-.882 1.318-.999.444-.057 1.672-.102 3.062.534l.546-2.528c-.748-.27-1.71-.528-2.906-.528-3.07 0-5.231 1.62-5.248 3.94zm13.401-3.722c-.596 0-1.099.344-1.322.874l-4.66 11.046h3.26l.648-1.781h3.985l.375 1.78h2.873l-2.508-11.92h-2.65zm.455 3.22l.941 4.476h-2.576l1.635-4.476zm-17.808-3.22l-2.57 11.92h3.107l2.568-11.92h-3.105zm-4.595 0l-3.233 8.113-1.308-6.898c-.153-.77-.76-1.215-1.433-1.215H8.051l-.073.345c1.085.235 2.318.612 3.064 1.015.457.246.588.461.738 1.047l2.477 9.513h3.283l5.032-11.92H19.31z"
@@ -328,18 +281,8 @@ const Instruction = () => {
                       xmlnsXlink="http://www.w3.org/1999/xlink"
                       role="img"
                     >
-                      <rect
-                        x="0.5"
-                        y="0.489258"
-                        width="40"
-                        height="30"
-                        rx="4"
-                        fill="white"
-                      ></rect>
-                      <path
-                        d="M24.9993 7.62744H16.2429V23.3514H24.9993V7.62744Z"
-                        fill="#FF5F00"
-                      ></path>
+                      <rect x="0.5" y="0.489258" width="40" height="30" rx="4" fill="white"></rect>
+                      <path d="M24.9993 7.62744H16.2429V23.3514H24.9993V7.62744Z" fill="#FF5F00"></path>
                       <path
                         d="M16.799 15.4892C16.7976 13.9749 17.141 12.4801 17.8032 11.118C18.4654 9.7559 19.4291 8.5622 20.6212 7.62726C19.1449 6.46771 17.3719 5.74661 15.5049 5.54637C13.6379 5.34613 11.7522 5.67482 10.0633 6.49489C8.37436 7.31496 6.95042 8.59332 5.9542 10.1838C4.95798 11.7744 4.42969 13.6129 4.42969 15.4892C4.42969 17.3656 4.95798 19.2041 5.9542 20.7946C6.95042 22.3852 8.37436 23.6635 10.0633 24.4836C11.7522 25.3037 13.6379 25.6324 15.5049 25.4321C17.3719 25.2319 19.1449 24.5108 20.6212 23.3512C19.4291 22.4163 18.4654 21.2226 17.8032 19.8605C17.141 18.4984 16.7976 17.0036 16.799 15.4892Z"
                         fill="#EB001B"
@@ -366,13 +309,7 @@ const Instruction = () => {
                       role="img"
                     >
                       <g fill="none" fillRule="evenodd">
-                        <rect
-                          width="53"
-                          height="40"
-                          fill="#000"
-                          fillRule="nonzero"
-                          rx="4"
-                        ></rect>
+                        <rect width="53" height="40" fill="#000" fillRule="nonzero" rx="4"></rect>
                         <path
                           fill="#FFF"
                           d="M13.082 21.665v-.343c0-2.197 1.814-3.913 3.975-3.913 1.186-.069 2.232.48 3 1.304l-6.975 2.952zm3.975-7.208c-3.835 0-6.973 3.02-6.973 6.865 0 1.373.418 2.677 1.185 3.775l6.904-2.952 2.86-1.235 2.789-1.236c-.697-2.952-3.487-5.217-6.765-5.217zM21.939 26.195c-2.51 2.334-5.788 2.54-8.717.824l1.674-2.471c1.673.961 3.277.824 4.95-.48l2.093 2.127zM24.798 24.48V11.504h2.51v12.631c0 .137 0 .206.21.275l2.162.823-.977 2.54-2.65-1.03c-.976-.411-1.255-1.03-1.255-2.265M34.213 24.273c-.907-.686-1.535-1.853-1.535-3.089 0-1.098.489-2.128 1.256-2.814L32.26 15.76c-1.604 1.236-2.65 3.227-2.65 5.423 0 2.334 1.186 4.462 3.068 5.698l1.535-2.609zM35.259 17.477c.418-.137.906-.206 1.325-.206 1.673 0 3.138 1.03 3.696 2.54l3.068-.274c-.767-3.02-3.487-5.286-6.834-5.286-.907 0-1.813.206-2.65.48l1.395 2.746zM40.559 21.39c-.07 2.06-1.813 3.707-3.975 3.707-.349 0-.628-.069-.977-.137l-1.185 2.746c.697.206 1.395.343 2.162.343 3.765 0 6.834-2.952 6.973-6.59l-2.998-.069z"
@@ -392,22 +329,8 @@ const Instruction = () => {
                       role="img"
                     >
                       <defs>
-                        <rect
-                          id="prefix__a"
-                          width="53"
-                          height="40"
-                          x="0"
-                          y="0"
-                          rx="4"
-                        ></rect>
-                        <rect
-                          id="prefix__c"
-                          width="53"
-                          height="36"
-                          x="0"
-                          y="0"
-                          rx="4"
-                        ></rect>
+                        <rect id="prefix__a" width="53" height="40" x="0" y="0" rx="4"></rect>
+                        <rect id="prefix__c" width="53" height="36" x="0" y="0" rx="4"></rect>
                       </defs>
                       <g fill="none" fillRule="evenodd">
                         <mask id="prefix__b-13" fill="#fff">
@@ -526,14 +449,7 @@ const Instruction = () => {
                       role="img"
                     >
                       <defs>
-                        <rect
-                          id="prefix__a"
-                          width="53"
-                          height="40"
-                          x="0"
-                          y="0"
-                          rx="4"
-                        ></rect>
+                        <rect id="prefix__a" width="53" height="40" x="0" y="0" rx="4"></rect>
                       </defs>
                       <g fill="none" fillRule="evenodd">
                         <mask id="prefix__b-14" fill="#fff">
@@ -549,11 +465,7 @@ const Instruction = () => {
                           rx="4"
                         ></rect>
                         <g mask="url(#prefix__b-14)">
-                          <path
-                            fill="#0077C4"
-                            fillRule="nonzero"
-                            d="M0 0H53V40H0z"
-                          ></path>
+                          <path fill="#0077C4" fillRule="nonzero" d="M0 0H53V40H0z"></path>
                           <g>
                             <path
                               fill="#FFF"
@@ -582,13 +494,7 @@ const Instruction = () => {
                       role="img"
                     >
                       <g fill="none" fillRule="evenodd">
-                        <rect
-                          width="53"
-                          height="40"
-                          fill="#FFF"
-                          fillRule="nonzero"
-                          rx="4"
-                        ></rect>
+                        <rect width="53" height="40" fill="#FFF" fillRule="nonzero" rx="4"></rect>
                         <path
                           fill="#842124"
                           d="M16.183 9.4h-4.909c-2.17.104-3.942.987-4.454 2.808-.267.95-.414 1.993-.623 2.977-1.06 5.006-2.002 10.15-3.017 15.056H41.4c2.954 0 4.983-.632 5.531-3.002.255-1.1.499-2.348.742-3.558.95-4.717 1.901-9.434 2.874-14.281H16.183"
@@ -612,12 +518,7 @@ const Instruction = () => {
                       xmlnsXlink="http://www.w3.org/1999/xlink"
                       role="img"
                     >
-                      <rect
-                        width="38"
-                        height="26"
-                        transform="translate(1 1.32019)"
-                        fill="white"
-                      ></rect>
+                      <rect width="38" height="26" transform="translate(1 1.32019)" fill="white"></rect>
                       <path
                         d="M3.25424 1.32019H36.7458C37.9907 1.32019 39 2.01073 39 2.86256V25.7778C39 26.6296 37.9907 27.3202 36.7458 27.3202H3.25424C2.00925 27.3202 1 26.6296 1 25.7778V2.86256C1 2.01073 2.00925 1.32019 3.25424 1.32019Z"
                         fill="white"
@@ -709,12 +610,7 @@ const Instruction = () => {
                       <defs>
                         <style>{`.nbk-1{fill:#820ad1;}.nbk-2{fill:#fff;}`}</style>
                       </defs>
-                      <rect
-                        className="nbk-1"
-                        width="108"
-                        height="75"
-                        rx="8"
-                      ></rect>
+                      <rect className="nbk-1" width="108" height="75" rx="8"></rect>
                       <path
                         className="nbk-2"
                         d="M37.48,14.51a14,14,0,0,0-10.32,4.38H26.6a14.68,14.68,0,0,0-12.94,7.9,16.11,16.11,0,0,0-1.61,6.65c-.11,2.06,0,4.16,0,6.2V59.41H23.14s0-9.75,0-18.12c0-5.64,0-10.67,0-11.7.2-4.88,1.53-8.07,4-10.68,8.26,0,13.6,5.63,13.9,14.59.07,2,.09,13,.09,13V59.41H52.24V42c0-5.25,0-9.8-.33-12.93C50.89,20.35,45.54,14.51,37.48,14.51Z"
@@ -831,14 +727,7 @@ const Instruction = () => {
                       role="img"
                     >
                       <g fill="none" fillRule="evenodd">
-                        <rect
-                          width="53"
-                          height="40"
-                          x=".5"
-                          fill="#FFF22D"
-                          fillRule="nonzero"
-                          rx="4"
-                        ></rect>
+                        <rect width="53" height="40" x=".5" fill="#FFF22D" fillRule="nonzero" rx="4"></rect>
                         <path
                           fill="#2360A5"
                           d="M16.681 27.379l2.682 1.786L14 32.741v-3.576l2.681-1.786zm12.603-13.407l2.682 1.788-12.335 8.222 7.508 5.006 3.485-2.324-2.681-1.788 6.436-4.292 5.362 3.576-12.87 8.581L14 24.16l15.284-10.188zm-2.412-6.968l12.87 8.578L24.458 25.77l-2.681-1.787L34.11 15.76l-7.508-5.004-3.486 2.324 2.682 1.786-6.436 4.292L14 15.582l12.872-8.578zM39.742 7v3.577l-2.682 1.787-2.681-1.787L39.74 7z"
@@ -858,14 +747,7 @@ const Instruction = () => {
                       role="img"
                     >
                       <g fill="none">
-                        <rect
-                          width="53"
-                          height="40"
-                          x=".1"
-                          y=".5"
-                          fill="#FF7A00"
-                          rx="4"
-                        ></rect>
+                        <rect width="53" height="40" x=".1" y=".5" fill="#FF7A00" rx="4"></rect>
                         <path
                           fill="#FFF"
                           d="M8.582 17.142H6.207c-.114 0-.207.092-.207.205v9.86c0 .114.093.206.207.206h2.375c.114 0 .207-.092.207-.205v-9.86c0-.114-.093-.206-.207-.206zM11.36 27.41h2.374c.055 0 .107-.022.146-.06.039-.039.06-.091.06-.146v-7.41c0-.05.018-.098.052-.136.033-.037.079-.062.128-.068.483-.056.97-.079 1.456-.069.864 0 1.45.223 1.764.676.186.268.279.615.279 1.046v5.965c0 .054.022.107.06.145.04.038.093.06.148.06h2.357c.055 0 .107-.022.146-.06.039-.039.06-.09.06-.145v-5.762c.01-.643-.095-1.283-.307-1.891-.61-1.692-2.127-2.656-4.3-2.656-1.622 0-3.374.194-4.435.487-.042.013-.08.039-.107.074-.027.035-.041.078-.041.123l-.044 9.624c.001.053.023.104.06.142.039.038.09.06.144.06zM41.767 27.208c0 .054.022.106.06.145.04.038.093.06.148.06h2.373c.055 0 .108-.022.147-.06.038-.039.06-.09.06-.145v-7.414c0-.05.017-.097.05-.134.032-.037.076-.062.125-.07.381-.05.766-.071 1.15-.064.449-.01.896.045 1.328.163.051.014.106.008.153-.017.046-.025.081-.068.097-.118l.699-2.15c.008-.027.01-.055.007-.083-.003-.028-.012-.055-.027-.08-.014-.024-.033-.045-.056-.062-.023-.016-.05-.028-.077-.034-.764-.17-1.546-.249-2.329-.237-1.063 0-2.619.14-3.769.498-.041.014-.078.04-.104.075-.026.036-.04.079-.039.122l.004 9.605zM39 24.781c-.016-.05-.051-.092-.098-.117-.046-.025-.1-.031-.152-.018-1.036.257-2.1.387-3.169.388-1.48 0-2.473-.702-2.473-2.756 0-.96.156-1.599.443-2.021.337-.497.856-.693 1.519-.736 1.1-.074 1.944.346 1.92 1.018l-1.067.543-1.718.875c-.024.013-.046.03-.063.05-.018.022-.03.045-.039.071-.008.026-.01.053-.008.08.002.027.01.053.023.077l1.007 1.904c.026.047.069.082.12.098.051.016.106.012.154-.011l3.55-1.709.834-.401c.036-.018.066-.045.087-.078.02-.034.031-.072.031-.112-.043-3.352-1.711-5.027-4.832-5.027-2.238 0-3.725.915-4.405 2.667-.281.723-.428 1.585-.428 2.59v.244c0 3.488 1.798 5.257 5.344 5.257 1.426 0 2.859-.191 3.972-.51.026-.008.05-.02.072-.038.021-.017.039-.039.051-.063.013-.024.02-.05.023-.078.003-.027 0-.054-.01-.08L39 24.78zM28.519 24.507c-.544.26-1.287.668-2.246.548-.83-.105-1.26-.452-1.26-1.335v-3.748c0-.054.022-.106.061-.145.039-.039.092-.06.146-.06h3.065c.027 0 .054-.006.08-.016.024-.01.047-.026.066-.045.02-.019.035-.041.045-.066.01-.025.016-.052.016-.079v-2.21c0-.055-.022-.107-.06-.145-.04-.039-.092-.06-.147-.061H25.22c-.027 0-.054-.005-.08-.016-.024-.01-.047-.026-.066-.045-.02-.019-.035-.042-.045-.067-.01-.025-.016-.052-.015-.079v-3.732c0-.036-.01-.07-.027-.102-.018-.03-.043-.056-.073-.075-.031-.018-.066-.028-.102-.029-.035 0-.07.007-.102.024l-2.373 1.231c-.034.018-.062.044-.082.076-.02.032-.03.069-.03.106v9.26c0 2.576 1.408 4.04 4.034 4.04 1.075 0 1.973-.23 3.373-.918l.392-.197c.048-.024.085-.066.103-.116.018-.05.014-.106-.009-.155l-.922-1.946c-.011-.025-.028-.047-.049-.065-.02-.019-.045-.033-.07-.042-.027-.009-.055-.012-.082-.01-.028.001-.055.009-.08.02l-.396.2z"
@@ -884,19 +766,8 @@ const Instruction = () => {
                       xmlnsXlink="http://www.w3.org/1999/xlink"
                       role="img"
                     >
-                      <g
-                        fill="none"
-                        fillRule="evenodd"
-                        transform="translate(.125 .671)"
-                      >
-                        <rect
-                          width="39.75"
-                          height="30"
-                          x=".375"
-                          fill="#185EA8"
-                          fillRule="nonzero"
-                          rx="3"
-                        ></rect>
+                      <g fill="none" fillRule="evenodd" transform="translate(.125 .671)">
+                        <rect width="39.75" height="30" x=".375" fill="#185EA8" fillRule="nonzero" rx="3"></rect>
                         <g>
                           <path
                             fill="#F39200"
@@ -924,12 +795,7 @@ const Instruction = () => {
                       xmlnsXlink="http://www.w3.org/1999/xlink"
                       role="img"
                     >
-                      <rect
-                        width="38"
-                        height="26"
-                        transform="translate(1 1.32019)"
-                        fill="white"
-                      ></rect>
+                      <rect width="38" height="26" transform="translate(1 1.32019)" fill="white"></rect>
                       <path
                         d="M3.25424 1.32019H36.7458C37.9907 1.32019 39 2.01073 39 2.86256V25.7778C39 26.6296 37.9907 27.3202 36.7458 27.3202H3.25424C2.00925 27.3202 1 26.6296 1 25.7778V2.86256C1 2.01073 2.00925 1.32019 3.25424 1.32019Z"
                         fill="white"
@@ -990,14 +856,7 @@ const Instruction = () => {
                       role="img"
                     >
                       <defs>
-                        <rect
-                          id="prefix__a"
-                          width="53"
-                          height="40"
-                          x="0"
-                          y="0"
-                          rx="4"
-                        ></rect>
+                        <rect id="prefix__a" width="53" height="40" x="0" y="0" rx="4"></rect>
                       </defs>
                       <g fill="none" fillRule="evenodd">
                         <mask id="prefix__b-15" fill="#fff">
@@ -1012,12 +871,7 @@ const Instruction = () => {
                           strokeWidth="1.06"
                           rx="4"
                         ></rect>
-                        <path
-                          fill="#FFF"
-                          fillRule="nonzero"
-                          d="M0 0H53V40H0z"
-                          mask="url(#prefix__b-15)"
-                        ></path>
+                        <path fill="#FFF" fillRule="nonzero" d="M0 0H53V40H0z" mask="url(#prefix__b-15)"></path>
                         <g mask="url(#prefix__b-15)">
                           <g>
                             <path
@@ -1057,13 +911,7 @@ const Instruction = () => {
                       role="img"
                     >
                       <g fill="none" fillRule="evenodd">
-                        <rect
-                          width="53"
-                          height="40"
-                          fill="#FFF"
-                          fillRule="nonzero"
-                          rx="4"
-                        ></rect>
+                        <rect width="53" height="40" fill="#FFF" fillRule="nonzero" rx="4"></rect>
                         <g fill="#000">
                           <g>
                             <path
@@ -1091,13 +939,7 @@ const Instruction = () => {
                       role="img"
                     >
                       <g fill="none" fillRule="evenodd">
-                        <rect
-                          width="53"
-                          height="40"
-                          fill="#FFF"
-                          fillRule="nonzero"
-                          rx="4"
-                        ></rect>
+                        <rect width="53" height="40" fill="#FFF" fillRule="nonzero" rx="4"></rect>
                         <g>
                           <path
                             fill="#5F6368"
@@ -1183,14 +1025,10 @@ const Instruction = () => {
         </div>
         <div className="ingresso-address">
           <span>
-            Ingresso.com Ltda / CNPJ: 008606400001-71 Endereço: Rua da Quitanda,
-            86 - 3º andar - Centro - RJ - 20091-005
+            Ingresso.com Ltda / CNPJ: 008606400001-71 Endereço: Rua da Quitanda, 86 - 3º andar - Centro - RJ - 20091-005
           </span>
           <span>
-            <a
-              href="https://atendimento.ingresso.com/portal/pt-br/kb/atendimento-ingresso-com"
-              target="_blank"
-            >
+            <a href="https://atendimento.ingresso.com/portal/pt-br/kb/atendimento-ingresso-com" target="_blank">
               Atendimento ao cliente{" "}
             </a>
             © 2024 - Copyright Ingresso.com - todos os direitos reservados

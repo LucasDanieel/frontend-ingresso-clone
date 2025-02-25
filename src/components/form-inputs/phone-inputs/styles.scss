@@ -1,0 +1,12 @@
+.wrapper-phone-double-input {
+  display: flex;
+  gap: 8px;
+
+  .wrapper-DDD {
+    max-width: 20%;
+  }
+
+  .wrapper-phone {
+    width: 80%;
+  }
+}

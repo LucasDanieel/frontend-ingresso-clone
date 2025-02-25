@@ -1,4 +1,4 @@
-import { requiredInPassword } from "../../../pages/create";
+import { requiredInPassword } from "../../../@types/user";
 import "./styles.scss";
 
 type validPasswordProps = {

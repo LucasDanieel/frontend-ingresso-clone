@@ -1,22 +1,16 @@
-import { useNavigate } from "react-router-dom";
 import ButtonStyle from "../../button-style";
 import "./styles.scss";
 
-import Cookies from "js-cookie";
+type ModalPasswordChangedProps = {
+  setOpenModalChangePassword: (value: boolean) => void;
+};
 
-const ModalPasswordChanged = () => {
-  const navigate = useNavigate();
-
-  const onDoLoginAgain = () => {
-    Cookies.remove("token");
-    navigate("/minha-conta");
-  };
-
+const ModalPasswordChanged = ({ setOpenModalChangePassword }: ModalPasswordChangedProps) => {
   return (
     <div className="wrapper-login-again">
       <div className="close-login-again">
         <svg
-          onClick={onDoLoginAgain}
+          onClick={() => setOpenModalChangePassword(false)}
           xmlns="http://www.w3.org/2000/svg"
           width="17"
           height="17"
@@ -93,7 +87,7 @@ const ModalPasswordChanged = () => {
       <h3>Senha alterada com sucesso!</h3>
       <span>Para continuar navegando, por favor faça login novamente utilizando a nova senha.</span>
       <div className="button-login-again">
-        <ButtonStyle text="Continuar" isButton handleClickEvent={onDoLoginAgain} />
+        <ButtonStyle text="Continuar" isButton handleClickEvent={() => setOpenModalChangePassword(false)} />
       </div>
     </div>
   );

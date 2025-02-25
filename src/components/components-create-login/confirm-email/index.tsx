@@ -1,4 +1,4 @@
-import { userCreated } from "../../../pages/create";
+import { userCreated } from "../../../@types/user";
 import ButtonStyle from "../../button-style";
 import "./styles.scss";
 

@@ -79,7 +79,6 @@ const ConfirmCode = ({
       .then((resp) => {
         Cookies.set("token", resp.data, { expires: 10 });
         navigate("/minha-conta/meus-pedidos");
-        setWrongCode(false);
       })
       .catch(() => {
         setWrongCode(true);

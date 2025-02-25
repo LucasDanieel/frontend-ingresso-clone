@@ -6,7 +6,7 @@ type InputStateProps = {
   handleChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 };
 
-const InputState = ({ state, handleChange }: InputStateProps) => {
+const StateInput = ({ state, handleChange }: InputStateProps) => {
   const states = [
     "AC",
     "AL",
@@ -49,4 +49,4 @@ const InputState = ({ state, handleChange }: InputStateProps) => {
   );
 };
 
-export default InputState;
+export default StateInput;

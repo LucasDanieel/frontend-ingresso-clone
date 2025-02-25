@@ -1,19 +1,14 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
 import "./styles.scss";
+import { FormState } from "../../../@types/user";
 
 type MonthDayInputProps = {
   month: string;
   day: string;
-  handleChangeMonth?: (e: ChangeEvent<HTMLSelectElement>) => void;
-  handleChangeDay?: (e: ChangeEvent<HTMLSelectElement>) => void;
+  setForm: Dispatch<SetStateAction<FormState>>;
 };
 
-const MonthDayInput = ({
-  month,
-  day,
-  handleChangeMonth = () => {},
-  handleChangeDay = () => {},
-}: MonthDayInputProps) => {
+const MonthDayInput = ({ month, day, setForm }: MonthDayInputProps) => {
   const months = [
     "Janeiro",
     "Fevereiro",
@@ -29,6 +24,17 @@ const MonthDayInput = ({
     "Dezembro",
   ];
 
+  const onChangeMonth = (e: ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value;
+    setForm((s) => ({ ...s, month: value }));
+
+    if (value == "0") setForm((s) => ({ ...s, day: "0" }));
+  };
+
+  const onChangeDay = (e: ChangeEvent<HTMLSelectElement>) => {
+    setForm((s) => ({ ...s, day: e.target.value }));
+  };
+
   const onGenerateDays = (selectedMonth: string) => {
     if (selectedMonth == "0") return;
 
@@ -40,7 +46,7 @@ const MonthDayInput = ({
     <div className="wrapper-form-select-input">
       <div className="wrapper-select-input">
         <div className="select-month-day">
-          <select id="month" value={month} onChange={handleChangeMonth}>
+          <select id="month" value={month} onChange={onChangeMonth}>
             <option value="0">Mês de aniversário</option>
             {months.map((mon, idx) => (
               <option key={idx} value={idx + 1}>
@@ -50,7 +56,7 @@ const MonthDayInput = ({
           </select>
         </div>
         <div className="select-month-day">
-          <select id="day" value={day} onChange={handleChangeDay}>
+          <select id="day" value={day} onChange={onChangeDay}>
             <option value="0">Dia do aniversário</option>
             {onGenerateDays(month)?.map((day) => (
               <option key={day} value={day}>

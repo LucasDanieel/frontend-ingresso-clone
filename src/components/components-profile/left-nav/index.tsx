@@ -1,9 +1,9 @@
+import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import "./styles.scss";
 
 import { UserContextType } from "../../../@types/user";
 import { UserContext } from "../../../providers/user-provider";
-import { NavLink } from "react-router-dom";
 
 const LeftNavProfile = () => {
   const { user } = useContext(UserContext) as UserContextType;

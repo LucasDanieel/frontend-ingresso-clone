@@ -1,11 +1,7 @@
-import { ReactNode } from "react";
+import { PropsWithChildren } from "react";
 import "./styles.scss";
 
-type headerFooterProps = {
-  children: ReactNode;
-};
-
-const HeaderFooter = ({ children }: headerFooterProps) => {
+const HeaderFooter = ({ children }: PropsWithChildren) => {
   return (
     <div className="container">
       <div className="wrapper">
@@ -26,10 +22,7 @@ const HeaderFooter = ({ children }: headerFooterProps) => {
               {`Ingresso.com Ltda / CNPJ: 008606400001-71 / Endereço: Rua da
               Quitanda, 86 - 9º andar - Centro - Rio de Janeiro, RJ - 20091-902
               / `}
-              <a
-                href="https://atendimento.ingresso.com/portal/pt-br/kb/atendimento-ingresso-com"
-                target="_blank"
-              >
+              <a href="https://atendimento.ingresso.com/portal/pt-br/kb/atendimento-ingresso-com" target="_blank">
                 Atendimento ao cliente
               </a>
             </p>

@@ -4,23 +4,7 @@ import "./styles.scss";
 import HeaderFooter from "../../components/header-footer";
 import ConfirmEmail from "../../components/components-create-login/confirm-email";
 import FormCreateLogin from "../../components/components-create-login/form-create-login";
-
-export type genericObject = {
-  value: string;
-  hasValue: boolean;
-};
-
-export type requiredInPassword = {
-  letraMinuscula: boolean;
-  letraMaiuscula: boolean;
-  hasNumber: boolean;
-  minimumLength: boolean;
-};
-
-export type userCreated = {
-  name: string;
-  isCompleted: boolean;
-};
+import { userCreated } from "../../@types/user";
 
 const Create = () => {
   const [userCreated, setUserCreated] = useState<userCreated>({

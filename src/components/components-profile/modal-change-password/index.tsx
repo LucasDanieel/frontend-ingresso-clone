@@ -2,13 +2,13 @@ import { ChangeEvent, useRef, useState } from "react";
 import axios from "axios";
 import "./styles.scss";
 
-import { requiredInPassword } from "../../../pages/create";
 import ValidPassword from "../../components-create-login/valid-password";
 import SimpleInput from "../../form-inputs/simple-input";
-import RecaptchaComponent from "../../components-create-login/recaptcha-component";
+import RecaptchaComponent from "../../recaptcha-component";
 import ButtonStyle from "../../button-style";
 import { validInputPassword } from "../../../utils/input-methods";
-import ModalPasswordChanged from "../modal-pasword-changed";
+import ModalPasswordChanged from "../modal-password-changed";
+import { requiredInPassword } from "../../../@types/user";
 
 type changePasswordProps = { email: string; setOpenModalChangePassword: (state: boolean) => void };
 
@@ -27,7 +27,7 @@ const ModalChangePassword = ({ email, setOpenModalChangePassword }: changePasswo
   const [reCAPTCHA, setReCAPTCHA] = useState<string | null>(null);
 
   const [isLoading, setLoading] = useState<boolean>(false);
-  const [loginAgain, setLoginAgain] = useState<boolean>(false);
+  const [passwordChanged, setPasswordChanged] = useState<boolean>(false);
 
   const [inputCurrentPasswordWrong, setInputCurrentPasswordWrong] = useState<boolean>(false);
   const [inputNewPasswordWrong, setInputNewPasswordWrong] = useState<boolean>(false);
@@ -133,7 +133,7 @@ const ModalChangePassword = ({ email, setOpenModalChangePassword }: changePasswo
       .put(`/user/change-password`, changePasswordDTO)
       .then((resp) => {
         if (resp.data) {
-          setLoginAgain(true);
+          setPasswordChanged(true);
         }
       })
       .catch((err) => {
@@ -181,8 +181,8 @@ const ModalChangePassword = ({ email, setOpenModalChangePassword }: changePasswo
 
   return (
     <div className="container-modal-change-password">
-      {loginAgain ? (
-        <ModalPasswordChanged />
+      {passwordChanged ? (
+        <ModalPasswordChanged setOpenModalChangePassword={setOpenModalChangePassword} />
       ) : (
         <div className="wrapper-modal-change-password">
           <div className="modal-close-change-password">

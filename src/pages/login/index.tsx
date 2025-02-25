@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 import "./styles.scss";
 
 import HeaderFooter from "../../components/header-footer";
 import FormLogin from "../../components/components-login/form-login";
 import ConfirmCode from "../../components/components-login/confirm-code";
+import ModalConfirmedAccount from "../../components/components-login/modal-confirmed-account";
 import { UserContext } from "../../providers/user-provider";
 import { UserContextType } from "../../@types/user";
-import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
-import ButtonStyle from "../../components/button-style";
 
 export type maskedUser = {
   email: string;
@@ -42,10 +42,9 @@ const Login = () => {
         })
         .catch((err) => {
           const errorMessage = err.response.data.message;
-          // console.warn(errorMessage);
           if (errorMessage == "Usuario já confirmado") alert("A conta já está confirmada");
           else if (errorMessage == "Token invalido") alert(errorMessage);
-          else if (errorMessage == "Usuario não encontrado") alert("Usuario não encontrado");
+          else if (errorMessage == "Usuario não encontrado") alert(errorMessage);
           else alert("Não foi possivel validar essa conta");
         });
     }
@@ -60,32 +59,7 @@ const Login = () => {
 
   return (
     <>
-      {confirmedAccount && (
-        <div className="wrapper-confirmed-account">
-          <div className="confirmed-account">
-            <div className="confirmed-account-close-button">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                fill="currentColor"
-                className="bi bi-x-lg"
-                viewBox="0 0 16 16"
-                onClick={() => setConfirmedAccount(false)}
-              >
-                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
-              </svg>
-            </div>
-            <div className="confirmed-account-icon">
-              <img src="\assets\img\like.png" alt="" />
-            </div>
-            <div className="confirmed-account-button">
-              <h3>Cadastro confirmado!</h3>
-              <ButtonStyle text="continuar" isButton handleClickEvent={() => setConfirmedAccount(false)} />
-            </div>
-          </div>
-        </div>
-      )}
+      {confirmedAccount && <ModalConfirmedAccount setConfirmedAccount={setConfirmedAccount} />}
       <HeaderFooter>
         <main className="container-main-login">
           <div className="login-text">

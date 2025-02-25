@@ -17,6 +17,7 @@ import MyOrders from "../pages/my-orders";
 import WrapperProfile from "../components/components-profile/wrapper-profile";
 import MyOrdersEvents from "../pages/my-orders-events";
 import UserProvider from "../providers/user-provider";
+import Error from "../pages/error";
 
 const routes = [
   {
@@ -89,21 +90,8 @@ const routes = [
   },
   {
     path: "*",
-    element: (
-      <div
-        style={{
-          display: "flex",
-          height: "100vh",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-        }}
-      >
-        <h1>ERROR !!!!!!</h1>
-        <a href="/">Voltar para a pagina principal</a>
-      </div>
-    ),
-    showHeaderFooter: false,
+    element: <Error />,
+    showHeaderFooter: true,
   },
 ];
 

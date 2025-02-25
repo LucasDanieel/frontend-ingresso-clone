@@ -5,9 +5,14 @@ export interface User {
   email: string;
 }
 
+export type userCreated = {
+  name: string;
+  isCompleted: boolean;
+};
+
 export type UserContextType = {
   user: User | null;
-  setUser: Dispatch<SetStateAction<User | null>>
+  setUser: Dispatch<SetStateAction<User | null>>;
 };
 
 export type UserDTO = {
@@ -29,18 +34,19 @@ export type UserDTO = {
     city?: string;
   };
   receiveNotification: boolean;
-  userValid?: boolean
+  userValid?: boolean;
 };
 
 export type FormState = {
   id?: string;
   name: string;
   CPF: string;
-  maskedCPF: string;
+  maskedCPF?: string;
   DDD: string;
   phone: string;
   email: string;
-  password?: string;
+  confirmEmail?: string;
+  password: string;
   month: string;
   day: string;
   CEP: string;
@@ -51,4 +57,16 @@ export type FormState = {
   state: string;
   city: string;
   recieveNews: boolean;
+};
+
+export type inputPhoneRefs = {
+  ddd: HTMLInputElement | null;
+  phone: HTMLInputElement | null;
+};
+
+export type requiredInPassword = {
+  letraMinuscula: boolean;
+  letraMaiuscula: boolean;
+  hasNumber: boolean;
+  minimumLength: boolean;
 };

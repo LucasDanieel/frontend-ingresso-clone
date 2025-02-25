@@ -1,50 +1,32 @@
 import { ChangeEvent, Dispatch, KeyboardEvent, SetStateAction } from "react";
-import { genericObject, requiredInPassword } from "../pages/create";
-import { FormState } from "../@types/user";
+import { FormState, requiredInPassword } from "../@types/user";
+import axios from "axios";
 
-export const onChangeGenericTest = (
+export const onChangeFormName = (
   e: ChangeEvent<HTMLInputElement>,
-  mask: string,
-  maskLength: number,
-  setValue: Dispatch<SetStateAction<FormState>>,
-  _nameField: string,
-  setInputWrong: Dispatch<SetStateAction<boolean>> | null,
-  refInput: HTMLInputElement | null,
-  conditionLength: number | null = null
+  setForm: Dispatch<SetStateAction<FormState>>,
+  setInputNameWrong: Dispatch<SetStateAction<boolean>>
 ) => {
-  const input = e.target.value.replace(/\D/g, "");
-  const formated = applyMask(input, mask, maskLength);
+  if (e.target.value.length < 3 || e.target.value.length > 60) setInputNameWrong(true);
+  else setInputNameWrong(false);
 
-  setValue((s) => ({ ...s, [_nameField]: formated }));
-
-  if (conditionLength && setInputWrong) {
-    if (input.length >= conditionLength) setInputWrong(false);
-    else setInputWrong(true);
-  }
-
-  const cursorPosition = formated.indexOf("_");
-  setTimeout(() => {
-    refInput?.setSelectionRange(cursorPosition, cursorPosition);
-  }, 1);
+  setForm((s) => ({ ...s, name: e.target.value }));
 };
 
 export const onChangeGeneric = (
   e: ChangeEvent<HTMLInputElement>,
   mask: string,
   maskLength: number,
-  setValue: Dispatch<SetStateAction<genericObject>>,
-  setInputWrong: Dispatch<SetStateAction<boolean>> | null,
+  setForm: Dispatch<SetStateAction<FormState>>,
+  _nameField: string,
   refInput: HTMLInputElement | null,
+  setInputWrong: Dispatch<SetStateAction<boolean>> | null = null,
   conditionLength: number | null = null
 ) => {
   const input = e.target.value.replace(/\D/g, "");
   const formated = applyMask(input, mask, maskLength);
 
-  setValue((s) => ({
-    ...s,
-    value: formated,
-    hasValue: input.length == 0 ? false : true,
-  }));
+  setForm((s) => ({ ...s, [_nameField]: formated }));
 
   if (conditionLength && setInputWrong) {
     if (input.length >= conditionLength) setInputWrong(false);
@@ -57,10 +39,10 @@ export const onChangeGeneric = (
   }, 1);
 };
 
-export const onKeyDownGenericTest = (
+export const onKeyDownGeneric = (
   e: KeyboardEvent<HTMLInputElement>,
   object: string,
-  setValue: Dispatch<SetStateAction<FormState>>,
+  setForm: Dispatch<SetStateAction<FormState>>,
   _nameField: string,
   mask: string,
   maskLength: number
@@ -69,32 +51,13 @@ export const onKeyDownGenericTest = (
     var numericValue = object.replace(/\D/g, "");
     numericValue = numericValue.slice(0, -1);
 
-    setValue((s) => ({ ...s, [_nameField]: applyMask(numericValue, mask, maskLength) }));
+    setForm((s) => ({ ...s, [_nameField]: applyMask(numericValue, mask, maskLength) }));
   }
 };
 
-export const onKeyDownGeneric = (
-  e: KeyboardEvent<HTMLInputElement>,
-  object: genericObject,
-  setValue: Dispatch<SetStateAction<genericObject>>,
-  mask: string,
-  maskLength: number
-) => {
-  if (e.key === "Backspace") {
-    var numericValue = object.value.replace(/\D/g, "");
-    numericValue = numericValue.slice(0, -1);
-
-    setValue((s) => ({
-      ...s,
-      value: applyMask(numericValue, mask, maskLength),
-      hasValue: numericValue.length == 0 ? false : true,
-    }));
-  }
-};
-
-export const onFocosGenericTest = (
+export const onFocosGeneric = (
   object: string,
-  setValue: Dispatch<SetStateAction<FormState>>,
+  setForm: Dispatch<SetStateAction<FormState>>,
   _nameField: string,
   mask: string,
   refInput: HTMLInputElement | null,
@@ -103,27 +66,7 @@ export const onFocosGenericTest = (
   var currentPosition = object.indexOf("_");
 
   if (object.replace(/\D/g, "").length == 0) {
-    setValue((s) => ({ ...s, [_nameField]: mask }));
-    setInputWrong && setInputWrong(true);
-    currentPosition = 0;
-  }
-
-  setTimeout(() => {
-    refInput?.setSelectionRange(currentPosition, currentPosition);
-  }, 60);
-};
-
-export const onFocosGeneric = (
-  object: genericObject,
-  setValue: Dispatch<SetStateAction<genericObject>>,
-  mask: string,
-  refInput: HTMLInputElement | null,
-  setInputWrong: Dispatch<SetStateAction<boolean>> | null = null
-) => {
-  var currentPosition = object.value.indexOf("_");
-
-  if (!object.hasValue) {
-    setValue((s) => ({ ...s, value: mask }));
+    setForm((s) => ({ ...s, [_nameField]: mask }));
     setInputWrong && setInputWrong(true);
     currentPosition = 0;
   }
@@ -167,4 +110,49 @@ export const validInputPassword = (
 
   if (valorTesteMinusculas && valorTesteMaiusculas && valorTesteNumeros && valorTesteTamanho) return true;
   else return false;
+};
+
+export const onSearchCEP = (
+  form: FormState,
+  setForm: Dispatch<SetStateAction<FormState>>,
+  setInputCEPWrong: Dispatch<SetStateAction<boolean>>
+) => {
+  const cepClean = form.CEP.replace(/\D/g, "");
+  if (cepClean.length > 0) {
+    if (cepClean.length < 8) {
+      resetAdrress(setForm, setInputCEPWrong);
+    } else {
+      axios
+        .get(`https://viacep.com.br/ws/${form.CEP}/json`)
+        .then((resp) => {
+          const data = resp.data;
+          if (data.erro == "true") {
+            resetAdrress(setForm, setInputCEPWrong);
+          } else {
+            setForm((s) => ({ ...s, street: data.logradouro }));
+            setForm((s) => ({ ...s, neighborhood: data.bairro }));
+            setForm((s) => ({ ...s, city: data.localidade }));
+            setForm((s) => ({ ...s, state: data.uf }));
+            setInputCEPWrong(false);
+          }
+        })
+        .catch(() => {
+          resetAdrress(setForm, setInputCEPWrong);
+        });
+    }
+  } else {
+    setInputCEPWrong(false);
+    setForm((s) => ({ ...s, CEP: "" }));
+  }
+};
+
+const resetAdrress = (
+  setForm: Dispatch<SetStateAction<FormState>>,
+  setInputCEPWrong: Dispatch<SetStateAction<boolean>>
+) => {
+  setForm((s) => ({ ...s, street: "" }));
+  setForm((s) => ({ ...s, neighborhood: "" }));
+  setForm((s) => ({ ...s, state: "" }));
+  setForm((s) => ({ ...s, city: "" }));
+  setInputCEPWrong(true);
 };

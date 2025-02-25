@@ -1,0 +1,49 @@
+.profile-recaptcha-confirm-password {
+  padding-top: 18px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+  border-radius: 16px;
+  background-color: rgb(31, 36, 43);
+
+  .wrapper-save-changes {
+    .warning-save-changes {
+      display: flex;
+      gap: 5px;
+
+      span {
+        font-size: 17px;
+        text-transform: uppercase;
+      }
+    }
+
+    p {
+      font-size: 13px;
+      margin-top: 9px;
+    }
+  }
+
+  .wrapper-terms-recaptcha {
+    margin-top: 16px;
+    margin-bottom: 1px;
+  }
+
+  .wrapper-confirm-password {
+    display: flex;
+    gap: 16px;
+    margin-left: 8px;
+
+    .confirm-password {
+      width: 302px;
+    }
+
+    .save-change-button {
+      button {
+        padding: 13px 54px;
+        font-size: 20px;
+      }
+    }
+  }
+}
