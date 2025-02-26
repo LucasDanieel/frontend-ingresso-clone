@@ -140,6 +140,12 @@
                     color: #3255e2;
                   }
                 }
+
+                button {
+                  font-size: 20px;
+                  padding-top: 13px;
+                  padding-bottom: 12px;
+                }
               }
             }
 
@@ -237,6 +243,11 @@
                 font-size: 16px;
                 line-height: 20px;
               }
+
+              button {
+                font-size: 17px;
+                border-radius: 10px;
+              }
             }
 
             .login-account {
@@ -277,20 +288,25 @@
               gap: 33px;
 
               button {
-                width: 350px;
-                font-size: 15.4px;
-                background-color: transparent;
-                border-style: solid;
-                border-width: 2px;
+                font-size: 16px;
                 border-radius: 10px;
-                border-color: #9ca4bf;
-                color: rgb(152, 170, 236, 1);
-                border-color: rgb(152, 170, 236, 1);
-                cursor: pointer;
+                letter-spacing: 0;
+              }
 
-                &:hover {
-                  color: rgb(131, 153, 232);
-                  border-color: rgb(131, 153, 232);
+              .button-help-yes {
+                width: 300px;
+
+                button {
+                  padding-top: 11px;
+                  padding-bottom: 11px;
+                }
+              }
+
+              .button-help-no {
+                button {
+                  width: 350px;
+                  padding-top: 9px;
+                  padding-bottom: 9px;
                 }
               }
             }

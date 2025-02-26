@@ -13,13 +13,9 @@ const Create = () => {
   });
   const [isLoading, setLoading] = useState<boolean>(false);
 
-  const closeConfirmEmail = () => {
-    setUserCreated({ name: "", isCompleted: false });
-  };
-
   return (
     <>
-      {userCreated.isCompleted && <ConfirmEmail userCreated={userCreated} closeConfirmEmail={closeConfirmEmail} />}
+      {userCreated.isCompleted && <ConfirmEmail userCreated={userCreated} setUserCreated={setUserCreated} />}
       <HeaderFooter>
         <main className="create-login-main-container">
           <div className="create-login-main-wrapper">

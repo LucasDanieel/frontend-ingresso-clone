@@ -1,4 +1,4 @@
-import ButtonStyle from "../../button-style";
+import ButtonGradient from "../../buttons-styles/button-gradient";
 import "./styles.scss";
 
 type ModalProfileUpdatedProps = {
@@ -30,7 +30,7 @@ const ModalProfileUpdated = ({ setProfileUpdated }: ModalProfileUpdatedProps) =>
           <span>Os dados da sua conta foram alterados e a conta já está atualizada.</span>
         </div>
         <div className="button-profile-updated">
-          <ButtonStyle text="OK" isButton handleClickEvent={() => setProfileUpdated(false)} />
+          <ButtonGradient text="OK" fontBold handleClickEvent={() => setProfileUpdated(false)} />
         </div>
         <a href="/">Ir para a página inicial</a>
       </div>

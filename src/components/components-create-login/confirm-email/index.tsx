@@ -1,13 +1,21 @@
-import { userCreated } from "../../../@types/user";
-import ButtonStyle from "../../button-style";
+import { Dispatch, SetStateAction } from "react";
 import "./styles.scss";
+
+import { userCreated } from "../../../@types/user";
+import ButtonGradient from "../../buttons-styles/button-gradient";
+import { useNavigate } from "react-router-dom";
 
 type confirmEmailProps = {
   userCreated: userCreated;
-  closeConfirmEmail: () => void;
+  setUserCreated: Dispatch<SetStateAction<userCreated>>;
 };
 
-const ConfirmEmail = ({ userCreated, closeConfirmEmail }: confirmEmailProps) => {
+const ConfirmEmail = ({ userCreated, setUserCreated }: confirmEmailProps) => {
+  const navigate = useNavigate();
+  const closeConfirmEmail = () => {
+    setUserCreated({ name: "", isCompleted: false });
+  };
+
   return (
     <div className="container-confirm-email">
       <div className="wrapper-confirm-email">
@@ -33,7 +41,7 @@ const ConfirmEmail = ({ userCreated, closeConfirmEmail }: confirmEmailProps) => 
           <span>Confirme seu cadastro clicando no link que acabamos de enviar para o seu e-mail.</span>
         </div>
         <div className="button-confirm-email">
-          <ButtonStyle text="Continuar" url="/minha-conta" login_create={true} />
+          <ButtonGradient text="Continuar" fontBold handleClickEvent={() => navigate("/minha-conta")} />
         </div>
       </div>
     </div>

@@ -1,8 +1,9 @@
-import { memo } from "react";
-import ButtonStyle from "../../button-style";
 import "./styles.scss";
 
-const Banner = memo(() => {
+import ButtonGradient from "../../buttons-styles/button-gradient";
+import ButtonTransparent from "../../buttons-styles/button-transparent";
+
+const Banner = () => {
   const film_detail = {
     name: "Coringa: Delírio A Dois",
     age: 16,
@@ -26,8 +27,12 @@ const Banner = memo(() => {
           </div>
         </a>
         <div className="wrapper-ticket">
-          <ButtonStyle text="Ingressos" />
-          <button>Assistir Trailer</button>
+          <div className="ticket">
+            <ButtonGradient text="Ingressos" />
+          </div>
+          <div className="watch-trailer">
+            <ButtonTransparent text="Assistir Trailer" />
+          </div>
         </div>
       </div>
       <div className="premiere-films">
@@ -77,6 +82,6 @@ const Banner = memo(() => {
       </div>
     </div>
   );
-});
+};
 
 export default Banner;

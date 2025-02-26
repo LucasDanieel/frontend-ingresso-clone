@@ -2,11 +2,11 @@ import { ChangeEvent, Dispatch, RefObject, SetStateAction, useContext, useState 
 import axios from "axios";
 import "./styles.scss";
 
-import ButtonStyle from "../../button-style";
 import SimpleInput from "../../form-inputs/simple-input";
 import RecaptchaComponent from "../../recaptcha-component";
 import { FormState, inputPhoneRefs, UserContextType, UserDTO } from "../../../@types/user";
 import { UserContext } from "../../../providers/user-provider";
+import ButtonGradient from "../../buttons-styles/button-gradient";
 
 type SaveChangesProps = {
   form: FormState;
@@ -161,7 +161,7 @@ const SaveChanges = ({
           />
         </div>
         <div className="save-change-button">
-          <ButtonStyle isButton text="Salvar" disabled={!reCAPTCHA} handleClickEvent={onSubmit} />
+          <ButtonGradient text="Salvar" disabled={!reCAPTCHA} fontBold handleClickEvent={onSubmit} />
         </div>
       </div>
     </div>

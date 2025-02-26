@@ -59,6 +59,14 @@ export type FormState = {
   recieveNews: boolean;
 };
 
+export type inputFormRefs = {
+  name: HTMLInputElement | null;
+  cpf: HTMLInputElement | null;
+  email: HTMLInputElement | null;
+  confirmEmail: HTMLInputElement | null;
+  password: HTMLInputElement | null;
+};
+
 export type inputPhoneRefs = {
   ddd: HTMLInputElement | null;
   phone: HTMLInputElement | null;

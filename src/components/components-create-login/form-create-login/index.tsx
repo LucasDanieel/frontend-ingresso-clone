@@ -1,11 +1,10 @@
-import { ChangeEvent, FormEvent, KeyboardEvent, useRef, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useRef, useState } from "react";
 import isEmail from "validator/lib/isEmail";
-import axios from "axios";
 
 import "./styles.scss";
 import MonthDayInput from "../../form-inputs/month-day-input";
 import SimpleInput from "../../form-inputs/simple-input";
-import TermsOfUse from "../terms-of-use";
+import TermsOfUse from "../../terms-of-use";
 import ValidPassword from "../valid-password";
 import RecaptchaComponent from "../../recaptcha-component";
 import {
@@ -15,9 +14,10 @@ import {
   onKeyDownGeneric,
   validInputPassword,
 } from "../../../utils/input-methods";
+import { FormState, inputFormRefs, inputPhoneRefs, requiredInPassword, userCreated } from "../../../@types/user";
 import AddressInputs from "../../form-inputs/address-inputs";
-import { FormState, inputPhoneRefs, requiredInPassword, userCreated, UserDTO } from "../../../@types/user";
 import PhoneInputs from "../../form-inputs/phone-inputs";
+import Buttons from "../buttons";
 
 type formCreateLoginProps = {
   isLoading: boolean;
@@ -65,7 +65,7 @@ const FormCreateLogin = ({ isLoading, setLoading, setUserCreated }: formCreateLo
     minimumLength: false,
   });
 
-  const inputRefs = useRef({
+  const inputRefs = useRef<inputFormRefs>({
     name: null as HTMLInputElement | null,
     cpf: null as HTMLInputElement | null,
     email: null as HTMLInputElement | null,
@@ -134,161 +134,8 @@ const FormCreateLogin = ({ isLoading, setLoading, setUserCreated }: formCreateLo
     setForm((s) => ({ ...s, password: value }));
   };
 
-  // POST
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    var isValid = validateAllInputs();
-    if (isValid == false) return;
-
-    var date;
-    if (form.month == "0") {
-      date = undefined;
-    } else {
-      date = new Date(2024, Number(form.month) - 1, Number(form.day));
-    }
-
-    var num;
-    if (form.number == "") num = undefined;
-    else num = Number(form.number);
-
-    const user: UserDTO = {
-      name: form.name,
-      cpf: form.CPF.replace(/\D/g, ""),
-      phoneDdd: form.DDD.replace(/\D/g, ""),
-      phoneNumber: form.phone.replace(/\D/g, ""),
-      email: form.email,
-      password: form.password,
-      dateOfBirth: date,
-      address: {
-        cep: form.CEP.replace(/\D/g, ""),
-        street: form.street,
-        houseNumber: num,
-        complement: form.complement,
-        neighborhood: form.neighborhood,
-        state: form.state,
-        city: form.city,
-      },
-      receiveNotification: form.recieveNews,
-    };
-
-    setLoading(true);
-    axios
-      .post(`/user/create`, user)
-      .then(() => {
-        setUserCreated({ name: form.name, isCompleted: true });
-        cleanAllInputs();
-      })
-      .catch((err) => {
-        var messageErro = err.response?.data.message;
-        if (messageErro == "Cpf e email já cadastrado") {
-          setCpfInvalidValue("Cpf já cadastrado.");
-          setEmailInvalidValue("Email já cadastrado.");
-          setInputCPFWrong(true);
-          setInputEmailWrong(true);
-        } else if (messageErro == "Cpf já cadastrado") {
-          setCpfInvalidValue("Cpf já cadastrado.");
-          setInputCPFWrong(true);
-        } else if (messageErro == "Email já cadastrado") {
-          setEmailInvalidValue("Email já cadastrado.");
-          setInputEmailWrong(true);
-        }
-
-        setReCAPTCHA("");
-      })
-      .finally(() => setLoading(false));
-  };
-
-  const validateAllInputs = () => {
-    var allValids = true;
-    var firstWrong;
-
-    if (form.name.length < 3 || form.name.length > 60) {
-      setInputNameWrong(true);
-      allValids = false;
-      firstWrong = inputRefs.current.name;
-    } else setInputNameWrong(false);
-
-    if (form.CPF.replace(/\D/g, "").length < 11) {
-      setInputCPFWrong(true);
-      allValids = false;
-      if (firstWrong == undefined) firstWrong = inputRefs.current.cpf;
-    } else setInputCPFWrong(false);
-
-    if (form.DDD.length == 0) {
-      setInputDDDWrong(true);
-      allValids = false;
-      if (firstWrong == undefined) firstWrong = inputPhoneRefs.current.ddd;
-    } else setInputDDDWrong(false);
-
-    if (form.phone.length == 0) {
-      setInputPhoneWrong(true);
-      allValids = false;
-      if (firstWrong == undefined) firstWrong = inputPhoneRefs.current.phone;
-    } else setInputPhoneWrong(false);
-
-    if (isEmail(form.email)) setInputEmailWrong(false);
-    else {
-      setInputEmailWrong(true);
-      allValids = false;
-      if (firstWrong == undefined) firstWrong = inputRefs.current.email;
-    }
-
-    if (form.email !== form.confirmEmail) {
-      setInputConfirmEmailWrong(true);
-      allValids = false;
-      if (firstWrong == undefined) firstWrong = inputRefs.current.confirmEmail;
-    } else setInputConfirmEmailWrong(false);
-
-    if (
-      requiredInPassword.hasNumber == false ||
-      requiredInPassword.letraMaiuscula == false ||
-      requiredInPassword.letraMinuscula == false ||
-      requiredInPassword.minimumLength == false
-    ) {
-      setInputPasswordWrong(true);
-      allValids = false;
-      if (firstWrong == undefined) firstWrong = inputRefs.current.password;
-    } else setInputPasswordWrong(false);
-
-    firstWrong?.focus();
-
-    return allValids;
-  };
-
-  const cleanAllInputs = () => {
-    setForm({
-      name: "",
-      CPF: "",
-      DDD: "",
-      phone: "",
-      email: "",
-      confirmEmail: "",
-      password: "",
-      month: "0",
-      day: "0",
-      CEP: "",
-      street: "",
-      number: "",
-      complement: "",
-      neighborhood: "",
-      state: "",
-      city: "",
-      recieveNews: false,
-    });
-    setReCAPTCHA(null);
-    setRequiredInPassword({
-      letraMinuscula: false,
-      letraMaiuscula: false,
-      hasNumber: false,
-      minimumLength: false,
-    });
-    setCpfInvalidValue("");
-    setEmailInvalidValue("");
-  };
-
   return (
-    <form onSubmit={onSubmit}>
+    <form>
       <div className="container-form">
         <div className="header-form">
           <p>* Campos obrigatórios</p>
@@ -352,11 +199,7 @@ const FormCreateLogin = ({ isLoading, setLoading, setUserCreated }: formCreateLo
           ref={(el) => (inputRefs.current.password = el)}
         />
         <ValidPassword requiredInPassword={requiredInPassword} />
-        <MonthDayInput
-          month={form.month}
-          day={form.day}
-          setForm={setForm}
-        />
+        <MonthDayInput month={form.month} day={form.day} setForm={setForm} />
         <AddressInputs form={form} setForm={setForm} />
         <div className="receive-news">
           <input
@@ -373,14 +216,27 @@ const FormCreateLogin = ({ isLoading, setLoading, setUserCreated }: formCreateLo
             <RecaptchaComponent setReCAPTCHA={setReCAPTCHA} />
           </>
         )}
-        <div className="form-buttons">
-          <button type="button" className="back">
-            Voltar
-          </button>
-          <button type="submit" className="continue" disabled={!reCAPTCHA}>
-            Continuar
-          </button>
-        </div>
+        <Buttons
+          form={form}
+          reCAPTCHA={reCAPTCHA}
+          requiredInPassword={requiredInPassword}
+          setForm={setForm}
+          setLoading={setLoading}
+          setUserCreated={setUserCreated}
+          setCpfInvalidValue={setCpfInvalidValue}
+          setEmailInvalidValue={setEmailInvalidValue}
+          setReCAPTCHA={setReCAPTCHA}
+          setInputNameWrong={setInputNameWrong}
+          setInputCPFWrong={setInputCPFWrong}
+          setInputDDDWrong={setInputDDDWrong}
+          setInputPhoneWrong={setInputPhoneWrong}
+          setInputEmailWrong={setInputEmailWrong}
+          setInputConfirmEmailWrong={setInputConfirmEmailWrong}
+          setInputPasswordWrong={setInputPasswordWrong}
+          setRequiredInPassword={setRequiredInPassword}
+          inputRefs={inputRefs}
+          inputPhoneRefs={inputPhoneRefs}
+        />
       </div>
     </form>
   );

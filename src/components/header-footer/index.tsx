@@ -3,8 +3,8 @@ import "./styles.scss";
 
 const HeaderFooter = ({ children }: PropsWithChildren) => {
   return (
-    <div className="container">
-      <div className="wrapper">
+    <div className="container-header-footer">
+      <div className="wrapper-header-footer">
         <header className="header">
           <a href="/">
             <div className="logo-header">

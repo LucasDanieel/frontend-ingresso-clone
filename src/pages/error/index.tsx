@@ -1,3 +1,4 @@
+import ButtonTransparent from "../../components/buttons-styles/button-transparent";
 import "./styles.scss";
 
 const Error = () => {
@@ -14,9 +15,9 @@ const Error = () => {
           <li>Estamos tão confusos quanto o John Travolta</li>
         </ul>
         <span>Tente novamente!</span>
-        <a href="/" className="link-home">
-          Ir para a Home
-        </a>
+        <div className="button-go-home">
+          <ButtonTransparent text="Ir para a Home" />
+        </div>
       </div>
     </div>
   );

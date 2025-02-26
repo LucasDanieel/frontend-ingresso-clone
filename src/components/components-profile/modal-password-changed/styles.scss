@@ -1,15 +1,12 @@
-.wrapper-login-again {
-  display: flex;
-  flex-direction: column;
+.wrapper-password-changed {
   width: 340px;
-  gap: 15px;
   text-align: center;
   box-sizing: border-box;
-  padding: 19px 19px 40px 20px;
+  padding: 19px 19px 39px 20px;
   border-radius: 16px;
   background-color: rgb(29, 37, 47);
 
-  .close-login-again {
+  .close-password-changed {
     text-align: right;
     margin-bottom: 10px;
 
@@ -18,8 +15,10 @@
     }
   }
 
-  .icon-login-again {
+  .icon-password-changed {
     height: 97px;
+    padding-top: 14px;
+    margin-bottom: 14px;
 
     svg {
       width: 97px;
@@ -32,18 +31,22 @@
     font-weight: 400;
     line-height: 26px;
     margin-top: 0px;
-    margin-bottom: 0px;
+    margin-bottom: 17px;
   }
 
   span {
-    line-height: 24px;
     display: block;
     text-align: left;
-    margin-bottom: 16px;
+    line-height: 24px;
+    margin-bottom: 32px;
   }
 
-  button {
-    font-size: 21px;
-    padding: 10px 90px;
+  .button-password-changed {
+    padding-left: 15px;
+    padding-right: 16px;
+
+    button{
+      padding-bottom: 9px;
+    }
   }
 }

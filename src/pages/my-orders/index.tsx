@@ -1,9 +1,9 @@
-import Cookies from "js-cookie";
-
-import "./styles.scss";
-import ButtonStyle from "../../components/button-style";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+import "./styles.scss";
+
+import ButtonGradient from "../../components/buttons-styles/button-gradient";
 
 const MyOrders = () => {
   const token = Cookies.get("token");
@@ -23,7 +23,7 @@ const MyOrders = () => {
         </svg>
       </div>
       <div className="find-movies-events">
-        <ButtonStyle text="Encontrar filmes e eventos" isButton />
+        <ButtonGradient text="Encontrar filmes e eventos" fontBold handleClickEvent={() => navigate("/")} />
       </div>
     </div>
   );

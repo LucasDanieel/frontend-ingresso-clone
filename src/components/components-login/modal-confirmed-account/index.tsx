@@ -1,11 +1,11 @@
-import ButtonStyle from "../../button-style";
+import ButtonGradient from "../../buttons-styles/button-gradient";
 import "./styles.scss";
 
-type ModalConfirmedAccount = {
+type ModalConfirmedAccountProp = {
   setConfirmedAccount: (value: boolean) => void;
 };
 
-const ModalConfirmedAccount = ({ setConfirmedAccount }: ModalConfirmedAccount) => {
+const ModalConfirmedAccount = ({ setConfirmedAccount }: ModalConfirmedAccountProp) => {
   return (
     <div className="wrapper-confirmed-account">
       <div className="confirmed-account">
@@ -27,7 +27,7 @@ const ModalConfirmedAccount = ({ setConfirmedAccount }: ModalConfirmedAccount) =
         </div>
         <div className="confirmed-account-button">
           <h3>Cadastro confirmado!</h3>
-          <ButtonStyle text="continuar" isButton handleClickEvent={() => setConfirmedAccount(false)} />
+          <ButtonGradient text="continuar" fontBold handleClickEvent={() => setConfirmedAccount(false)} />
         </div>
       </div>
     </div>

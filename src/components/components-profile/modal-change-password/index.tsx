@@ -5,10 +5,10 @@ import "./styles.scss";
 import ValidPassword from "../../components-create-login/valid-password";
 import SimpleInput from "../../form-inputs/simple-input";
 import RecaptchaComponent from "../../recaptcha-component";
-import ButtonStyle from "../../button-style";
 import { validInputPassword } from "../../../utils/input-methods";
 import ModalPasswordChanged from "../modal-password-changed";
 import { requiredInPassword } from "../../../@types/user";
+import ButtonGradient from "../../buttons-styles/button-gradient";
 
 type changePasswordProps = { email: string; setOpenModalChangePassword: (state: boolean) => void };
 
@@ -239,7 +239,7 @@ const ModalChangePassword = ({ email, setOpenModalChangePassword }: changePasswo
               </div>
               <RecaptchaComponent setReCAPTCHA={setReCAPTCHA} alignCenter={false} no_margin />
               <div className="button-change-password">
-                <ButtonStyle text="Alterar Senha" isButton disabled={!reCAPTCHA} handleClickEvent={onSubmit} />
+                <ButtonGradient text="Alterar Senha" fontBold disabled={!reCAPTCHA} handleClickEvent={onSubmit} />
               </div>
             </div>
           </div>

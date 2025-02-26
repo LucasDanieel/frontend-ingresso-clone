@@ -40,9 +40,11 @@
     }
 
     .save-change-button {
+      width: 163px;
+
       button {
-        padding: 13px 54px;
-        font-size: 20px;
+        padding-top: 13px;
+        padding-bottom: 12px;
       }
     }
   }

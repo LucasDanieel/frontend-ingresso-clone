@@ -1,11 +1,12 @@
-import { ChangeEvent, ClipboardEvent, KeyboardEvent, MouseEvent, useRef, useState } from "react";
-import ButtonStyle from "../../button-style";
-import { maskedUser } from "../../../pages/login";
-import "./styles.scss";
-
+import { MouseEvent, useState } from "react";
+import { NavigateFunction } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { NavigateFunction } from "react-router-dom";
+import "./styles.scss";
+
+import { maskedUser } from "../../../pages/login";
+import ButtonGradient from "../../buttons-styles/button-gradient";
+import InputCode from "../input-code";
 
 type confirmCodeProps = {
   maskedUser: maskedUser;
@@ -27,45 +28,6 @@ const ConfirmCode = ({
   const [sentNewCode, setSentNewCode] = useState<boolean>(false);
 
   const [arrayCode, setArrayCode] = useState(Array(6).fill(""));
-  const codeInputRef = useRef<(HTMLInputElement | null)[]>(Array(6));
-
-  const onCodeChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
-    const value = e.target.value;
-    if (/^\d$/.test(value) || value == "") {
-      const newValues = [...arrayCode];
-      newValues[index] = value;
-      setArrayCode(newValues);
-
-      if (value !== "" && index < arrayCode.length - 1) {
-        (codeInputRef.current[index]?.nextElementSibling as HTMLInputElement)?.focus();
-      }
-    }
-  };
-
-  const onCodeKeyDown = (e: KeyboardEvent<HTMLInputElement>, index: number) => {
-    if (e.key === "Backspace" && arrayCode[index] === "") {
-      (codeInputRef.current[index]?.previousElementSibling as HTMLInputElement)?.focus();
-    }
-  };
-
-  const onPasteCode = (e: ClipboardEvent) => {
-    e.preventDefault();
-    const pasteValues = e.clipboardData.getData("text").slice(0, 6).split("");
-    const newArrayCode = [...arrayCode];
-
-    pasteValues.forEach((char, idx) => {
-      newArrayCode[idx] = char;
-    });
-
-    setArrayCode(newArrayCode);
-
-    const firstEmptyInput = newArrayCode.findIndex((x) => x === "");
-    const focusIndex = firstEmptyInput !== -1 ? firstEmptyInput : newArrayCode.length - 1;
-
-    if (codeInputRef.current[focusIndex]) {
-      codeInputRef.current[focusIndex].focus();
-    }
-  };
 
   const onConfirmCode = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -199,24 +161,10 @@ const ConfirmCode = ({
           <strong>{maskedUser.maskedEmail}</strong>. Digite-o abaixo e clique em Entrar.
         </span>
       </div>
-      <div className="code-input">
-        {arrayCode.map((value, index) => (
-          <input
-            key={index}
-            type="text"
-            value={value}
-            maxLength={1}
-            placeholder="__"
-            onChange={(e) => onCodeChange(e, index)}
-            onKeyDown={(e) => onCodeKeyDown(e, index)}
-            onPaste={onPasteCode}
-            ref={(el) => (codeInputRef.current[index] = el)}
-          />
-        ))}
-      </div>
+      <InputCode arrayCode={arrayCode} setArrayCode={setArrayCode} />
       <p>Não encontrou o e-mail? Verifique sua caixa de Spam ou a aba Promoções.</p>
       <div className="confirm-email-button">
-        <ButtonStyle text="Continuar" isButton handleClickEvent={onConfirmCode} />
+        <ButtonGradient text="Continuar" handleClickEvent={onConfirmCode} />
       </div>
       {sentNewCode == true ? (
         <div className="sent-new-code">
@@ -238,7 +186,7 @@ const ConfirmCode = ({
         </div>
       ) : (
         <div className="send-again">
-          <div className="wrraper-send-click" onClick={onResendCode}>
+          <div className="wrapper-send-click" onClick={onResendCode}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"

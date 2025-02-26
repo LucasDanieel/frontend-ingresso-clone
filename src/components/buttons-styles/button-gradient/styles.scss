@@ -1,0 +1,26 @@
+.button-gradient {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+  outline: none;
+  border: none;
+  border-radius: 12px;
+  font-size: 21px;
+  letter-spacing: -0.9px;
+  cursor: pointer;
+  background-image: linear-gradient(to right, #3255e2, #6c04ba);
+
+  &:hover {
+    background-image: linear-gradient(to right, #2547cd, #640dcf);
+  }
+
+  &:disabled {
+    background-image: linear-gradient(to right, rgb(227, 227, 227), rgb(227, 227, 227));
+    cursor: default;
+  }
+}
+
+.font-bold {
+  font-weight: bold;
+}

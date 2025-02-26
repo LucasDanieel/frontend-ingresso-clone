@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./styles.scss";
-import ButtonStyle from "../button-style";
-import { NavLink } from "react-router-dom";
+
+import ButtonGradient from "../buttons-styles/button-gradient";
+import ButtonTransparent from "../buttons-styles/button-transparent";
 
 const Header = () => {
   const [cityBool, setCityBool] = useState<boolean>(false);
@@ -13,6 +15,8 @@ const Header = () => {
   const refSearch = useRef<HTMLButtonElement>(null);
   const refLogin = useRef<HTMLButtonElement>(null);
   const refHelp = useRef<HTMLButtonElement>(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.addEventListener("click", clickDocument);
@@ -188,7 +192,7 @@ const Header = () => {
                           </svg>
                         </div>
                       </div>
-                      <ButtonStyle text="Trocar Cidade" style_width={true} />
+                      <ButtonGradient text="Trocar Cidade" />
                     </div>
                   </div>
                   <div className="wrapper-last-location">
@@ -419,15 +423,10 @@ const Header = () => {
                     <div className="container-login-or-create">
                       <div className="create-account">
                         <h3>Ainda não é cliente Ingresso.com?</h3>
-                        <p>
-                          Compre ingressos e combos de pipoca para ir ao cinema com segurança e mais
-                          comodidade!
-                        </p>
-                        <ButtonStyle
-                          url="/minha-conta/cadastro"
+                        <p>Compre ingressos e combos de pipoca para ir ao cinema com segurança e mais comodidade!</p>
+                        <ButtonGradient
                           text="Criar uma nova conta"
-                          style_width={true}
-                          medio={true}
+                          handleClickEvent={() => navigate("/minha-conta/cadastro")}
                         />
                       </div>
                       <div className="login-account">
@@ -473,8 +472,20 @@ const Header = () => {
                     <h3>Quer cancelar um pedido?</h3>
                     <p>Você mesmo pode cancelar seu pedido, sem contactar um atendente. É rápido e fácil!</p>
                     <div className="help-buttons">
-                      <ButtonStyle text="Sim, quero cancelar um pedido" small={true} />
-                      <button className="button-help">Não, quero outro tipo de atendimento</button>
+                      <div className="button-help-yes">
+                        <ButtonGradient text="Sim, quero cancelar um pedido" />
+                      </div>
+                      <div className="button-help-no">
+                        <ButtonTransparent
+                          text="Não, quero outro tipo de atendimento"
+                          handleClickEvent={() =>
+                            window.open(
+                              "https://atendimento.ingresso.com/portal/pt-br/kb/atendimento-ingresso-com",
+                              "_blank"
+                            )
+                          }
+                        />
+                      </div>
                     </div>
                   </div>
                   <span className="icon-arrow">

@@ -1,0 +1,21 @@
+.code-input {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 28px;
+  margin-bottom: 24px;
+
+  input {
+    width: 32px;
+    height: 50px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 6px;
+    border: 2px solid transparent;
+
+    &::placeholder {
+      color: #9c9c9c;
+      font-weight: bold;
+    }
+  }
+}

@@ -70,7 +70,7 @@ const Login = () => {
               <div className="loading-login">
                 <div className="spinner-login"></div>
               </div>
-              <div className={`controll-form-login ${confirmCode ? "hidden-form-login" : ""}`}>
+              <div className={`controll-form-login ${!confirmCode ? "hidden-form-login" : ""}`}>
                 <FormLogin
                   wrongCode={wrongCode}
                   setLoading={setLoading}
@@ -78,7 +78,7 @@ const Login = () => {
                   setConfirmCode={setConfirmCode}
                 />
               </div>
-              <div className={`controll-confirm-code-login ${confirmCode ? "show-confirm-code" : ""}`}>
+              <div className={`controll-confirm-code-login ${!confirmCode ? "show-confirm-code" : ""}`}>
                 <ConfirmCode
                   maskedUser={maskedUser}
                   setLoading={setLoading}

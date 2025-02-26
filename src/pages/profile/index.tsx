@@ -6,7 +6,7 @@ import "./styles.scss";
 
 import SimpleInput from "../../components/form-inputs/simple-input";
 import MonthDayInput from "../../components/form-inputs/month-day-input";
-import TermsOfUse from "../../components/components-create-login/terms-of-use";
+import TermsOfUse from "../../components/terms-of-use";
 import ModalChangePassword from "../../components/components-profile/modal-change-password";
 import ModalProfileUpdated from "../../components/components-profile/modal-profile-updated";
 import AddressInputs from "../../components/form-inputs/address-inputs";

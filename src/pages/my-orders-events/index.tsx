@@ -1,9 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
-
-import ButtonStyle from "../../components/button-style";
 import "./styles.scss";
-import { useNavigate } from "react-router-dom";
+
+import ButtonGradient from "../../components/buttons-styles/button-gradient";
 
 const MyOrdersEvents = () => {
   const token = Cookies.get("token");
@@ -27,7 +27,7 @@ const MyOrdersEvents = () => {
               Redirecionaremos você para a página onde poderá acessar e visualizar seus pedidos para shows, teatro e
               mais.
             </span>
-            <ButtonStyle text="Vamos lá!" isButton />
+            <ButtonGradient text="Vamos lá!" fontBold handleClickEvent={() => navigate("/")} />
           </div>
         </div>
       </div>

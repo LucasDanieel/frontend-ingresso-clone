@@ -1,14 +1,27 @@
-import ButtonStyle from "../../button-style";
+import Cookies from "js-cookie";
+import ButtonGradient from "../../buttons-styles/button-gradient";
 import "./styles.scss";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../../providers/user-provider";
+import { UserContextType } from "../../../@types/user";
 
 type ModalPasswordChangedProps = {
   setOpenModalChangePassword: (value: boolean) => void;
 };
 
 const ModalPasswordChanged = ({ setOpenModalChangePassword }: ModalPasswordChangedProps) => {
+  const { setUser } = useContext(UserContext) as UserContextType;
+  const navigate = useNavigate();
+
+  const onLogout = () => {
+    setUser(null);
+    Cookies.remove("token");
+    navigate("/minha-conta");
+  };
   return (
-    <div className="wrapper-login-again">
-      <div className="close-login-again">
+    <div className="wrapper-password-changed">
+      <div className="close-password-changed">
         <svg
           onClick={() => setOpenModalChangePassword(false)}
           xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +34,7 @@ const ModalPasswordChanged = ({ setOpenModalChangePassword }: ModalPasswordChang
           <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
         </svg>
       </div>
-      <div className="icon-login-again">
+      <div className="icon-password-changed">
         <svg viewBox="0 0 210 210" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
           <defs>
             <path id="alert-senha_svg__a" d="M0 64.354V128h127.292V.708H0v63.646z"></path>
@@ -86,8 +99,8 @@ const ModalPasswordChanged = ({ setOpenModalChangePassword }: ModalPasswordChang
       </div>
       <h3>Senha alterada com sucesso!</h3>
       <span>Para continuar navegando, por favor faça login novamente utilizando a nova senha.</span>
-      <div className="button-login-again">
-        <ButtonStyle text="Continuar" isButton handleClickEvent={() => setOpenModalChangePassword(false)} />
+      <div className="button-password-changed">
+        <ButtonGradient text="Continuar" fontBold handleClickEvent={onLogout} />
       </div>
     </div>
   );

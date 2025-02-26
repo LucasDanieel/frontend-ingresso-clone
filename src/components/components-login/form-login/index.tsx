@@ -4,10 +4,10 @@ import isEmail from "validator/lib/isEmail";
 import axios from "axios";
 import "./styles.scss";
 
-import ButtonStyle from "../../button-style";
 import SimpleInput from "../../form-inputs/simple-input";
 import { maskedUser } from "../../../pages/login";
 import LoginWithGoogle from "../login-with-google";
+import ButtonGradient from "../../buttons-styles/button-gradient";
 
 type userLoginDTO = {
   cpf: string | null;
@@ -161,7 +161,7 @@ const FormLogin = ({ wrongCode, setLoading, setMaskedUser, setConfirmCode }: For
           </div>
         )}
         <div className="form-submit">
-          <ButtonStyle text="Entrar" isButton handleClickEvent={onSubmit} />
+          <ButtonGradient text="Entrar" fontBold handleClickEvent={onSubmit} />
         </div>
         <div className="issues-login">
           <a href="">Problemas para entrar?</a>
