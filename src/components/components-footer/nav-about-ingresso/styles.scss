@@ -1,0 +1,48 @@
+.about-ingresso {
+  display: flex;
+  width: 1120px;
+  gap: 122px;
+  padding-bottom: 32px;
+
+  .about {
+    ul {
+      margin-top: 19px;
+      padding: 0;
+      list-style: none;
+
+      li {
+        margin-bottom: 8px;
+        font-size: 14px;
+
+        a {
+          color: rgb(152, 170, 236);
+          text-decoration: none;
+        }
+      }
+    }
+
+    &.social-media {
+      padding-left: 2px;
+      padding-right: 4px;
+
+      ul {
+        margin-top: 21px;
+
+        li {
+          margin-bottom: 16px;
+
+          a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
+            svg {
+              width: 14px;
+              height: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

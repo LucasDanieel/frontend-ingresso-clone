@@ -2,6 +2,7 @@ import { MouseEvent, useRef, useState } from "react";
 import "./styles.scss";
 import OldMovieCard from "../old-movie-card";
 import NewMovieCard from "../new-movie-card";
+import { mouse_down, mouse_move, mouse_up, move_left, move_right } from "../../utils/scroll-methods";
 
 type MoviesScrollProps = {
   title: string;
@@ -263,106 +264,16 @@ Para transformar sua vida, a avó de Julian (Helen Mirren) conta sua própria hi
     },
   ];
 
-  const move_left = () => {
-    refMovieScroll.current?.scrollBy({ left: -530, behavior: "smooth" });
-    setTimeout(() => {
-      if (refMovieScroll.current) {
-        if (refMovieScroll.current.scrollLeft <= 0) setHiddenBefore(true);
-      }
-    }, 500);
-
-    setHiddenAfter(false);
+  const mouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    mouse_move(e, refMovieScroll);
   };
 
-  const move_right = () => {
-    refMovieScroll.current?.scrollBy({ left: 530, behavior: "smooth" });
-    setTimeout(() => {
-      if (refMovieScroll.current) {
-        const total =
-          refMovieScroll.current.scrollLeft +
-          refMovieScroll.current.clientWidth;
-        if (total >= refMovieScroll.current.scrollWidth) setHiddenAfter(true);
-      }
-    }, 500);
-
-    setHiddenBefore(false);
-  };
-
-  let isDown = false;
-  let startX = 0;
-  let scrollLeft = 0;
-  let velocity = 0;
-  let lastMouseX = 0;
-  let lastTime = 0;
-  let inertiaInterval: number;
-
-  const applyInertia = () => {
-    if (Math.abs(velocity) > 0.1) {
-      (refMovieScroll.current as HTMLElement).scrollLeft -= velocity;
-      velocity *= 0.8;
-      if (isFinite(velocity) == false) velocity = 0;
-    } else {
-      clearInterval(inertiaInterval);
-
-      if (refMovieScroll.current) {
-        const total =
-          refMovieScroll.current.scrollLeft +
-          refMovieScroll.current.clientWidth;
-        if (total >= refMovieScroll.current.scrollWidth) {
-          setHiddenAfter(true);
-        } else {
-          setHiddenAfter(false);
-        }
-
-        if (refMovieScroll.current.scrollLeft <= 0) {
-          setHiddenBefore(true);
-        } else {
-          setHiddenBefore(false);
-        }
-      }
-    }
-  };
-
-  const mouseMove = (e: MouseEvent) => {
-    if (!isDown) return;
-    e.preventDefault();
-
-    if (refMovieScroll.current) {
-      (refMovieScroll.current as HTMLElement).classList.add("active");
-      const x = e.pageX;
-      const walk = x - startX;
-      refMovieScroll.current.scrollLeft = scrollLeft - walk;
-
-      const currentTime = Date.now();
-      const deltaTime = currentTime - lastTime;
-      velocity = ((x - lastMouseX) / deltaTime) * 30;
-
-      lastMouseX = x;
-      lastTime = currentTime;
-    }
-  };
-
-  const mouseDown = (e: MouseEvent) => {
-    isDown = true;
-
-    if (refMovieScroll.current) {
-      startX = e.pageX;
-      scrollLeft = refMovieScroll.current.scrollLeft;
-      lastMouseX = e.pageX;
-      lastTime = Date.now();
-      clearInterval(inertiaInterval);
-    }
+  const mouseDown = (e: MouseEvent<HTMLDivElement>) => {
+    mouse_down(e, refMovieScroll);
   };
 
   const mouseUp = () => {
-    isDown = false;
-
-    clearInterval(inertiaInterval);
-    inertiaInterval = setInterval(applyInertia, 16);
-
-    if (refMovieScroll.current) {
-      (refMovieScroll.current as HTMLElement).classList.remove("active");
-    }
+    mouse_up(refMovieScroll, setHiddenBefore, setHiddenAfter);
   };
 
   return (
@@ -371,12 +282,7 @@ Para transformar sua vida, a avó de Julian (Helen Mirren) conta sua própria hi
         <a href="">
           <div className="title-link">
             <h3>{title}</h3>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="12"
-              height="16"
-              viewBox="0 3 11 10"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 3 11 10">
               <path d="m2.828 15.555 7.777-7.779L2.828 0 0 2.828l4.949 4.948L0 12.727l2.828 2.828z" />
             </svg>
           </div>
@@ -385,12 +291,10 @@ Para transformar sua vida, a avó de Julian (Helen Mirren) conta sua própria hi
         <h3>{title}</h3>
       )}
       <div
-        className={`wrapper-movie-scroll${
-          hiddenBefore ? " hidden-before" : ""
-        }${hiddenAfter ? " hidden-after" : ""}`}
+        className={`wrapper-movie-scroll${hiddenBefore ? " hidden-before" : ""}${hiddenAfter ? " hidden-after" : ""}`}
       >
         <div className="wrapper-buttons">
-          <button className="left" onClick={move_left}>
+          <button className="left" onClick={() => move_left(refMovieScroll, setHiddenBefore, setHiddenAfter)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -407,7 +311,7 @@ Para transformar sua vida, a avó de Julian (Helen Mirren) conta sua própria hi
               />
             </svg>
           </button>
-          <button className="right" onClick={move_right}>
+          <button className="right" onClick={() => move_right(refMovieScroll, setHiddenBefore, setHiddenAfter)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"

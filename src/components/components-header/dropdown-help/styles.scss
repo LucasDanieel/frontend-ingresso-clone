@@ -1,0 +1,42 @@
+.container-help {
+  width: 684px;
+
+  h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+  }
+
+  p {
+    padding-top: 7px;
+    padding-bottom: 19px;
+  }
+
+  .help-buttons {
+    display: flex;
+    gap: 33px;
+
+    button {
+      font-size: 16px;
+      border-radius: 10px;
+      letter-spacing: 0;
+    }
+
+    .button-help-yes {
+      width: 300px;
+
+      button {
+        padding-top: 11px;
+        padding-bottom: 11px;
+      }
+    }
+
+    .button-help-no {
+      button {
+        width: 350px;
+        padding-top: 9px;
+        padding-bottom: 9px;
+      }
+    }
+  }
+}

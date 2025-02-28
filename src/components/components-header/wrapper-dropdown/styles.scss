@@ -1,0 +1,19 @@
+.container-dropdown {
+  position: fixed;
+  top: -600px;
+  z-index: 10;
+  transform: translateX(-50%);
+
+  .dropdown {
+    position: relative;
+    border-radius: 16px;
+    padding: 32px;
+    background-color: rgb(33, 38, 45);
+
+    .icon-arrow {
+      position: absolute;
+      top: -16px;
+      color: rgb(33, 38, 45);
+    }
+  }
+}

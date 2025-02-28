@@ -1,5 +1,6 @@
 import { MouseEvent, useRef, useState } from "react";
 import "./styles.scss";
+import { mouse_down, mouse_move, mouse_up, move_left, move_right } from "../../../utils/scroll-methods";
 
 const NearbyCinema = () => {
   const [hiddenBefore, setHiddenBefore] = useState<boolean>(true);
@@ -41,102 +42,16 @@ const NearbyCinema = () => {
     },
   ];
 
-  const move_left = () => {
-    refCinemaScroll.current?.scrollBy({ left: -530, behavior: "smooth" });
-    setTimeout(() => {
-      if (refCinemaScroll.current) {
-        if (refCinemaScroll.current.scrollLeft <= 0) setHiddenBefore(true);
-      }
-    }, 500);
-
-    setHiddenAfter(false);
+  const mouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    mouse_move(e, refCinemaScroll);
   };
 
-  const move_right = () => {
-    refCinemaScroll.current?.scrollBy({ left: 530, behavior: "smooth" });
-    setTimeout(() => {
-      if (refCinemaScroll.current) {
-        const total = refCinemaScroll.current.scrollLeft + refCinemaScroll.current.clientWidth;
-        if (total >= refCinemaScroll.current.scrollWidth) setHiddenAfter(true);
-      }
-    }, 500);
-
-    setHiddenBefore(false);
-  };
-
-  let isDown = false;
-  let startX = 0;
-  let scrollLeft = 0;
-  let velocity = 0;
-  let lastMouseX = 0;
-  let lastTime = 0;
-  let inertiaInterval: number;
-
-  const applyInertia = () => {
-    if (Math.abs(velocity) > 0.1) {
-      (refCinemaScroll.current as HTMLElement).scrollLeft -= velocity;
-      velocity *= 0.8;
-      if (isFinite(velocity) == false) velocity = 0;
-    } else {
-      clearInterval(inertiaInterval);
-
-      if (refCinemaScroll.current) {
-        const total = refCinemaScroll.current.scrollLeft + refCinemaScroll.current.clientWidth;
-        if (total >= refCinemaScroll.current.scrollWidth) {
-          setHiddenAfter(true);
-        } else {
-          setHiddenAfter(false);
-        }
-
-        if (refCinemaScroll.current.scrollLeft <= 0) {
-          setHiddenBefore(true);
-        } else {
-          setHiddenBefore(false);
-        }
-      }
-    }
-  };
-
-  const mouseMove = (e: MouseEvent) => {
-    if (!isDown) return;
-    e.preventDefault();
-
-    if (refCinemaScroll.current) {
-      (refCinemaScroll.current as HTMLElement).classList.add("active");
-      const x = e.pageX;
-      const walk = x - startX;
-      refCinemaScroll.current.scrollLeft = scrollLeft - walk;
-
-      const currentTime = Date.now();
-      const deltaTime = currentTime - lastTime;
-      velocity = ((x - lastMouseX) / deltaTime) * 30;
-
-      lastMouseX = x;
-      lastTime = currentTime;
-    }
-  };
-
-  const mouseDown = (e: MouseEvent) => {
-    isDown = true;
-
-    if (refCinemaScroll.current) {
-      startX = e.pageX;
-      scrollLeft = refCinemaScroll.current.scrollLeft;
-      lastMouseX = e.pageX;
-      lastTime = Date.now();
-      clearInterval(inertiaInterval);
-    }
+  const mouseDown = (e: MouseEvent<HTMLDivElement>) => {
+    mouse_down(e, refCinemaScroll);
   };
 
   const mouseUp = () => {
-    isDown = false;
-
-    clearInterval(inertiaInterval);
-    inertiaInterval = setInterval(applyInertia, 16);
-
-    if (refCinemaScroll.current) {
-      (refCinemaScroll.current as HTMLElement).classList.remove("active");
-    }
+    mouse_up(refCinemaScroll, setHiddenBefore, setHiddenAfter);
   };
 
   return (
@@ -155,7 +70,7 @@ const NearbyCinema = () => {
         }`}
       >
         <div className="wrapper-buttons">
-          <button className="left" onClick={move_left}>
+          <button className="left" onClick={() => move_left(refCinemaScroll, setHiddenBefore, setHiddenAfter)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -172,7 +87,7 @@ const NearbyCinema = () => {
               />
             </svg>
           </button>
-          <button className="right" onClick={move_right}>
+          <button className="right" onClick={() => move_right(refCinemaScroll, setHiddenBefore, setHiddenAfter)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -259,8 +174,8 @@ const NearbyCinema = () => {
                       <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
                     </svg>
                     <span>
-                      <span className="span-blue">ative sua localização</span> para encontrar os
-                      cinemas mais próximos de você
+                      <span className="span-blue">ative sua localização</span> para encontrar os cinemas mais próximos
+                      de você
                     </span>
                   </div>
                 </div>

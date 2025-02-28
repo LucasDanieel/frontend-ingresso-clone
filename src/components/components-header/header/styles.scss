@@ -1,0 +1,111 @@
+.container-header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 90;
+
+  .primary-header {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(to right, #3255e2, #202380);
+
+    .header-elements {
+      display: flex;
+      height: 64px;
+      max-width: 1440px;
+      margin: auto;
+      align-items: center;
+
+      .icon-ingresso {
+        margin-left: 1px;
+        margin-right: 58px;
+
+        .logo-header {
+          width: 180px;
+          height: 36px;
+
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+
+      .header-buttons {
+        border: 0;
+        margin: 0;
+        padding: 0;
+        height: 48px;
+        color: white;
+        background-color: transparent;
+        cursor: pointer;
+        transition: all 100ms;
+
+        .city-header {
+          display: flex;
+          gap: 7px;
+          align-items: center;
+          margin-left: 28px;
+
+          .icon-point {
+            width: 26px;
+            height: 27px;
+          }
+
+          p {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 15px;
+          }
+        }
+
+        &:hover {
+          color: #9ca4bf;
+        }
+      }
+
+      .search-and-login {
+        display: flex;
+        height: 49px;
+        gap: 27px;
+        align-items: center;
+        margin-left: auto;
+        margin-right: 16px;
+
+        button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 36px;
+
+          .icons-wrapper {
+            width: 28px;
+            height: 28px;
+
+            svg {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+
+        .wrapper-login {
+          .login {
+            display: flex;
+            height: 48px;
+            align-items: center;
+            gap: 14px;
+
+            p {
+              width: 96px;
+              font-size: 13px;
+              line-height: 1.1;
+              text-align: left;
+              white-space: pre-wrap;
+              font-family: Verdana, Geneva, Tahoma, sans-serif;
+            }
+          }
+        }
+      }
+    }
+  }
+}

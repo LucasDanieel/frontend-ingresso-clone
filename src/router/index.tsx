@@ -4,8 +4,8 @@ import { PropsWithChildren, useEffect } from "react";
 import Home from "../pages/home";
 import Login from "../pages/login";
 import Create from "../pages/create";
-import Footer from "../components/footer";
-import Header from "../components/header";
+import Footer from "../components/components-footer/footer";
+import Header from "../components/components-header/header";
 import Films from "../pages/films";
 import Cinemas from "../pages/cinemas";
 import Theaters from "../pages/theaters";
@@ -98,6 +98,10 @@ const routes = [
 const Layout = ({ children }: PropsWithChildren) => {
   const location = useLocation();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   const currentRoute = routes.find(
     (route) => route.path === location.pathname || route.path === "*" || matchPath(route.path, location.pathname)
   );
@@ -130,9 +134,9 @@ function Router() {
   const activeScroll = () => {
     const currentScroll = window.scrollY || document.documentElement.scrollTop;
     if (currentScroll > lastScroll && window.scrollY > 150) {
-      document.querySelector(".secondary-header")?.classList.add("hidden");
+      document.querySelector(".nav-header")?.classList.add("hidden");
     } else {
-      document.querySelector(".secondary-header")?.classList.remove("hidden");
+      document.querySelector(".nav-header")?.classList.remove("hidden");
     }
     lastScroll = currentScroll;
   };

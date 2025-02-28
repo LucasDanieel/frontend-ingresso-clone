@@ -1,0 +1,52 @@
+.wrapper-download-app {
+  position: relative;
+  height: 120px;
+  background-image: url("https://ingresso-a.akamaihd.net/catalog/img/highlight-footer.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    background-color: rgb(25 25 25);
+  }
+
+  .download-app {
+    position: relative;
+    display: flex;
+    width: 1440px;
+    height: 100%;
+    align-items: center;
+    margin: auto;
+    gap: 101px;
+    padding-left: 30px;
+
+    strong {
+      font-size: 36px;
+    }
+
+    .options-download {
+      display: flex;
+      gap: 40px;
+
+      a {
+        height: 56px;
+        text-decoration-line: none;
+
+        &:hover {
+          img {
+            opacity: 0.85;
+          }
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
