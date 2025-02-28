@@ -1,4 +1,5 @@
 import { MouseEvent, RefObject } from "react";
+import { paginationProps } from "../components/components-home/wrapper-scroll";
 
 export const move_left = (
   ref: RefObject<HTMLDivElement>,
@@ -74,10 +75,16 @@ export const mouse_move = (e: MouseEvent<HTMLDivElement>, ref: RefObject<HTMLDiv
   e.preventDefault();
 
   if (ref.current) {
-    (ref.current as HTMLElement).classList.add("active");
+    const element = ref.current as HTMLElement;
+    element.classList.add("active");
     const x = e.pageX;
     const walk = x - startX;
-    ref.current.scrollLeft = scrollLeft - walk;
+    const newScrollLeft = scrollLeft - walk;
+    ref.current.scrollLeft = newScrollLeft;
+
+    if (newScrollLeft < 0) element.style.paddingLeft = `${Math.abs(walk / 5)}px`;
+
+    if (newScrollLeft > ref.current.scrollLeft) element.style.paddingRight = `${Math.abs(walk / 5)}px`;
 
     const currentTime = Date.now();
     const deltaTime = currentTime - lastTime;
@@ -103,14 +110,45 @@ export const mouse_down = (e: MouseEvent<HTMLDivElement>, ref: RefObject<HTMLDiv
 export const mouse_up = (
   ref: RefObject<HTMLDivElement>,
   setHiddenBefore: (value: boolean) => void,
-  setHiddenAfter: (value: boolean) => void
+  setHiddenAfter: (value: boolean) => void,
+  pagination?: paginationProps[],
+  setPagination?: (value: paginationProps[]) => void
 ) => {
   isDown = false;
+  const element = ref.current as HTMLElement;
+  element.style.padding = "0px";
 
   clearInterval(inertiaInterval);
   inertiaInterval = setInterval(() => applyInertia(ref, setHiddenBefore, setHiddenAfter), 16);
 
   if (ref.current) {
-    (ref.current as HTMLElement).classList.remove("active");
+    element.classList.remove("active");
+  }
+
+  if (setPagination && pagination) {
+    const newLeftScroll = element.scrollLeft + element.clientWidth / 2;
+    var newArray;
+
+    if (newLeftScroll <= element.scrollWidth * 0.4) {
+      newArray = pagination.map((value, idx) => {
+        if (idx == 0) value.isActive = true;
+        else value.isActive = false;
+        return value;
+      });
+    } else if (newLeftScroll <= element.scrollWidth * 0.6) {
+      newArray = pagination.map((value, idx) => {
+        if (idx == 1) value.isActive = true;
+        else value.isActive = false;
+        return value;
+      });
+    } else {
+      newArray = pagination.map((value, idx) => {
+        if (idx == 2) value.isActive = true;
+        else value.isActive = false;
+        return value;
+      });
+    }
+
+    setPagination(newArray);
   }
 };

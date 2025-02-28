@@ -14,6 +14,22 @@
     margin-top: 11px;
     margin-bottom: 6px;
 
+    &.nearby-cinema {
+      margin-bottom: 8px;
+    }
+
+    &.promotion {
+      margin-bottom: 7px;
+    }
+
+    &.promotion,
+    &.nearby-cinema {
+      h3 {
+        margin-left: 4px;
+        margin-bottom: 2px;
+      }
+    }
+
     svg {
       fill: rgb(152, 170, 236);
     }
@@ -24,9 +40,40 @@
     }
   }
 
+  .title {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+
+    .pagination-dots {
+      margin-right: 20px;
+      opacity: 0.7;
+
+      button {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 0;
+        margin-left: 8px;
+        background-color: rgb(97 118 148);
+      }
+
+      .active {
+        background-color: rgb(255 226 112);
+        width: 10px;
+        height: 10px;
+      }
+
+      // 255 226 112
+    }
+  }
+
   h3 {
-    margin-top: 33px;
-    margin-bottom: 11px;
+    margin-top: 18px;
+    margin-bottom: 10px;
     color: white;
     font-size: 24px;
   }
@@ -40,11 +87,11 @@
 
       button {
         position: absolute;
-        top: 130px;
+        top: 40%;
         border: none;
         background-color: transparent;
         cursor: pointer;
-        z-index: 3;
+        z-index: 6;
 
         svg {
           width: 24px;
@@ -78,7 +125,13 @@
         .movie {
           pointer-events: none;
         }
-        .new-wrapper-movie {
+        .wrapper-new-movie {
+          pointer-events: none;
+        }
+        .wrapper-nearby-cinema {
+          pointer-events: none;
+        }
+        .wrapper-promotion {
           pointer-events: none;
         }
       }
@@ -91,27 +144,20 @@
       right: 0px;
       width: 250px;
       height: 100%;
-      background-image: linear-gradient(
-        to left,
-        rgb(4, 18, 24, 0.98),
-        rgb(4, 18, 24, 0)
-      );
-      z-index: 2;
+      background-image: linear-gradient(to left, rgb(4, 18, 24, 0.98), rgb(4, 18, 24, 0));
+      z-index: 5;
       pointer-events: none;
     }
 
     &::before {
       content: "";
       position: absolute;
+      top: 0px;
       left: 0px;
       width: 250px;
       height: 100%;
-      background-image: linear-gradient(
-        to right,
-        rgb(4, 18, 24, 0.98),
-        rgb(4, 18, 24, 0)
-      );
-      z-index: 2;
+      background-image: linear-gradient(to right, rgb(4, 18, 24, 0.98), rgb(4, 18, 24, 0));
+      z-index: 5;
       pointer-events: none;
     }
   }
