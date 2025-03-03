@@ -8,7 +8,7 @@ type DropdownSearchProps = {
 const DropdownSearch = ({ left }: DropdownSearchProps) => {
   return (
     <WrapperDropdown left={left}>
-      <div className="container-search">
+      <div className="container-search" data-testid="search-component">
         <h3>O que você procura?</h3>
         <div className="search-input">
           <input type="text" placeholder="O que você procura?" name="search" />

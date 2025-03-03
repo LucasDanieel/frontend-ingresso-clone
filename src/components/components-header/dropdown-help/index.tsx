@@ -9,7 +9,7 @@ type DropdownHelpProps = {
 const DropdownHelp = ({ left }: DropdownHelpProps) => {
   return (
     <WrapperDropdown left={left}>
-      <div className="container-help">
+      <div className="container-help" data-testid="help-component">
         <h3>Quer cancelar um pedido?</h3>
         <p>Você mesmo pode cancelar seu pedido, sem contactar um atendente. É rápido e fácil!</p>
         <div className="help-buttons">

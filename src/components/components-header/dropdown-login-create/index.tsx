@@ -11,7 +11,7 @@ const DropdownLoginCreate = ({ left }: DropdownLoginCreateProps) => {
 
   return (
     <WrapperDropdown left={left}>
-      <div className="container-login-or-create">
+      <div className="container-login-or-create" data-testid="login-create-component">
         <div className="create-account">
           <h3>Ainda não é cliente Ingresso.com?</h3>
           <p>Compre ingressos e combos de pipoca para ir ao cinema com segurança e mais comodidade!</p>

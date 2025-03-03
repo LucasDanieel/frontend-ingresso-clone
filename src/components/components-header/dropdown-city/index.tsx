@@ -11,9 +11,9 @@ const DropdownCity = ({ left }: DropdownCityProps) => {
 
   return (
     <WrapperDropdown left={left}>
-      <div className="container-location">
+      <div className="container-location" data-testid="city-component">
         <div className="location">
-          <h3>Você está em: São Paulo</h3>
+          <h3>Você está em: {last_locations[0]}</h3>
           <div className="gps">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +29,7 @@ const DropdownCity = ({ left }: DropdownCityProps) => {
           </div>
           <div className="select-box">
             <div className="select">
-              <select name="" id="">
+              <select name="" id="" aria-label="Selecione o estado">
                 <option value="0">Estado</option>
               </select>
               <div className="select-icon">
@@ -49,7 +49,7 @@ const DropdownCity = ({ left }: DropdownCityProps) => {
               </div>
             </div>
             <div className="select">
-              <select name="" id="">
+              <select name="" id="" aria-label="Selecione a cidade">
                 <option value="0">Cidade</option>
               </select>
               <div className="select-icon">

@@ -8,7 +8,7 @@ type WrapperDropdownProps = {
 
 const WrapperDropdown = ({ left, children }: WrapperDropdownProps) => {
   return (
-    <div className="container-dropdown" style={{ left: left }}>
+    <div className="container-dropdown" data-testid="dropdown-component" style={{ left: left }}>
       <div className="dropdown">
         {children}
         <span className="icon-arrow">

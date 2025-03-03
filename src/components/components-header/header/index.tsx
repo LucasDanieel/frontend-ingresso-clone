@@ -111,6 +111,7 @@ const Header = () => {
               <img
                 src="https://ingresso-a.akamaihd.net/catalog/img/ingresso-logo-v1-desktop-final.svg"
                 alt="INGRESSO"
+                data-testid="logo-ingresso"
               />
             </div>
           </a>
@@ -118,6 +119,7 @@ const Header = () => {
             <div className="city-header">
               <div className="icon-point">
                 <svg
+                  data-testid="icon-location"
                   xmlns="http://www.w3.org/2000/svg"
                   width="26"
                   height="27"
@@ -137,6 +139,7 @@ const Header = () => {
             <button className="header-buttons" onClick={() => switchBool("search")} ref={refSearch}>
               <div className="icons-wrapper">
                 <svg
+                  data-testid="icon-search"
                   xmlns="http://www.w3.org/2000/svg"
                   width="28"
                   height="28"
@@ -154,6 +157,7 @@ const Header = () => {
                 <div className="login">
                   <div className="icons-wrapper">
                     <svg
+                      data-testid="icon-login"
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
                       height="16"
@@ -176,6 +180,7 @@ const Header = () => {
             <button className="header-buttons" onClick={() => switchBool("help")} ref={refHelp}>
               <div className="icons-wrapper">
                 <svg
+                  data-testid="icon-help"
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
                   height="16"

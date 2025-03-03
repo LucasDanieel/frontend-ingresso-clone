@@ -13,13 +13,18 @@
 
     .gps {
       display: flex;
-      margin: 21px 0px;
+      margin: 11px 0px;
+      padding: 10px 0px;
       color: rgb(152, 170, 236);
 
       svg {
         width: 20px;
         height: 20px;
         padding-right: 6px;
+      }
+
+      &:hover{
+        cursor: pointer;
       }
     }
 
