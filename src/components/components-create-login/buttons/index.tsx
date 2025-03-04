@@ -1,62 +1,40 @@
-import { Dispatch, MouseEvent, RefObject, SetStateAction } from "react";
-import isEmail from "validator/lib/isEmail";
+import { Dispatch, MouseEvent, SetStateAction } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
-import {
-  FormState,
-  inputFormRefs,
-  inputPhoneRefs,
-  requiredInPassword,
-  userCreated,
-  UserDTO,
-} from "../../../@types/user";
 import "./styles.scss";
+
+import { FormState, requiredInPassword, userCreated, UserDTO } from "../../../@types/user";
 import ButtonGradient from "../../buttons-styles/button-gradient";
 import ButtonTransparent from "../../buttons-styles/button-transparent";
-import { useNavigate } from "react-router-dom";
 
 type ButtonsProps = {
   form: FormState;
   reCAPTCHA: string | null;
-  requiredInPassword: requiredInPassword;
   setForm: Dispatch<SetStateAction<FormState>>;
   setLoading: (value: boolean) => void;
   setUserCreated: (value: userCreated) => void;
   setCpfInvalidValue: Dispatch<SetStateAction<string>>;
   setEmailInvalidValue: Dispatch<SetStateAction<string>>;
   setReCAPTCHA: Dispatch<SetStateAction<string | null>>;
-  setInputNameWrong: Dispatch<SetStateAction<boolean>>;
   setInputCPFWrong: Dispatch<SetStateAction<boolean>>;
-  setInputDDDWrong: Dispatch<SetStateAction<boolean>>;
-  setInputPhoneWrong: Dispatch<SetStateAction<boolean>>;
   setInputEmailWrong: Dispatch<SetStateAction<boolean>>;
-  setInputConfirmEmailWrong: Dispatch<SetStateAction<boolean>>;
-  setInputPasswordWrong: Dispatch<SetStateAction<boolean>>;
   setRequiredInPassword: Dispatch<SetStateAction<requiredInPassword>>;
-  inputRefs: RefObject<inputFormRefs>;
-  inputPhoneRefs: RefObject<inputPhoneRefs>;
+  validateAllInputs: () => boolean;
 };
 
 const Buttons = ({
   form,
   reCAPTCHA,
-  requiredInPassword,
   setForm,
   setLoading,
   setUserCreated,
   setCpfInvalidValue,
   setEmailInvalidValue,
   setReCAPTCHA,
-  setInputNameWrong,
   setInputCPFWrong,
-  setInputDDDWrong,
-  setInputPhoneWrong,
   setInputEmailWrong,
-  setInputConfirmEmailWrong,
-  setInputPasswordWrong,
   setRequiredInPassword,
-  inputRefs,
-  inputPhoneRefs,
+  validateAllInputs,
 }: ButtonsProps) => {
   const navigate = useNavigate();
 
@@ -124,63 +102,6 @@ const Buttons = ({
       .finally(() => setLoading(false));
   };
 
-  const validateAllInputs = () => {
-    var allValids = true;
-    var firstWrong;
-
-    if (form.name.length < 3 || form.name.length > 60) {
-      setInputNameWrong(true);
-      allValids = false;
-      firstWrong = inputRefs.current?.name;
-    } else setInputNameWrong(false);
-
-    if (form.CPF.replace(/\D/g, "").length < 11) {
-      setInputCPFWrong(true);
-      allValids = false;
-      if (firstWrong == undefined) firstWrong = inputRefs.current?.cpf;
-    } else setInputCPFWrong(false);
-
-    if (form.DDD.length == 0) {
-      setInputDDDWrong(true);
-      allValids = false;
-      if (firstWrong == undefined) firstWrong = inputPhoneRefs.current?.ddd;
-    } else setInputDDDWrong(false);
-
-    if (form.phone.length == 0) {
-      setInputPhoneWrong(true);
-      allValids = false;
-      if (firstWrong == undefined) firstWrong = inputPhoneRefs.current?.phone;
-    } else setInputPhoneWrong(false);
-
-    if (isEmail(form.email)) setInputEmailWrong(false);
-    else {
-      setInputEmailWrong(true);
-      allValids = false;
-      if (firstWrong == undefined) firstWrong = inputRefs.current?.email;
-    }
-
-    if (form.email !== form.confirmEmail) {
-      setInputConfirmEmailWrong(true);
-      allValids = false;
-      if (firstWrong == undefined) firstWrong = inputRefs.current?.confirmEmail;
-    } else setInputConfirmEmailWrong(false);
-
-    if (
-      requiredInPassword.hasNumber == false ||
-      requiredInPassword.letraMaiuscula == false ||
-      requiredInPassword.letraMinuscula == false ||
-      requiredInPassword.minimumLength == false
-    ) {
-      setInputPasswordWrong(true);
-      allValids = false;
-      if (firstWrong == undefined) firstWrong = inputRefs.current?.password;
-    } else setInputPasswordWrong(false);
-
-    firstWrong?.focus();
-
-    return allValids;
-  };
-
   const cleanAllInputs = () => {
     setForm({
       name: "",
@@ -218,7 +139,7 @@ const Buttons = ({
         <ButtonTransparent text="Voltar" fontBold handleClickEvent={() => navigate("/minha-conta")} />
       </div>
       <div className="form-buttons-continue">
-        <ButtonGradient text="Continuar" disabled={!reCAPTCHA} fontBold={true} handleClickEvent={onSubmit} />
+        <ButtonGradient text="Continuar" disabled={!reCAPTCHA} fontBold handleClickEvent={onSubmit} />
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ const ButtonGradient = ({ text, disabled = false, fontBold = false, handleClickE
   return (
     <button
       onClick={handleClickEvent}
-      className={`button-gradient${fontBold ? " font-bold" : ""}`}
+      className={`button-gradient ${fontBold ? "font-bold" : ""}`}
       disabled={disabled}
       type="button"
     >

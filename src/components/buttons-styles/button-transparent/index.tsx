@@ -8,7 +8,7 @@ type ButtonTransparentProps = {
 };
 const ButtonTransparent = ({ text, fontBold = false, handleClickEvent = () => {} }: ButtonTransparentProps) => {
   return (
-    <button className={`button-transparent${fontBold ? " font-bold" : ""}`} onClick={handleClickEvent}>
+    <button className={`button-transparent ${fontBold ? "font-bold" : ""}`} onClick={handleClickEvent}>
       {text}
     </button>
   );
