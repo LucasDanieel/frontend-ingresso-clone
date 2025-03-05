@@ -2,8 +2,8 @@ import { ChangeEvent, Dispatch, RefObject, SetStateAction, useContext, useState 
 import axios from "axios";
 import "./styles.scss";
 
-import SimpleInput from "../../form-inputs/simple-input";
-import RecaptchaComponent from "../../recaptcha-component";
+import SimpleInput from "../../components-form/simple-input";
+import RecaptchaComponent from "../../components-form/recaptcha-component";
 import { FormState, inputPhoneRefs, UserContextType, UserDTO } from "../../../@types/user";
 import { UserContext } from "../../../providers/user-provider";
 import ButtonGradient from "../../buttons-styles/button-gradient";

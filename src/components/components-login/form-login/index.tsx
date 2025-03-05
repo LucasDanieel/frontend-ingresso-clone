@@ -4,7 +4,7 @@ import isEmail from "validator/lib/isEmail";
 import axios from "axios";
 import "./styles.scss";
 
-import SimpleInput from "../../form-inputs/simple-input";
+import SimpleInput from "../../components-form/simple-input";
 import { maskedUser } from "../../../pages/login";
 import LoginWithGoogle from "../login-with-google";
 import ButtonGradient from "../../buttons-styles/button-gradient";

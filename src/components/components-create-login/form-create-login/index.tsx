@@ -2,11 +2,11 @@ import { ChangeEvent, KeyboardEvent, useRef, useState } from "react";
 import isEmail from "validator/lib/isEmail";
 
 import "./styles.scss";
-import MonthDayInput from "../../form-inputs/month-day-input";
-import SimpleInput from "../../form-inputs/simple-input";
-import TermsOfUse from "../../terms-of-use";
-import ValidPassword from "../valid-password";
-import RecaptchaComponent from "../../recaptcha-component";
+import MonthDayInput from "../../components-form/month-day-input";
+import SimpleInput from "../../components-form/simple-input";
+import TermsOfUse from "../../components-form/terms-of-use";
+import ValidPassword from "../../components-form/valid-password";
+import RecaptchaComponent from "../../components-form/recaptcha-component";
 import {
   onChangeFormName,
   onChangeGeneric,
@@ -15,8 +15,8 @@ import {
   validInputPassword,
 } from "../../../utils/input-methods";
 import { FormState, inputFormRefs, inputPhoneRefs, requiredInPassword, userCreated } from "../../../@types/user";
-import AddressInputs from "../../form-inputs/address-inputs";
-import PhoneInputs from "../../form-inputs/phone-inputs";
+import AddressInputs from "../../components-form/address-inputs";
+import PhoneInputs from "../../components-form/phone-inputs";
 import Buttons from "../buttons";
 
 type formCreateLoginProps = {
@@ -83,6 +83,10 @@ const FormCreateLogin = ({ isLoading, setLoading, setUserCreated }: formCreateLo
     onChangeFormName(e, setForm, setInputNameWrong);
   };
 
+  const onBlurName = () => {
+    if (form.name.length < 3 || form.name.length > 60) setInputNameWrong(true);
+  };
+
   // CPF
   const onChangeCPF = (e: ChangeEvent<HTMLInputElement>) => {
     onChangeGeneric(e, "___.___.___-__", 12, setForm, "CPF", inputRefs.current.cpf, setInputCPFWrong, 11);
@@ -112,6 +116,10 @@ const FormCreateLogin = ({ isLoading, setLoading, setUserCreated }: formCreateLo
     else setInputConfirmEmailWrong(false);
   };
 
+  const onBlurEmail = () => {
+    if (form.email.length == 0) setInputEmailWrong(true);
+  };
+
   // Confirmar E-mail
   const onChangeConfirmEmail = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.value === form.email) setInputConfirmEmailWrong(false);
@@ -132,6 +140,10 @@ const FormCreateLogin = ({ isLoading, setLoading, setUserCreated }: formCreateLo
     else setInputPasswordWrong(true);
 
     setForm((s) => ({ ...s, password: value }));
+  };
+
+  const onBlurPassword = () => {
+    if (form.password.length == 0) setInputPasswordWrong(true);
   };
 
   const validateAllInputs = () => {
@@ -200,9 +212,10 @@ const FormCreateLogin = ({ isLoading, setLoading, setUserCreated }: formCreateLo
         <SimpleInput
           nameField="*Nome"
           value={form.name}
-          errorMessage="O nome precisa ter entre 3 e 60 caracteres e não possuir caracteres especiais"
+          errorMessage="O nome precisa ter entre 3 e 60 caracteres e não possuir caracteres especiais."
           inputWrong={inputNameWrong}
           handleChange={onChangeName}
+          handleBlur={onBlurName}
           ref={(el) => (inputRefs.current.name = el)}
         />
         <SimpleInput
@@ -232,27 +245,29 @@ const FormCreateLogin = ({ isLoading, setLoading, setUserCreated }: formCreateLo
           errorMessage={`${
             emailInvalidValue
               ? emailInvalidValue
-              : "Informe um endereço de e-mail válido. Ele será utilizado mais tarde para validar seus dados"
+              : "Informe um endereço de e-mail válido. Ele será utilizado mais tarde para validar seus dados."
           }`}
           inputWrong={inputEmailWrong}
           handleChange={onChangeEmail}
+          handleBlur={onBlurEmail}
           ref={(el) => (inputRefs.current.email = el)}
         />
         <SimpleInput
           nameField="*Confirmação de E-mail"
           value={form.confirmEmail ? form.confirmEmail : ""}
-          errorMessage="Este campo deve ser igual ao de e-mail"
+          errorMessage="Este campo deve ser igual ao de e-mail."
           inputWrong={inputConfirmEmailWrong}
           handleChange={onChangeConfirmEmail}
           ref={(el) => (inputRefs.current.confirmEmail = el)}
         />
         <SimpleInput
           nameField="*Senha"
-          value={form.password ? form.password : ""}
+          value={form.password}
           isPassword
           errorMessage={passwordInvalidValue}
           inputWrong={inputPasswordWrong}
           handleChange={onChangePassword}
+          handleBlur={onBlurPassword}
           ref={(el) => (inputRefs.current.password = el)}
         />
         <ValidPassword requiredInPassword={requiredInPassword} />

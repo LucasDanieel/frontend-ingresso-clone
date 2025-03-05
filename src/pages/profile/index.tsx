@@ -4,13 +4,13 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import "./styles.scss";
 
-import SimpleInput from "../../components/form-inputs/simple-input";
-import MonthDayInput from "../../components/form-inputs/month-day-input";
-import TermsOfUse from "../../components/terms-of-use";
+import SimpleInput from "../../components/components-form/simple-input";
+import MonthDayInput from "../../components/components-form/month-day-input";
+import TermsOfUse from "../../components/components-form/terms-of-use";
 import ModalChangePassword from "../../components/components-profile/modal-change-password";
 import ModalProfileUpdated from "../../components/components-profile/modal-profile-updated";
-import AddressInputs from "../../components/form-inputs/address-inputs";
-import PhoneInputs from "../../components/form-inputs/phone-inputs";
+import AddressInputs from "../../components/components-form/address-inputs";
+import PhoneInputs from "../../components/components-form/phone-inputs";
 import { applyMask, onChangeFormName } from "../../utils/input-methods";
 import { FormState, inputPhoneRefs, UserDTO } from "../../@types/user";
 import SaveChanges from "../../components/components-profile/save-changes";

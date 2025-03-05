@@ -38,7 +38,7 @@ const StateInput = ({ state, handleChange }: InputStateProps) => {
   ];
 
   return (
-    <select id="state" value={state} onChange={handleChange}>
+    <select id="state" value={state} onChange={handleChange} data-testid="state-input">
       <option value="0">Estado</option>
       {states.map((value, idx) => (
         <option key={idx} value={value}>

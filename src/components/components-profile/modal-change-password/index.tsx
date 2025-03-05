@@ -2,9 +2,9 @@ import { ChangeEvent, useRef, useState } from "react";
 import axios from "axios";
 import "./styles.scss";
 
-import ValidPassword from "../../components-create-login/valid-password";
-import SimpleInput from "../../form-inputs/simple-input";
-import RecaptchaComponent from "../../recaptcha-component";
+import ValidPassword from "../../components-form/valid-password";
+import SimpleInput from "../../components-form/simple-input";
+import RecaptchaComponent from "../../components-form/recaptcha-component";
 import { validInputPassword } from "../../../utils/input-methods";
 import ModalPasswordChanged from "../modal-password-changed";
 import { requiredInPassword } from "../../../@types/user";
