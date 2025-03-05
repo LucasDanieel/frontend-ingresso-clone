@@ -267,12 +267,8 @@ const FormCreateLogin = ({ isLoading, setLoading, setUserCreated }: formCreateLo
           />
           <span>Quero receber novidades e mensagens da Ingresso.com.</span>
         </div>
-        {!isLoading && (
-          <>
-            <TermsOfUse />
-            <RecaptchaComponent setReCAPTCHA={setReCAPTCHA} />
-          </>
-        )}
+        <TermsOfUse />
+        {!isLoading && <RecaptchaComponent setReCAPTCHA={setReCAPTCHA} />}
         <Buttons
           form={form}
           reCAPTCHA={reCAPTCHA}

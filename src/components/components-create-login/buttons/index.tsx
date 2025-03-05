@@ -97,7 +97,7 @@ const Buttons = ({
           setInputEmailWrong(true);
         }
 
-        setReCAPTCHA("");
+        setReCAPTCHA(null);
       })
       .finally(() => setLoading(false));
   };

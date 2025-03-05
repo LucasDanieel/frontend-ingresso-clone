@@ -8,13 +8,13 @@ describe("DropdownCity", () => {
     render(<DropdownCity left={left} />);
   });
 
-  it("should render all text", () => {
+  it("Deve renderizar todo o texto", () => {
     expect(screen.getByText(/Você está em:/i)).toBeInTheDocument();
     expect(screen.getByText(/Atualizar localização por GPS/i)).toBeInTheDocument();
     expect(screen.getByText(/Últimos Locais/i)).toBeInTheDocument();
   });
 
-  it("should render selects and button", () => {
+  it("Deve renderizar os selects e o botão", () => {
     const selectState = screen.getByRole("combobox", { name: "Selecione o estado" });
     const selectCitye = screen.getByRole("combobox", { name: "Selecione a cidade" });
 
@@ -23,12 +23,12 @@ describe("DropdownCity", () => {
     expect(screen.getByRole("button")).toHaveTextContent(/Trocar Cidade/i);
   });
 
-  it("should be visible on the screen", () => {
+  it("Deve estar visível na tela", () => {
     const dropdown = screen.getByTestId("city-component");
     expect(dropdown).toBeVisible();
   });
 
-  it("should render the dropdown in the correct position", () => {
+  it("Deve renderizar o dropdown na posição correta", () => {
     const dropdown = screen.getByTestId("city-component");
 
     vi.spyOn(dropdown, "getBoundingClientRect").mockReturnValue({

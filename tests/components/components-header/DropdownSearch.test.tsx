@@ -9,12 +9,12 @@ describe("DropdownSearch", () => {
     render(<DropdownSearch left={left} />);
   });
 
-  it("should render text and input", () => {
+  it("Deve renderizar o texto e input", () => {
     expect(screen.getByText(/O que você procura?/i)).toBeInTheDocument();
     expect(screen.getByRole("textbox")).toBeInTheDocument();
   });
 
-  it("should have a placeholder and accept user input", async () => {
+  it("Deve ter um placeholder e aceitar a entrada do usuário", async () => {
     const input = screen.getByPlaceholderText("O que você procura?");
     expect(input).toBeInTheDocument();
 
@@ -24,12 +24,12 @@ describe("DropdownSearch", () => {
     expect(input).toHaveValue("Meu teste");
   });
 
-  it("should be visible on the screen", () => {
+  it("Deve estar visível na tela", () => {
     const dropdown = screen.getByTestId("search-component");
     expect(dropdown).toBeVisible();
   });
 
-  it("should render the dropdown in the correct position", () => {
+  it("Deve renderizar o dropdown na posição correta", () => {
     const dropdown = screen.getByTestId("search-component")
 
     vi.spyOn(dropdown, "getBoundingClientRect").mockReturnValue({

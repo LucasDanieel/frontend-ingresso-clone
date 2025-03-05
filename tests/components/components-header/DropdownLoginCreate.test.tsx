@@ -13,7 +13,7 @@ describe("DropdownLoginCreate", () => {
     );
   });
 
-  it("should render all text", () => {
+  it("Deve renderizar todo o texto", () => {
     expect(screen.getByText(/Ainda não é cliente/i)).toBeInTheDocument();
     expect(
       screen.getByText(/Compre ingressos e combos de pipoca para ir ao cinema com segurança e mais comodidade!/i)
@@ -21,7 +21,7 @@ describe("DropdownLoginCreate", () => {
     expect(screen.getByText("Cliente Ingresso.com")).toBeInTheDocument();
   });
 
-  it("should render button and link", () => {
+  it("Deve renderizar o botão e o link", () => {
     const button = screen.getByRole("button", { name: "Criar uma nova conta" });
     expect(button).toBeInTheDocument();
 
@@ -29,12 +29,12 @@ describe("DropdownLoginCreate", () => {
     expect(link).toHaveAttribute("href", "/minha-conta");
   });
 
-  it("should be visible on the screen", () => {
+  it("Deve estar visível na tela", () => {
     const dropdown = screen.getByTestId("login-create-component");
     expect(dropdown).toBeVisible();
   });
 
-  it("should render the dropdown in the correct position", () => {
+  it("Deve renderizar o dropdown na posição correta", () => {
     const dropdown = screen.getByTestId("login-create-component");
 
     vi.spyOn(dropdown, "getBoundingClientRect").mockReturnValue({

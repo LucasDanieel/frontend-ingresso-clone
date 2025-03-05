@@ -7,10 +7,11 @@ export const onChangeFormName = (
   setForm: Dispatch<SetStateAction<FormState>>,
   setInputNameWrong: Dispatch<SetStateAction<boolean>>
 ) => {
-  if (e.target.value.length < 3 || e.target.value.length > 60) setInputNameWrong(true);
+  const value = e.target.value;
+  if (value.length < 3 || value.length > 60 || /[^a-zA-Z0-9\s]/.test(value)) setInputNameWrong(true);
   else setInputNameWrong(false);
 
-  setForm((s) => ({ ...s, name: e.target.value }));
+  setForm((s) => ({ ...s, name: value }));
 };
 
 export const onChangeGeneric = (

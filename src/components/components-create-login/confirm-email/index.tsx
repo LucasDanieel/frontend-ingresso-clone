@@ -21,6 +21,7 @@ const ConfirmEmail = ({ userCreated, setUserCreated }: confirmEmailProps) => {
       <div className="wrapper-confirm-email">
         <div className="close-confirm-email">
           <svg
+            data-testid="icon-close-confirm-email"
             onClick={closeConfirmEmail}
             xmlns="http://www.w3.org/2000/svg"
             width="28"

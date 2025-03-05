@@ -4,7 +4,7 @@ import NavHeader from "../../../src/components/components-header/nav-header";
 import userEvent from "@testing-library/user-event";
 
 describe("NavHeader", () => {
-  it("should render all navigation links", () => {
+  it("Deve renderizar todos os links de navegação", () => {
     render(
       <MemoryRouter>
         <NavHeader />
@@ -18,7 +18,7 @@ describe("NavHeader", () => {
     expect(screen.getByRole("link", { name: "NOTÍCIAS" })).toHaveAttribute("href", "/noticias");
   });
 
-  it("should apply the active class to the correct link", async () => {
+  it("Deve aplicar a classe 'active-link' ao link correto", async () => {
     render(
       <MemoryRouter initialEntries={["/filmes"]}>
         <NavHeader />
@@ -29,7 +29,7 @@ describe("NavHeader", () => {
     expect(link).toHaveClass("active-link");
   });
 
-  it("should change active class when clicking on another route", async () => {
+  it("Deve mudar a classe 'active-link' ao clicar em outra rota", async () => {
     render(
       <MemoryRouter initialEntries={["/filmes"]}>
         <NavHeader />

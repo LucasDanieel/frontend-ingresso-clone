@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import DownloadApp from "../../../src/components/components-footer/download-app";
 
 describe("DownloadApp", () => {
-  it("should render download links", () => {
+  it("Deve renderizar os links de download", () => {
     render(<DownloadApp />);
 
     expect(screen.getByText(/Baixe nosso aplicativo/i)).toBeInTheDocument();

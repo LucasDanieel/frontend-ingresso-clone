@@ -23,6 +23,7 @@ const RecaptchaComponent = ({ setReCAPTCHA, alignCenter = true, no_margin = fals
         setReCAPTCHA(null);
       });
   };
+
   return (
     <div className={`wrapper-recaptcha ${alignCenter ? "align-center" : "not-align"} ${no_margin ? "no-margin" : ""}`}>
       <p>

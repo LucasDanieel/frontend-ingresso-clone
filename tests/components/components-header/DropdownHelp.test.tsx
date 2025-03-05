@@ -8,14 +8,14 @@ describe("DropdownHelp", () => {
     render(<DropdownHelp left={left} />);
   });
 
-  it("should render all text", () => {
+  it("Deve renderizar todo o texto", () => {
     expect(screen.getByRole("heading", { name: "Quer cancelar um pedido?" })).toBeInTheDocument();
     expect(
       screen.getByText("Você mesmo pode cancelar seu pedido, sem contactar um atendente. É rápido e fácil!")
     ).toBeInTheDocument();
   });
 
-  it("should render all buttons", () => {
+  it("Deve renderizar os dois botões", () => {
     const button1 = screen.getByRole("button", { name: "Sim, quero cancelar um pedido" });
     expect(button1).toBeInTheDocument();
 
@@ -23,12 +23,12 @@ describe("DropdownHelp", () => {
     expect(button2).toBeInTheDocument();
   });
 
-  it("should be visible on the screen", () => {
+  it("Deve estar visível na tela", () => {
     const dropdown = screen.getByTestId("help-component");
     expect(dropdown).toBeVisible();
   });
 
-  it("should render the dropdown in the correct position", () => {
+  it("Deve renderizar o dropdown na posição correta", () => {
     const dropdown = screen.getByTestId("help-component");
 
     vi.spyOn(dropdown, "getBoundingClientRect").mockReturnValue({

@@ -1,15 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
-import Buttons from "../../../src/components/components-create-login/buttons";
 import axios from "axios";
 import { Mocked } from "vitest";
-
-vi.mock("axios");
-
-const mockedAxios = axios as Mocked<typeof axios>;
+import Buttons from "../../../src/components/components-create-login/buttons";
 
 describe("Buttons", () => {
+  vi.mock("axios");
+  const mockedAxios = axios as Mocked<typeof axios>;
+
   const mockSetState = vi.fn();
   const mockValidateAllInputs = vi.fn().mockReturnValue(true);
 
@@ -50,7 +49,7 @@ describe("Buttons", () => {
     vi.clearAllMocks();
   });
 
-  it("should render both buttons", () => {
+  it("Deve renderizar os dois botões", () => {
     render(
       <BrowserRouter>
         <Buttons {...defaultProps} />
@@ -61,7 +60,7 @@ describe("Buttons", () => {
     expect(screen.getByRole("button", { name: /continuar/i })).toBeInTheDocument();
   });
 
-  it("should navigates back when clicking 'Voltar'", async () => {
+  it("Deve navegar de volta ao clicar em 'Voltar'", async () => {
     render(
       <BrowserRouter>
         <Buttons {...defaultProps} />
@@ -74,7 +73,7 @@ describe("Buttons", () => {
     expect(window.location.pathname).toBe("/minha-conta");
   });
 
-  it("should disables the 'Continuar' button when reCAPTCHA is null", () => {
+  it("Deve desabilitar o botão 'Continuar' quando o reCAPTCHA for nulo", () => {
     render(
       <BrowserRouter>
         <Buttons {...defaultProps} reCAPTCHA={null} />
@@ -84,7 +83,7 @@ describe("Buttons", () => {
     expect(screen.getByRole("button", { name: /continuar/i })).toBeDisabled();
   });
 
-  it("should validate inputs before submitting", async () => {
+  it("Deve validar os campos antes de enviar", async () => {
     mockedAxios.post.mockResolvedValueOnce({ data: {} });
     render(
       <BrowserRouter>
@@ -99,15 +98,14 @@ describe("Buttons", () => {
     expect(mockValidateAllInputs).toHaveBeenCalled();
   });
 
-  it("should send request on submit", async () => {
+  it("Deve enviar a requisição ao clicar no botão 'Continuar'", async () => {
     mockedAxios.post.mockResolvedValue({ data: {} });
-
     render(
       <BrowserRouter>
         <Buttons {...defaultProps} />
       </BrowserRouter>
     );
-    
+
     const submitButton = screen.getByRole("button", { name: /Continuar/i });
     const user = userEvent.setup();
     await user.click(submitButton);

@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import WrapperDropdown from "../../../src/components/components-header/wrapper-dropdown";
 
 describe("WrapperDropdown", () => {
-  it("should render children when passed", () => {
+  it("Deve renderizar a propriedade 'children' quando for passada", () => {
     render(
       <WrapperDropdown left={150}>
         <h1>Teste</h1>

@@ -21,7 +21,7 @@ describe("Header", () => {
     };
   };
 
-  it("should render logo ingresso", () => {
+  it("Deve renderizar o logo ingresso", () => {
     const { logoIngresso } = renderHeaderComponents();
 
     expect(logoIngresso).toHaveAttribute(
@@ -30,7 +30,7 @@ describe("Header", () => {
     );
   });
 
-  it("should render dropdown city when clicking and disappear when clicking again", async () => {
+  it("Deve renderizar o dropdown de 'city' ao clicar no botão e desaparecer ao clicar novamente", async () => {
     const { cityButton } = renderHeaderComponents();
     const user = userEvent.setup();
 
@@ -41,7 +41,7 @@ describe("Header", () => {
     expect(screen.queryByTestId("city-component")).not.toBeInTheDocument();
   });
 
-  it("should render dropdown search when clicking and disappear when clicking again", async () => {
+  it("Deve renderizar o dropdown de 'search' ao clicar no botão e desaparecer ao clicar novamente", async () => {
     const { searchButton } = renderHeaderComponents();
     const user = userEvent.setup();
 
@@ -52,7 +52,7 @@ describe("Header", () => {
     expect(screen.queryByTestId("search-component")).not.toBeInTheDocument();
   });
 
-  it("should render dropdown login/create when clicking and disappear when clicking again", async () => {
+  it("Deve renderizar o dropdown de 'login/create' ao clicar no botão e desaparecer ao clicar novamente", async () => {
     const { loginCreateButton } = renderHeaderComponents();
     const user = userEvent.setup();
 
@@ -63,7 +63,7 @@ describe("Header", () => {
     expect(screen.queryByTestId("login-create-component")).not.toBeInTheDocument();
   });
 
-  it("should render dropdown help when clicking and disappear when clicking again", async () => {
+  it("Deve renderizar o dropdown de 'help' ao clicar no botão e desaparecer ao clicar novamente", async () => {
     const { helpButton } = renderHeaderComponents();
     const user = userEvent.setup();
 
@@ -74,25 +74,25 @@ describe("Header", () => {
     expect(screen.queryByTestId("help-component")).not.toBeInTheDocument();
   });
 
-  it("should change dropdown components and close when clicking outside the components", async () => {
+  it("Deve trocar os componentes do dropdown e fechar ao clicar fora dos componentes", async () => {
     const { cityButton, searchButton, loginCreateButton, helpButton, container } = renderHeaderComponents();
     const user = userEvent.setup();
 
     await user.click(cityButton);
     expect(screen.getByTestId("city-component")).toBeInTheDocument();
-    
+
     await user.click(searchButton);
     expect(screen.queryByTestId("city-component")).not.toBeInTheDocument();
     expect(screen.getByTestId("search-component")).toBeInTheDocument();
-    
+
     await user.click(loginCreateButton);
     expect(screen.queryByTestId("search-component")).not.toBeInTheDocument();
     expect(screen.getByTestId("login-create-component")).toBeInTheDocument();
-    
+
     await user.click(helpButton);
     expect(screen.queryByTestId("login-create-component")).not.toBeInTheDocument();
     expect(screen.getByTestId("help-component")).toBeInTheDocument();
-    
+
     await user.click(container);
     expect(screen.queryByTestId("help-component")).not.toBeInTheDocument();
   });
