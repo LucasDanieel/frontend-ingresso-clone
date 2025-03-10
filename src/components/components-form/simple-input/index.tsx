@@ -6,7 +6,6 @@ type SimpleInputProps = {
   value: string;
   errorMessage?: string;
   inputWrong?: boolean;
-  maxLength?: number;
   isCep?: boolean;
   isPassword?: boolean;
   formLogin?: boolean;
@@ -25,8 +24,7 @@ const SimpleInput = forwardRef<HTMLInputElement, SimpleInputProps>(
       nameField,
       value,
       errorMessage,
-      inputWrong,
-      maxLength,
+      inputWrong = false,
       isCep = false,
       isPassword = false,
       formLogin = false,
@@ -42,21 +40,20 @@ const SimpleInput = forwardRef<HTMLInputElement, SimpleInputProps>(
   ) => {
     const [showPassword, setShowPassword] = useState<boolean>(false);
     return (
-      <div className={`wrapper-form-input ${inputWrong ? "wrong-input" : ""}`}>
-        <div className={`wrapper-input ${!showError ? "error-hidden" : ""} ${disabled ? "disable" : ""}`}>
-          <div className={`simple-input ${value.length > 0 ? "hasValue" : ""}`}>
+      <div className={`wrapper-form-input${inputWrong ? " wrong-input" : ""}`}>
+        <div className={`wrapper-input${!showError ? " error-hidden" : ""}${disabled ? " disable" : ""}`}>
+          <div className={`simple-input${value.length > 0 ? " hasValue" : ""}`}>
             <input
-              placeholder={nameField}
               id={nameField}
-              ref={ref}
               value={value}
-              max={maxLength}
+              placeholder={nameField}
               onChange={handleChange}
               onBlur={handleBlur}
               onFocus={handleFocos}
               onKeyDown={handleKeyDown}
               type={isPassword ? (showPassword ? "text" : "password") : "text"}
               disabled={disabled}
+              ref={ref}
             />
             <label htmlFor={nameField}>{nameField}</label>
           </div>
@@ -64,6 +61,7 @@ const SimpleInput = forwardRef<HTMLInputElement, SimpleInputProps>(
             <div className="wrapper-icon-password">
               {!showPassword ? (
                 <svg
+                  data-testid="icon-hidden-password"
                   xmlns="http://www.w3.org/2000/svg"
                   width="26"
                   height="26"
@@ -78,6 +76,7 @@ const SimpleInput = forwardRef<HTMLInputElement, SimpleInputProps>(
                 </svg>
               ) : (
                 <svg
+                  data-testid="icon-visible-password"
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
                   height="16"
@@ -97,7 +96,7 @@ const SimpleInput = forwardRef<HTMLInputElement, SimpleInputProps>(
               <span>Alterar senha</span>
             </div>
           )}
-          {isCep == true && (
+          {isCep && (
             <div className="find-zip-code">
               <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank">
                 Não sei meu CEP
@@ -106,8 +105,15 @@ const SimpleInput = forwardRef<HTMLInputElement, SimpleInputProps>(
           )}
         </div>
         {inputWrong && showError && (
-          <div className={`wrapper-warning ${formLogin ? "warning-form-login" : ""}`}>
-            <svg width="28" height="28" viewBox="0 0 30 30" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <div className={`wrapper-warning${formLogin ? " warning-form-login" : ""}`}>
+            <svg
+              width="28"
+              height="28"
+              data-testid="icon-input-wrong"
+              viewBox="0 0 30 30"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <path d="M25 15.5a9.5 9.5 0 1 1-19 0 9.5 9.5 0 0 1 19 0zm-1.357 0a8.143 8.143 0 1 0-16.286 0 8.143 8.143 0 0 0 16.286 0zm-7.3 2.313h-1.439l-.294-7.24c-.017-.472.429-.86.988-.86h.04c.563 0 .93.384.912.86l-.207 7.24zm-.727 3.702c-.525 0-.97-.456-.97-.984 0-.537.44-.983.97-.983s.97.446.97.983c0 .528-.444.984-.97.984z"></path>
             </svg>
             <span>{errorMessage}</span>

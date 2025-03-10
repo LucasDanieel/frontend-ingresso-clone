@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import axios from "axios";
 import { Mocked } from "vitest";
-import RecaptchaComponent from "../../src/components/components-form/recaptcha-component";
 import userEvent from "@testing-library/user-event";
+import RecaptchaComponent from "../../../src/components/components-form/recaptcha-component";
 
 vi.stubGlobal("import.meta", {
   env: {

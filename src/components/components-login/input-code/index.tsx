@@ -55,7 +55,6 @@ const InputCode = ({ arrayCode, setArrayCode }: InputCodeProps) => {
           key={index}
           type="text"
           value={value}
-          maxLength={1}
           placeholder="__"
           onChange={(e) => onCodeChange(e, index)}
           onKeyDown={(e) => onCodeKeyDown(e, index)}

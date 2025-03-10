@@ -223,7 +223,6 @@ const FormCreateLogin = ({ isLoading, setLoading, setUserCreated }: formCreateLo
           value={form.CPF}
           errorMessage={`${cpfInvalidValue ? cpfInvalidValue : "É obrigatório preencher o CPF."}`}
           inputWrong={inputCPFWrong}
-          maxLength={14}
           handleChange={onChangeCPF}
           handleFocos={onFocosCPF}
           handleBlur={onBlurCPF}
