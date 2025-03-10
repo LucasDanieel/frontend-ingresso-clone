@@ -23,7 +23,12 @@ const TermsOfUse = () => {
       </p>
       <p>
         {"Deseja excluir sua conta? Siga os "}
-        <a href="">passos a seguir</a>
+        <a
+          href="https://atendimento.ingresso.com/portal/pt-br/kb/articles/quero-excluir-minha-conta-como-fa%C3%A7o"
+          target="_blank"
+        >
+          passos a seguir
+        </a>
         {"."}
       </p>
     </div>
