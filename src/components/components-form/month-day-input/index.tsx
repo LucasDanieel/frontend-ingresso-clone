@@ -46,7 +46,7 @@ const MonthDayInput = ({ month, day, setForm }: MonthDayInputProps) => {
     <div className="wrapper-form-select-input">
       <div className="wrapper-select-input">
         <div className="select-month-day">
-          <select id="month" value={month} onChange={onChangeMonth}>
+          <select id="month" value={month} onChange={onChangeMonth} data-testid="month-select">
             <option value="0">Mês de aniversário</option>
             {months.map((mon, idx) => (
               <option key={idx} value={idx + 1}>
@@ -56,7 +56,7 @@ const MonthDayInput = ({ month, day, setForm }: MonthDayInputProps) => {
           </select>
         </div>
         <div className="select-month-day">
-          <select id="day" value={day} onChange={onChangeDay}>
+          <select id="day" value={day} onChange={onChangeDay} data-testid="day-select">
             <option value="0">Dia do aniversário</option>
             {onGenerateDays(month)?.map((day) => (
               <option key={day} value={day}>
