@@ -52,6 +52,7 @@ const InputCode = ({ arrayCode, setArrayCode }: InputCodeProps) => {
     <div className="code-input">
       {arrayCode.map((value, index) => (
         <input
+          data-testid={`input-code-${index}`}
           key={index}
           type="text"
           value={value}
