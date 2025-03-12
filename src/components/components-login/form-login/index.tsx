@@ -164,7 +164,7 @@ const FormLogin = ({ wrongCode, setLoading, setMaskedUser, setConfirmCode }: For
           <ButtonGradient text="Entrar" fontBold handleClickEvent={onSubmit} />
         </div>
         <div className="issues-login">
-          <a href="">Problemas para entrar?</a>
+          <a href="/">Problemas para entrar?</a>
         </div>
       </div>
       <div className="login-another-way">

@@ -11,6 +11,7 @@ const ModalConfirmedAccount = ({ setConfirmedAccount }: ModalConfirmedAccountPro
       <div className="confirmed-account">
         <div className="confirmed-account-close-button">
           <svg
+            data-testid="icon-close-confirmed-account"
             xmlns="http://www.w3.org/2000/svg"
             width="18"
             height="18"
