@@ -47,8 +47,8 @@ describe("AddressInputs", () => {
     expect(input).toHaveValue("1____-___");
     expect(screen.getByText(/CEP inválido ou não encontrado/i)).toBeInTheDocument();
 
-    await user.click(input);
-    await user.type(input, "2345678");
+    await user.type(input, "{backspace}");
+    await user.type(input, "12345678");
     await user.tab();
     expect(input).toHaveValue("12345-678");
     expect(screen.getByText(/CEP inválido ou não encontrado/i)).toBeInTheDocument();
