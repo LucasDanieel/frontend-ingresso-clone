@@ -11,6 +11,7 @@ const ModalProfileUpdated = ({ setProfileUpdated }: ModalProfileUpdatedProps) =>
       <div className="profile-updated">
         <div className="close-profile-updated">
           <svg
+            data-testid="icon-close-profile-updated"
             onClick={() => setProfileUpdated(false)}
             xmlns="http://www.w3.org/2000/svg"
             width="17"
