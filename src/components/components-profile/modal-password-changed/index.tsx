@@ -19,10 +19,12 @@ const ModalPasswordChanged = ({ setOpenModalChangePassword }: ModalPasswordChang
     Cookies.remove("token");
     navigate("/minha-conta");
   };
+
   return (
     <div className="wrapper-password-changed" data-testid="modal-password-changed">
       <div className="close-password-changed">
         <svg
+          data-testid="icon-close-password-changed"
           onClick={() => setOpenModalChangePassword(false)}
           xmlns="http://www.w3.org/2000/svg"
           width="17"

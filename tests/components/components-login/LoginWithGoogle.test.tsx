@@ -24,7 +24,6 @@ vi.stubEnv("VITE_CLIENT_ID", "mock_key");
 describe("LoginWithGoogle", () => {
   afterEach(() => {
     vi.restoreAllMocks();
-    vi.unstubAllEnvs();
     vi.unstubAllGlobals();
   });
 
