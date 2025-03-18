@@ -19,12 +19,15 @@ vi.mock("react-router-dom", async () => {
   };
 });
 
-vi.stubEnv("VITE_CLIENT_ID", "mock_key");
-
 describe("LoginWithGoogle", () => {
+  beforeEach(() => {
+    window.location.href = "http://localhost:3000/";
+    vi.stubEnv("VITE_CLIENT_ID", "mock_key");
+  });
+
   afterEach(() => {
     vi.restoreAllMocks();
-    vi.unstubAllGlobals();
+    vi.unstubAllEnvs();
   });
 
   it("Deve carregar o botão e o texto", async () => {

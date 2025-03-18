@@ -342,7 +342,6 @@
       </clipPath>
     </defs>
   </symbol>
-
   <symbol id="icon-lock">
     <path
       fillRule="evenodd"
@@ -424,7 +423,6 @@
       fill="#191919"
     ></path>
   </symbol>
-  
   <symbol id="icon-google">
     <g fill="none" fillRule="evenodd">
       <rect width="26" height="26" fill="#21262D" rx="1"></rect>

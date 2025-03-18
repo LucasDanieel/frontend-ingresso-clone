@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 import ButtonGradient from "../../buttons-styles/button-gradient";
 import "./styles.scss";
 
@@ -13,7 +11,6 @@ const ModalProfileUpdated = ({ setProfileUpdated }: ModalProfileUpdatedProps) =>
       <div className="profile-updated">
         <div className="close-profile-updated">
           <svg
-            data-testid="icon-close-profile-updated"
             onClick={() => setProfileUpdated(false)}
             xmlns="http://www.w3.org/2000/svg"
             width="17"
@@ -35,7 +32,7 @@ const ModalProfileUpdated = ({ setProfileUpdated }: ModalProfileUpdatedProps) =>
         <div className="button-profile-updated">
           <ButtonGradient text="OK" fontBold handleClickEvent={() => setProfileUpdated(false)} />
         </div>
-        <Link to="/">Ir para a página inicial</Link>
+        <a href="/">Ir para a página inicial</a>
       </div>
     </div>
   );
