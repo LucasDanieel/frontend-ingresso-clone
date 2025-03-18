@@ -20,7 +20,7 @@ const ModalPasswordChanged = ({ setOpenModalChangePassword }: ModalPasswordChang
     navigate("/minha-conta");
   };
   return (
-    <div className="wrapper-password-changed">
+    <div className="wrapper-password-changed" data-testid="modal-password-changed">
       <div className="close-password-changed">
         <svg
           onClick={() => setOpenModalChangePassword(false)}

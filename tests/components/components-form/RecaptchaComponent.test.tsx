@@ -15,13 +15,12 @@ const mockedAxios = axios as Mocked<typeof axios>;
 
 const mockSetReCAPTCHA = vi.fn();
 
+vi.stubEnv("VITE_RECAPTCHA_KEY", "fake-recaptcha-key");
+
 describe("RecaptchaComponent", () => {
   beforeEach(() => {
-    vi.stubEnv("VITE_RECAPTCHA_KEY", "fake-recaptcha-key");
     render(<RecaptchaComponent setReCAPTCHA={mockSetReCAPTCHA} />);
   });
-
-  afterEach(() => vi.unstubAllEnvs());
 
   it("Deve renderizar todo o texto e o componente 'reCAPTCHA'", () => {
     expect(

@@ -187,6 +187,7 @@ const ModalChangePassword = ({ email, setOpenModalChangePassword }: changePasswo
         <div className="wrapper-modal-change-password">
           <div className="modal-close-change-password">
             <svg
+              data-testid="icon-close-change-password"
               onClick={() => setOpenModalChangePassword(false)}
               xmlns="http://www.w3.org/2000/svg"
               width="17"
