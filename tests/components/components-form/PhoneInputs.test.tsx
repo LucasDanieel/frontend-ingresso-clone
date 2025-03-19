@@ -28,11 +28,6 @@ describe("PhoneInputs", () => {
     const [inputDDDWrong, setInputDDDWrong] = useState<boolean>(false);
     const [inputPhoneWrong, setInputPhoneWrong] = useState<boolean>(false);
 
-    const inputPhoneRefs = useRef<inputPhoneRefs>({
-      ddd: null as HTMLInputElement | null,
-      phone: null as HTMLInputElement | null,
-    });
-
     return (
       <PhoneInputs
         form={mockForm}
@@ -41,7 +36,7 @@ describe("PhoneInputs", () => {
         inputPhoneWrong={inputPhoneWrong}
         setInputDDDWrong={setInputDDDWrong}
         setInputPhoneWrong={setInputPhoneWrong}
-        ref={inputPhoneRefs}
+        ref={{ current: { ddd: null, phone: null } }}
       />
     );
   };
