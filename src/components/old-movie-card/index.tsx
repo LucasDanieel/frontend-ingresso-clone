@@ -1,21 +1,17 @@
-import { OldFilmsProps } from "../movies-scroll";
+import { FilmsProps } from "../../@types/movie";
 import "./styles.scss";
 
-type OldMovieCardProps = {
-  film: OldFilmsProps;
-};
-
-const OldMovieCard = ({ film }: OldMovieCardProps) => {
+const OldMovieCard = ({ film }: { film: FilmsProps }) => {
   return (
     <div className="movie">
       <a className="wrapper-movie-img" href="">
-        <div className="movie-img">
-          <img src={film.img} alt="" />
+        <div className={`movie-img${film.pre_venda ? " pre-venda" : ""}`} data-testid="div-movie-img">
+          <img src={film.img} alt="imagem do filme" />
         </div>
         <div className={`age BG${film.age}`}>{film.age}</div>
       </a>
       {film.premiere && (
-        <div className="premiere">
+        <div className="premiere" data-testid="div-old-movie-premiere">
           <span>Estreia {film.premiere}</span>
         </div>
       )}

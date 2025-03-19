@@ -1,11 +1,7 @@
-import { NewFilmsProps } from "../movies-scroll";
+import { FilmsProps } from "../../@types/movie";
 import "./styles.scss";
 
-type NewMovieCardProps = {
-  film: NewFilmsProps;
-};
-
-const NewMovieCard = ({ film }: NewMovieCardProps) => {
+const NewMovieCard = ({ film }: { film: FilmsProps }) => {
   return (
     <div className="wrapper-new-movie">
       <a href="">

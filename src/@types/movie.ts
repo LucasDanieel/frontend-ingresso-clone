@@ -1,11 +1,7 @@
-export type OldFilmsProps = {
+export type FilmsProps = {
   name: string;
   age: number | string;
   img: string;
   premiere: string | null;
-};
-
-export type NewFilmsProps = OldFilmsProps & {
-  description?: string;
-  pre_venda?: boolean;
+  pre_venda: boolean;
 };
