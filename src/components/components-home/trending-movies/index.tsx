@@ -2,10 +2,10 @@ import WrapperScroll from "../wrapper-scroll";
 import "./styles.scss";
 
 import NewMovieCard from "../../new-movie-card";
-import { NewFilmsProps } from "../../../@types/movie";
+import { FilmsProps } from "../../../@types/movie";
 
 type TrendingMoviesProps = {
-  list_films: NewFilmsProps[];
+  list_films: FilmsProps[];
 };
 
 const TrendingMovies = ({ list_films }: TrendingMoviesProps) => {

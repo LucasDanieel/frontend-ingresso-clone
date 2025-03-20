@@ -28,7 +28,7 @@ import { render, screen } from "@testing-library/react";
    });
  
    it("Deve chamar o método 'setProfileUpdated' ao clicar no icone 'x'", async () => {
-     await userEvent.click(screen.getByTestId("icon-close-profile-updated"));
+     await userEvent.click(screen.getByTestId("icon-close-modal"));
  
      expect(mockSetProfileUpdated).toHaveBeenCalled();
    });

@@ -65,7 +65,7 @@ const Profile = () => {
           navigate("/minha-conta");
         });
     } else {
-      navigate("/minha-conta");
+      // navigate("/minha-conta");
     }
   }, [token]);
 

@@ -1,10 +1,10 @@
 import WrapperScroll from "../wrapper-scroll";
 
 import OldMovieCard from "../../old-movie-card";
-import { OldFilmsProps } from "../../../@types/movie";
+import { FilmsProps } from "../../../@types/movie";
 
 type MoviesOnDisplayProps = {
-  list_films: OldFilmsProps[];
+  list_films: FilmsProps[];
 };
 
 const MoviesOnDisplay = ({ list_films }: MoviesOnDisplayProps) => {

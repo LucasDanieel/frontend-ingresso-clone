@@ -13,6 +13,11 @@
       display: flex;
       gap: 5px;
 
+      svg{
+        width: 21px;
+        height: 21px;
+      }
+
       span {
         font-size: 17px;
         text-transform: uppercase;

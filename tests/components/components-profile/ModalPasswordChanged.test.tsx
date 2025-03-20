@@ -45,7 +45,7 @@ describe("ModalPasswordChanged", () => {
       </MemoryRouter>
     );
 
-    await userEvent.click(screen.getByTestId("icon-close-password-changed"));
+    await userEvent.click(screen.getByTestId("icon-close-modal"));
 
     expect(mockSetOpenModalChangePassword).toHaveBeenCalled();
   });

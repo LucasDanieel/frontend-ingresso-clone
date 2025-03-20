@@ -8,6 +8,7 @@ import SimpleInput from "../../components-form/simple-input";
 import { maskedUser } from "../../../pages/login";
 import LoginWithGoogle from "../login-with-google";
 import ButtonGradient from "../../buttons-styles/button-gradient";
+import { IconError, IconErrorLogin } from "../../../icons";
 
 type userLoginDTO = {
   cpf: string | null;
@@ -130,33 +131,13 @@ const FormLogin = ({ wrongCode, setLoading, setMaskedUser, setConfirmCode }: For
         </div>
         {wrongLogin == true && (
           <div className="wrong-login">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              className="bi bi-clock"
-              viewBox="0 0 16 16"
-            >
-              <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z" />
-              <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0" />
-            </svg>
+            <IconErrorLogin />
             <span>Usuário ou senha inválidos. Se o problema persistir, entre em contato com o nosso atendimento.</span>
           </div>
         )}
         {wrongCode == true && (
           <div className="wrong-code">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="17"
-              height="17"
-              fill="currentColor"
-              className="bi bi-exclamation-circle"
-              viewBox="0 0 16 16"
-            >
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-              <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
-            </svg>
+            <IconError />
             <span>Usuário, senha ou código inválidos.</span>
           </div>
         )}

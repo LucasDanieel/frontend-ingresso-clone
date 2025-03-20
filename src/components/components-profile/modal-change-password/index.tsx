@@ -1,4 +1,4 @@
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from "react";
 import axios from "axios";
 import "./styles.scss";
 
@@ -9,8 +9,9 @@ import { validInputPassword } from "../../../utils/input-methods";
 import ModalPasswordChanged from "../modal-password-changed";
 import { requiredInPassword } from "../../../@types/user";
 import ButtonGradient from "../../buttons-styles/button-gradient";
+import { IconCloseX } from "../../../icons";
 
-type changePasswordProps = { email: string; setOpenModalChangePassword: (state: boolean) => void };
+type changePasswordProps = { email: string; setOpenModalChangePassword: Dispatch<SetStateAction<boolean>> };
 
 const ModalChangePassword = ({ email, setOpenModalChangePassword }: changePasswordProps) => {
   const [currentPassword, setCurrentPassword] = useState<string>("");
@@ -186,18 +187,7 @@ const ModalChangePassword = ({ email, setOpenModalChangePassword }: changePasswo
       ) : (
         <div className="wrapper-modal-change-password">
           <div className="modal-close-change-password">
-            <svg
-              data-testid="icon-close-change-password"
-              onClick={() => setOpenModalChangePassword(false)}
-              xmlns="http://www.w3.org/2000/svg"
-              width="17"
-              height="17"
-              fill="currentColor"
-              className="bi bi-x-lg"
-              viewBox="0 0 16 16"
-            >
-              <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
-            </svg>
+            <IconCloseX setState={setOpenModalChangePassword} />
           </div>
           <div className={`form-change-password ${isLoading ? "show-loading" : ""}`}>
             <h3>Alterar Senha</h3>

@@ -1,8 +1,10 @@
+import { Dispatch, SetStateAction } from "react";
+import { IconCloseX } from "../../../icons";
 import ButtonGradient from "../../buttons-styles/button-gradient";
 import "./styles.scss";
 
 type ModalProfileUpdatedProps = {
-  setProfileUpdated: (value: boolean) => void;
+  setProfileUpdated: Dispatch<SetStateAction<boolean>>;
 };
 
 const ModalProfileUpdated = ({ setProfileUpdated }: ModalProfileUpdatedProps) => {
@@ -10,18 +12,7 @@ const ModalProfileUpdated = ({ setProfileUpdated }: ModalProfileUpdatedProps) =>
     <div className="wrapper-profile-updated">
       <div className="profile-updated">
         <div className="close-profile-updated">
-          <svg
-            data-testid="icon-close-profile-updated"
-            onClick={() => setProfileUpdated(false)}
-            xmlns="http://www.w3.org/2000/svg"
-            width="17"
-            height="17"
-            fill="currentColor"
-            className="bi bi-x-lg"
-            viewBox="0 0 16 16"
-          >
-            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
-          </svg>
+          <IconCloseX setState={setProfileUpdated} />
         </div>
         <div className="header-profile-updated">
           <img src="\assets\img\icon-ingresso-144x144.png" alt="Icone do ingresso.com" />

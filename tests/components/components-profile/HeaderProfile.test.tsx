@@ -14,7 +14,7 @@ describe("HeaderProfile", () => {
       "src",
       "https://ingresso-a.akamaihd.net/catalog/img/ingresso-logo-v1-desktop-final.svg"
     );
-    expect(screen.getByTestId("icon-help-profile")).toBeInTheDocument();
+    expect(screen.getByTestId("icon-help")).toBeInTheDocument();
     expect(screen.getByText("Olá, teste")).toBeInTheDocument();
   });
 });

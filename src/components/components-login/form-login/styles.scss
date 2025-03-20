@@ -65,20 +65,21 @@
 
     .wrong-code {
       display: flex;
-      justify-content: center;
-      gap: 11px;
-      padding-right: 2px;
-      margin-top: 30px;
-      margin-bottom: 22px;
+      align-items: center;
+      padding-left: 9px;
+      margin-top: 20px;
+      margin-bottom: 18px;
 
       svg {
-        min-width: 18px;
-        margin-left: 2px;
+        width: 28px;
+        height: 28px;
         color: rgb(240, 37, 37);
       }
 
       span {
         font-size: 14px;
+        padding-left: 8px;
+        letter-spacing: -0.2px;
         color: rgb(240, 120, 84);
       }
     }

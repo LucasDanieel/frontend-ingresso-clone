@@ -7,6 +7,7 @@ import RecaptchaComponent from "../../components-form/recaptcha-component";
 import { FormState, inputPhoneRefs, UserContextType, UserDTO } from "../../../@types/user";
 import { UserContext } from "../../../providers/user-provider";
 import ButtonGradient from "../../buttons-styles/button-gradient";
+import { IconCheckCircle } from "../../../icons";
 
 type SaveChangesProps = {
   form: FormState;
@@ -129,17 +130,7 @@ const SaveChanges = ({
     <div className="profile-recaptcha-confirm-password">
       <div className="wrapper-save-changes">
         <div className="warning-save-changes">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="21"
-            height="21"
-            fill="currentColor"
-            className="bi bi-check2-circle"
-            viewBox="0 0 16 16"
-          >
-            <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0" />
-            <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
-          </svg>
+          <IconCheckCircle />
           <span>Salvar Alterações</span>
         </div>
         <p>

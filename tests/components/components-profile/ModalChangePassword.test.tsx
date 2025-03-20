@@ -97,7 +97,7 @@ describe("ModalChangePassword", () => {
   it("Deve chamar o metodo 'setOpenModalChangePassword' quando clicar no icone 'x'", async () => {
     render(<ModalChangePassword email="teste@gmail.com" setOpenModalChangePassword={mockSetOpenModalChangePassword} />);
 
-    await userEvent.click(screen.getByTestId("icon-close-change-password"));
+    await userEvent.click(screen.getByTestId("icon-close-modal"));
 
     expect(mockSetOpenModalChangePassword).toHaveBeenCalled();
   });

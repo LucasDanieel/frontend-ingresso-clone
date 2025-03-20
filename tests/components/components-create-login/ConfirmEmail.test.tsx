@@ -26,7 +26,7 @@ describe("ConfirmEmail", () => {
   });
 
   it("Deve carregar o evento simulado ao clicar no ícone de fechar", async () => {
-    const iconClose = screen.getByTestId("icon-close-confirm-email");
+    const iconClose = screen.getByTestId("icon-close-modal");
     expect(iconClose).toBeInTheDocument();
 
     const user = userEvent.setup();

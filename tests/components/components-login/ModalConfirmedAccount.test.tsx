@@ -8,7 +8,7 @@ describe("ModalConfirmedAccount", () => {
   it("Deve carregar o ícone, o texto e o botão", () => {
     render(<ModalConfirmedAccount setConfirmedAccount={mockSetConfirmedAccount} />);
 
-    expect(screen.getByTestId("icon-close-confirmed-account")).toBeInTheDocument();
+    expect(screen.getByTestId("icon-close-modal")).toBeInTheDocument();
     expect(screen.getByText(/Cadastro confirmado/i)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /continuar/i })).toBeInTheDocument();
   });
@@ -16,7 +16,7 @@ describe("ModalConfirmedAccount", () => {
   it("Deve chamar 'mockSetConfirmedAccount' ao clicar no ícone 'x'", async () => {
     render(<ModalConfirmedAccount setConfirmedAccount={mockSetConfirmedAccount} />);
 
-    const icon = screen.getByTestId("icon-close-confirmed-account");
+    const icon = screen.getByTestId("icon-close-modal");
     await userEvent.click(icon);
 
     expect(mockSetConfirmedAccount).toHaveBeenCalled();
