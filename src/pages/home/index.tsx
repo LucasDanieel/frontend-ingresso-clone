@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "./styles.scss";
 
-import Banner from "../../components/components-home/banner";
+import WrapperBanner from "../../components/components-home/wrapper-banner";
 import News from "../../components/components-home/news";
 import NearbyCinema from "../../components/components-home/nearby-cinema";
 import Promotion from "../../components/components-home/promotion";
@@ -248,7 +248,7 @@ function Home() {
   return (
     <div>
       <main className="container-main-home">
-        <Banner />
+        <WrapperBanner />
         <div className="wrapper-main-home">
           <div className="main-home">
             <TrendingMovies list_films={new_list_films} />
