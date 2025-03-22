@@ -3,19 +3,17 @@ import "./styles.scss";
 
 import NavHeader from "../nav-header";
 import DropdownCity from "../dropdown-city";
-import DropdownSearch from "../dropdown-search";
 import DropdownLoginCreate from "../dropdown-login-create";
 import DropdownHelp from "../dropdown-help";
-import { IconPointMap, IconSearch, IconPersonCircle, IconHelp } from "../../../icons";
+import { IconPointMap, IconSearch, IconHelp, IconArrowDownGradient, IconCloseX } from "../../../icons";
 
 const Header = () => {
   const [cityBool, setCityBool] = useState<boolean>(false);
-  const [searcheBool, setSearcheBool] = useState<boolean>(false);
   const [loginBool, setLoginBool] = useState<boolean>(false);
   const [helpBool, setHelpBool] = useState<boolean>(false);
+  const [search, setSearch] = useState<string>("");
 
   const refCity = useRef<HTMLButtonElement>(null);
-  const refSearch = useRef<HTMLButtonElement>(null);
   const refLogin = useRef<HTMLButtonElement>(null);
   const refHelp = useRef<HTMLButtonElement>(null);
 
@@ -31,7 +29,6 @@ const Header = () => {
     const dropDown = document.querySelector(".container-dropdown");
     if (
       refCity.current?.contains(e.target as Node) ||
-      refSearch.current?.contains(e.target as Node) ||
       refLogin.current?.contains(e.target as Node) ||
       refHelp.current?.contains(e.target as Node) ||
       dropDown?.contains(e.target as Node)
@@ -40,7 +37,6 @@ const Header = () => {
     }
 
     setCityBool(false);
-    setSearcheBool(false);
     setLoginBool(false);
     setHelpBool(false);
   };
@@ -49,7 +45,6 @@ const Header = () => {
 
   const switchBool = (whitch: string) => {
     if (cityBool == true) setCityBool(false);
-    if (searcheBool == true) setSearcheBool(false);
     if (loginBool == true) setLoginBool(false);
     if (helpBool == true) setHelpBool(false);
 
@@ -58,11 +53,6 @@ const Header = () => {
         cityBool == false ? setCityBool(true) : setCityBool(false);
 
         calc_position(document.querySelector(".city-header"));
-        break;
-      case "search":
-        searcheBool == false ? setSearcheBool(true) : setSearcheBool(false);
-
-        calc_position(refSearch.current);
         break;
       case "login":
         loginBool == false ? setLoginBool(true) : setLoginBool(false);
@@ -94,7 +84,7 @@ const Header = () => {
           if (rect.left + rect.width > window.innerWidth)
             (html as HTMLElement).style.left = `${window.innerWidth - rect.width / 2 - 16}px`;
 
-          (html as HTMLElement).style.top = "66px";
+          (html as HTMLElement).style.top = "72px";
 
           const new_rect = html.getBoundingClientRect();
           (icon as HTMLElement).style.left = `${result - new_rect.left - 12}px`;
@@ -116,34 +106,28 @@ const Header = () => {
               />
             </div>
           </a>
-          <button className="header-buttons" onClick={() => switchBool("city")} ref={refCity}>
+          <button className="header-buttons-city" onClick={() => switchBool("city")} ref={refCity}>
             <div className="city-header">
-              <div className="icon-point">
-                <IconPointMap />
-              </div>
-              <p>São Paulo</p>
+              <IconPointMap />
+              <span>São Paulo</span>
+              <IconArrowDownGradient />
             </div>
           </button>
           {cityBool && <DropdownCity left={left} />}
+          <NavHeader />
           <div className="search-and-login">
-            <button className="header-buttons" onClick={() => switchBool("search")} ref={refSearch}>
-              <div className="icons-wrapper">
-                <IconSearch />
-              </div>
-            </button>
-            {searcheBool && <DropdownSearch left={left} />}
+            <div className="header-input-search">
+              <input type="text" name="search" value={search} onChange={(e) => setSearch(e.target.value)} />
+              <IconSearch />
+              {search && <IconCloseX setState={() => setSearch("")} />}
+            </div>
             <div className="wrapper-login">
-              <button className="header-buttons" onClick={() => switchBool("login")} ref={refLogin}>
-                <div className="login">
-                  <div className="icons-wrapper">
-                    <IconPersonCircle />
-                  </div>
-                  <p>Entre ou Cadastra-se</p>
-                </div>
+              <button className="header-buttons-login" onClick={() => switchBool("login")} ref={refLogin}>
+                Entrar
               </button>
               {loginBool && <DropdownLoginCreate left={left} />}
             </div>
-            <button className="header-buttons" onClick={() => switchBool("help")} ref={refHelp}>
+            <button className="header-buttons-help" onClick={() => switchBool("help")} ref={refHelp}>
               <div className="icons-wrapper">
                 <IconHelp />
               </div>
@@ -152,7 +136,6 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <NavHeader />
     </header>
   );
 };

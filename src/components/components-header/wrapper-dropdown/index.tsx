@@ -3,13 +3,14 @@ import "./styles.scss";
 
 type WrapperDropdownProps = {
   left: number;
+  container_help?: boolean;
   children: ReactNode;
 };
 
-const WrapperDropdown = ({ left, children }: WrapperDropdownProps) => {
+const WrapperDropdown = ({ left, container_help = false, children }: WrapperDropdownProps) => {
   return (
     <div className="container-dropdown" data-testid="dropdown-component" style={{ left: left }}>
-      <div className="dropdown">
+      <div className={`dropdown${container_help ? " container-help" : ""}`}>
         {children}
         <span className="icon-arrow">
           <svg

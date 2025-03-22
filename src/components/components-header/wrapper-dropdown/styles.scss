@@ -10,6 +10,10 @@
     padding: 32px;
     background-color: rgb(33, 38, 45);
 
+    &.container-help {
+      padding: 24px 22px 24px 26px;
+    }
+
     .icon-arrow {
       position: absolute;
       top: -16px;

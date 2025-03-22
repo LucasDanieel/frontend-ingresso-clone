@@ -2,6 +2,7 @@ export { default as IconHelp } from "./header/icon-help";
 export { default as IconPersonCircle } from "./header/icon-person-circle";
 export { default as IconPointMap } from "./header/icon-point-map";
 export { default as IconSearch } from "./header/icon-search";
+export { default as IconArrowDownGradient } from "./header/icon-arrow-down-gradient";
 export { default as IconClockArrow } from "./dropdown-city/icon-clock-arrow";
 export { default as IconCursor } from "./dropdown-city/icon-cursor";
 export { default as IconArrowDown } from "./dropdown-city/icon-arrow-down";

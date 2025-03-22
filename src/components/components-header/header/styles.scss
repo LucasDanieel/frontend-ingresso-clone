@@ -11,17 +11,18 @@
 
     .header-elements {
       display: flex;
-      height: 64px;
+      height: 72px;
       max-width: 1440px;
-      margin: auto;
       align-items: center;
+      margin: 0 auto;
+      padding-left: 16px;
+      box-sizing: border-box;
 
       .icon-ingresso {
-        margin-left: 1px;
-        margin-right: 58px;
+        margin-right: 48px;
 
         .logo-header {
-          width: 180px;
+          width: 128px;
           height: 36px;
 
           img {
@@ -31,77 +32,119 @@
         }
       }
 
-      .header-buttons {
+      .header-buttons-city {
         border: 0;
-        margin: 0;
         padding: 0;
-        height: 48px;
         color: white;
-        background-color: transparent;
         cursor: pointer;
-        transition: all 100ms;
+        padding: 8px 17px;
+        border-radius: 18px;
+        background-color: rgb(32 35 128);
+
+        &:hover {
+          background-color: rgb(35, 46, 149);
+        }
 
         .city-header {
           display: flex;
-          gap: 7px;
+          gap: 9px;
           align-items: center;
-          margin-left: 28px;
 
-          .icon-point {
-            width: 26px;
-            height: 27px;
+          svg {
+            width: 14px;
+            height: 14px;
           }
 
-          p {
+          svg:last-child {
+            width: 16px;
+            height: 16px;
+            margin-left: 2px;
+            padding-right: 3px;
+          }
+
+          span {
             font-family: Verdana, Geneva, Tahoma, sans-serif;
-            font-size: 15px;
           }
-        }
-
-        &:hover {
-          color: #9ca4bf;
         }
       }
 
       .search-and-login {
         display: flex;
-        height: 49px;
-        gap: 27px;
+        gap: 56px;
         align-items: center;
         margin-left: auto;
-        margin-right: 16px;
+        margin-right: 18px;
 
-        button {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          min-width: 36px;
+        .header-input-search {
+          position: relative;
 
-          .icons-wrapper {
-            width: 28px;
+          input {
+            width: 196px;
             height: 28px;
+            color: white;
+            border-width: 1px;
+            border-color: white;
+            border-radius: 18px;
+            outline: none;
+            padding-left: 40px;
+            background-color: transparent;
+          }
 
-            svg {
-              width: 100%;
-              height: 100%;
-            }
+          svg {
+            position: absolute;
+            height: 32px;
+            cursor: pointer;
+            z-index: 5;
+          }
+
+          .bi-search {
+            left: 14px;
+            z-index: 5;
+          }
+
+          .bi-x-lg {
+            width: 15px;
+            right: 18px;
           }
         }
 
         .wrapper-login {
-          .login {
-            display: flex;
-            height: 48px;
-            align-items: center;
-            gap: 14px;
+          .header-buttons-login {
+            border: 0;
+            padding: 0;
+            font-size: 12px;
+            letter-spacing: 0.2px;
+            color: black;
+            cursor: pointer;
+            padding: 9px 21px;
+            border-radius: 18px;
+            background: linear-gradient(to right, #ffce00, #ff8000);
+            -webkit-text-stroke: 0.4px;
+          }
+        }
 
-            p {
-              width: 96px;
-              font-size: 13px;
-              line-height: 1.1;
-              text-align: left;
-              white-space: pre-wrap;
-              font-family: Verdana, Geneva, Tahoma, sans-serif;
+        .header-buttons-help {
+          border: 0;
+          padding: 0;
+          height: 48px;
+          color: white;
+          background-color: transparent;
+          cursor: pointer;
+          transition: all 100ms;
+
+          &:hover {
+            color: #9ca4bf;
+          }
+
+          .icons-wrapper {
+            width: 19px;
+            height: 18px;
+            padding-left: 2px;
+            padding-right: 1px;
+
+            svg {
+              width: 100%;
+              height: 100%;
             }
           }
         }
