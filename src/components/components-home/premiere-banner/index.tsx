@@ -18,10 +18,12 @@ const PremiereBanner = ({ film }: premiereBannerProps) => {
       <img src={film.img} alt="Imagem do filme" />
       <a className="container-description" href="">
         <div className="wrapper-description">
-          <div className="wrapper-tags">
-            {film.premiere && <span>ESTREIA {film.premiere}</span>}
-            {film.pre_venda && <span>PRÉ-VENDA</span>}
-          </div>
+          {film.premiere && (
+            <div className="wrapper-tags">
+              <span>ESTREIA {film.premiere}</span>
+              <span>PRÉ-VENDA</span>
+            </div>
+          )}
           <div className="wrapper-age">
             <div className={`age BG${film.age}`}>{film.age}</div>
             <span>{film.type}</span>

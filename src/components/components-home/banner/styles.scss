@@ -6,17 +6,18 @@
 
   h1 {
     margin: 0;
-    margin-top: 14px;
+    margin-top: 10px;
     font-size: 36px;
   }
 
   .description {
     max-width: 600px;
-    margin-top: 15px;
+    margin-top: 7px;
+    margin-bottom: 80px;
     line-height: 1.5;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     text-overflow: ellipsis;
     overflow: hidden;
   }

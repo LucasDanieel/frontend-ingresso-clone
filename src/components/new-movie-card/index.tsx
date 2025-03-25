@@ -5,18 +5,19 @@ const NewMovieCard = ({ film }: { film: FilmsProps }) => {
   return (
     <div className="wrapper-new-movie">
       <a href="">
-        <div className="new-movie">
+        <div className={`new-movie ${film.pre_venda ? "pre-venda" : ""}`}>
           <div className="new-movie-img">
             <img src={film.img} alt="" />
-            {/* {film.pre_venda && (
-              <div className="pre-venda-destaque">
-                <span>PRÉ-VENDA</span>
-              </div>
-            )} */}
           </div>
           <div className="wrapper-info-movie">
             <div className="name-movie">
-              <span>CINEMA</span>
+              {film.pre_venda ? (
+                <div className="pre-venda-destaque">
+                  <p>CINEMA | PRÉ-VENDA</p>
+                </div>
+              ) : (
+                <p>CINEMA</p>
+              )}
               <h3>{film.name}</h3>
             </div>
             <div className="age-movie">

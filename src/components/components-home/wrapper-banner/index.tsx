@@ -4,30 +4,29 @@ import PremiereBanner from "../premiere-banner";
 
 const WrapperBanner = () => {
   const film_detail = {
-    name: "Coringa: Delírio A Dois",
-    age: 16,
-    type: "Drma, Suspense",
-    description: `Após os eventos do primeiro filme, Arthur Fleck está internado em um hospital psiquiátrico. Ele é visitado por uma psiquiatra, a Dra. Harleen Quinzel, que fica fascinada por sua história. Juntos, eles exploram a mente de Arthur e os eventos que o levaram a se tornar o Coringa.`,
-    img: "https://ingresso-a.akamaihd.net/prd/img/movie/coringa-delirio-a-dois/759db388-74d0-406e-a533-9a66704e0a70.webp",
+    name: "Branca De Neve",
+    age: 10,
+    type: "Aventura, Fantasia",
+    description: `No mais novo live-action Branca de Neve, uma rainha má e bela resolve, por inveja e vaidade, mandar matar sua enteada, BRANCA DE NEVE, a mais linda de todas. Mas o carrasco que deveria assassiná-la a deixa partir e, durante sua fuga pela floresta, encontra a cabana dos sete anões, que trabalham em uma mina e passam a protegê-la. Algum tempo depois, quando descobre que Branca de Neve, continua viva, a Bruxa Má, disfarça-se e vai atrás da moça com uma maçã envenenada, que faz com que Branca de Neve, caia em um sono profundo por toda a eternidade.`,
+    img: "https://ingresso-a.akamaihd.net/prd/img/movie/branca-de-neve/8ee3907a-3017-4135-b02d-63349e825229.webp",
   };
 
   const premiere_films = [
     {
-      name: "A Forja – O Poder Da Transformação",
-      age: "L",
+      name: "Vitória",
+      age: "16",
       type: "Drama",
-      description: `Um ano depois de encerrar o ensino médio, o jovem Isaías Wright não tem planos para o futuro e é desafiado por sua mãe solo e um empresário de sucesso a começar a traçar um rumo melhor para sua vida. Ele passa a
-      ser discipulado pelo seu novo mentor, conta com orações de sua mãe e de uma guerreira de orações, Dona Clara, e começa a descobrir o propósito de Deus para sua vida.`,
-      img: "https://ingresso-a.akamaihd.net/prd/img/movie/a-forja-o-poder-da-transformacao/66030644-61fd-4939-83a1-04e0115ffe19.webp",
-      premiere: "15/11",
+      description: `Inspirado em uma incrível história real, “Vitória”, interpretada pela indicada por Oscar Fernanda Montenegro, conta a emocionante trajetória de uma aposentada que desmontou uma perigosa quadrilha de traficantes e policiais a partir de filmagens feitas da janela de seu apartamento no Rio de Janeiro. Com a ajuda de um amigo jornalista, ela enfrenta os riscos e perigos de uma situação inimaginável. Um filme sobre a coragem, a força e a resiliência de uma mulher.`,
+      img: "https://ingresso-a.akamaihd.net/prd/img/movie/vitoria/89c1acd9-d6cd-434e-858c-4e6b49a77dcd.webp",
+      premiere: null,
       pre_venda: false,
     },
     {
-      name: "Transformers: O Início",
+      name: "Capitão América: Admirável Mundo Novo ",
       age: 10,
       type: "Ação, Animação, Aventura",
-      description: `O longa conta a história de origem de Optimus Prime e Megatron, os maiores rivais da franquia, mas que um dia foram amigos tão ligados quanto irmãos e que mudaram o destino de Cybertron para sempre.`,
-      img: "https://ingresso-a.akamaihd.net/prd/img/movie/transformers-o-inicio/0e9e5fe0-18a0-4f12-a19e-8ddd1a52c751.webp",
+      description: `Em CAPITÃO AMÉRICA: ADMIRÁVEL MUNDO NOVO, após a eleição de Thaddeus Ross como presidente dos Estados Unidos, Sam Wilson se encontra no meio de um incidente internacional e deve trabalhar para deter os verdadeiros cérebros por trás dele.`,
+      img: "https://ingresso-a.akamaihd.net/prd/img/movie/capitao-america-admiravel-mundo-novo/aca396e0-35ae-4e8f-b00a-2c88c1478c7e.webp",
       premiere: null,
       pre_venda: false,
     },

@@ -157,7 +157,7 @@ function Home() {
       age: 16,
       img: "https://ingresso-a.akamaihd.net/prd/img/movie/operacao-natal/65cb5b4b-ea6c-49a0-bcc1-fc5b6e5e5831.webp",
       premiere: null,
-      pre_venda: false,
+      pre_venda: true,
     },
     {
       name: "A Arca de Noé",
