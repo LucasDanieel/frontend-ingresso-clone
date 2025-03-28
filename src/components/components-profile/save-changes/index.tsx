@@ -1,5 +1,6 @@
 import { ChangeEvent, Dispatch, RefObject, SetStateAction, useContext, useState } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 import "./styles.scss";
 
 import SimpleInput from "../../components-form/simple-input";
@@ -73,7 +74,7 @@ const SaveChanges = ({
       address: {
         cep: form.CEP.replace(/\D/g, ""),
         street: form.street,
-        houseNumber: Number(form.number),
+        houseNumber: form.number,
         complement: form.complement,
         neighborhood: form.neighborhood,
         state: form.state,
@@ -88,6 +89,7 @@ const SaveChanges = ({
       .then((resp) => {
         if (resp.data) {
           setUser({ email: form.email, name: form.name });
+          Cookies.set("info_profile", JSON.stringify({ name: form.name, email: form.email }), { expires: 10 });
           setProfileUpdated(true);
         }
       })

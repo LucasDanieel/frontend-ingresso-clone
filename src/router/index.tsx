@@ -123,24 +123,6 @@ const Layout = ({ children }: PropsWithChildren) => {
 };
 
 function Router() {
-  let lastScroll: number = 0;
-
-  useEffect(() => {
-    window.addEventListener("scroll", activeScroll);
-
-    return () => window.removeEventListener("scroll", activeScroll);
-  }, []);
-
-  const activeScroll = () => {
-    const currentScroll = window.scrollY || document.documentElement.scrollTop;
-    if (currentScroll > lastScroll && window.scrollY > 150) {
-      document.querySelector(".nav-header")?.classList.add("hidden");
-    } else {
-      document.querySelector(".nav-header")?.classList.remove("hidden");
-    }
-    lastScroll = currentScroll;
-  };
-
   return (
     <UserProvider>
       <BrowserRouter>

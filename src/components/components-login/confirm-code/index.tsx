@@ -40,6 +40,9 @@ const ConfirmCode = ({
       .post(`/user/verify-code`, { email: maskedUser.email, code })
       .then((resp) => {
         Cookies.set("token", resp.data, { expires: 10 });
+        Cookies.set("info_profile", JSON.stringify({ name: maskedUser.name, email: maskedUser.email }), {
+          expires: 10,
+        });
         navigate("/minha-conta/meus-pedidos");
       })
       .catch(() => {

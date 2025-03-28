@@ -35,8 +35,8 @@ const WrapperBanner = () => {
   return (
     <div className="wrapper-banner">
       <Banner film={film_detail} />
-      {premiere_films.map((film) => (
-        <PremiereBanner film={film} />
+      {premiere_films.map((film, idx) => (
+        <PremiereBanner film={film} key={idx} />
       ))}
     </div>
   );

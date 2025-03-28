@@ -11,6 +11,7 @@ import { UserContext } from "../../providers/user-provider";
 import { UserContextType } from "../../@types/user";
 
 export type maskedUser = {
+  name: string;
   email: string;
   maskedEmail: string;
 };
@@ -19,7 +20,7 @@ const Login = () => {
   const [isLoading, setLoading] = useState<boolean>(false);
   const [wrongCode, setWrongCode] = useState<boolean>(false);
   const [confirmCode, setConfirmCode] = useState<boolean>(false);
-  const [maskedUser, setMaskedUser] = useState<maskedUser>({ email: "", maskedEmail: "" });
+  const [maskedUser, setMaskedUser] = useState<maskedUser>({ name: "", email: "", maskedEmail: "" });
   const [confirmedAccount, setConfirmedAccount] = useState<boolean>(false);
 
   const { token_confirmacao_email } = useParams();
@@ -51,7 +52,7 @@ const Login = () => {
   }, [token_confirmacao_email]);
 
   const onBackToLogin = () => {
-    setMaskedUser({ email: "", maskedEmail: "" });
+    setMaskedUser({ name: "", email: "", maskedEmail: "" });
     setWrongCode(false);
     setLoading(false);
     setConfirmCode(false);

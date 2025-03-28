@@ -27,7 +27,7 @@ export type UserDTO = {
   address: {
     cep?: string;
     street?: string;
-    houseNumber?: number;
+    houseNumber?: string;
     complement?: string;
     neighborhood?: string;
     state?: string;

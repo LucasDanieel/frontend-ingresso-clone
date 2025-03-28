@@ -2,8 +2,8 @@ const IconArrowDownGradient = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 15 15">
     <defs>
       <linearGradient id="chevron-gradient">
-        <stop offset="0%" stop-color="#ffce00" />
-        <stop offset="100%" stop-color="#ff8000" />
+        <stop offset="0%" stopColor="#ffce00" />
+        <stop offset="100%" stopColor="#ff8000" />
       </linearGradient>
     </defs>
     <path

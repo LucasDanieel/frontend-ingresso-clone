@@ -17,7 +17,7 @@ const Banner = ({ film }: bannerProps) => {
             <span>{film.type}</span>
           </div>
           <h1>{film.name}</h1>
-          <span className="description">{film.description}</span>
+          {/* <span className="description">{film.description}</span> */}
         </div>
       </a>
       <div className="wrapper-ticket">

@@ -8,19 +8,24 @@ export const UserContext = createContext<UserContextType>({} as UserContextType)
 const UserProvider = ({ children }: PropsWithChildren) => {
   const [user, setUser] = useState<User | null>(null);
   const token = Cookies.get("token");
+  const info = Cookies.get("info_profile");
 
   useEffect(() => {
     if (token) {
-      axios
-        .get<User>(`/user/auth?token=${token}`)
-        .then((resp) => {
-          setUser(resp.data);
-        })
-        .catch((err) => {
-          if (err.response.data) {
-            Cookies.remove("token");
-          }
-        });
+      if (info) setUser(JSON.parse(info));
+      else {
+        axios
+          .get(`/user/auth?token=${token}`)
+          .then((resp) => {
+            const { name, email } = resp.data;
+            Cookies.set("info_profile", JSON.stringify({ name, email }));
+            setUser({ name, email });
+          })
+          .catch((err) => console.error(err));
+      }
+    } else {
+      Cookies.remove("token");
+      Cookies.remove("info_profile");
     }
   }, [token]);
 

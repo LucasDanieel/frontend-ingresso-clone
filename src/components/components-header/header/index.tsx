@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import "./styles.scss";
 
 import NavHeader from "../nav-header";
@@ -6,6 +6,9 @@ import DropdownCity from "../dropdown-city";
 import DropdownLoginCreate from "../dropdown-login-create";
 import DropdownHelp from "../dropdown-help";
 import { IconPointMap, IconSearch, IconHelp, IconArrowDownGradient, IconCloseX } from "../../../icons";
+import { UserContextType } from "../../../@types/user";
+import { UserContext } from "../../../providers/user-provider";
+import DropdownMenuProfile from "../dropdown-menu-profile";
 
 const Header = () => {
   const [cityBool, setCityBool] = useState<boolean>(false);
@@ -16,6 +19,8 @@ const Header = () => {
   const refCity = useRef<HTMLButtonElement>(null);
   const refLogin = useRef<HTMLButtonElement>(null);
   const refHelp = useRef<HTMLButtonElement>(null);
+
+  const { user } = useContext(UserContext) as UserContextType;
 
   useEffect(() => {
     document.addEventListener("click", clickDocument);
@@ -97,7 +102,7 @@ const Header = () => {
     <header className="container-header">
       <div className="primary-header">
         <div className="header-elements">
-          <a className="icon-ingresso" href="http://localhost:5173/">
+          <a className="icon-ingresso" href="/">
             <div className="logo-header">
               <img
                 src="https://ingresso-a.akamaihd.net/catalog/img/ingresso-logo-v1-desktop-final.svg"
@@ -106,8 +111,8 @@ const Header = () => {
               />
             </div>
           </a>
-          <button className="header-buttons-city" onClick={() => switchBool("city")} ref={refCity}>
-            <div className="city-header">
+          <button className="header-button-city" onClick={() => switchBool("city")} ref={refCity}>
+            <div className="city-header" data-testid="div-city-header">
               <IconPointMap />
               <span>São Paulo</span>
               <IconArrowDownGradient />
@@ -116,18 +121,43 @@ const Header = () => {
           {cityBool && <DropdownCity left={left} />}
           <NavHeader />
           <div className="search-and-login">
-            <div className="header-input-search">
+            <div className="header-input-search" data-testid="div-header-input-search">
               <input type="text" name="search" value={search} onChange={(e) => setSearch(e.target.value)} />
               <IconSearch />
               {search && <IconCloseX setState={() => setSearch("")} />}
             </div>
             <div className="wrapper-login">
-              <button className="header-buttons-login" onClick={() => switchBool("login")} ref={refLogin}>
-                Entrar
-              </button>
-              {loginBool && <DropdownLoginCreate left={left} />}
+              {user ? (
+                <>
+                  <button
+                    className="header-button-user-profile"
+                    onClick={() => switchBool("login")}
+                    ref={refLogin}
+                    data-testid="button-menu-profile"
+                  >
+                    <div className="user-profile-first-letter">{user.name[0]}</div>
+                    <div className="user-profile-menu">
+                      <p>Olá, {user.name.split(" ")[0]}</p>
+                      <span>Meus Pedidos</span>
+                    </div>
+                  </button>
+                  {loginBool && <DropdownMenuProfile left={left} user={user} />}
+                </>
+              ) : (
+                <>
+                  <button
+                    className="header-button-login"
+                    onClick={() => switchBool("login")}
+                    ref={refLogin}
+                    data-testid="button-login"
+                  >
+                    Entrar
+                  </button>
+                  {loginBool && <DropdownLoginCreate left={left} />}
+                </>
+              )}
             </div>
-            <button className="header-buttons-help" onClick={() => switchBool("help")} ref={refHelp}>
+            <button className="header-button-help" onClick={() => switchBool("help")} ref={refHelp}>
               <div className="icons-wrapper">
                 <IconHelp />
               </div>

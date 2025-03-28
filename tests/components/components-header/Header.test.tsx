@@ -1,7 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import Header from "../../../src/components/components-header/header";
+import { UserContext } from "../../../src/providers/user-provider";
 
 describe("Header", () => {
   const renderHeaderComponents = () => {
@@ -14,20 +15,37 @@ describe("Header", () => {
     return {
       logoIngresso: screen.getByTestId("logo-ingresso"),
       cityButton: screen.getByTestId("icon-location"),
-      searchButton: screen.getByTestId("icon-search"),
-      loginCreateButton: screen.getByTestId("icon-login"),
+      loginCreateButton: screen.getByTestId("button-login"),
       helpButton: screen.getByTestId("icon-help"),
       container,
     };
   };
 
-  it("Deve renderizar o logo ingresso", () => {
-    const { logoIngresso } = renderHeaderComponents();
+  it("Deve renderizar todos os componentes de 'Header'", () => {
+    const { logoIngresso, loginCreateButton, helpButton } = renderHeaderComponents();
 
     expect(logoIngresso).toHaveAttribute(
       "src",
       "https://ingresso-a.akamaihd.net/catalog/img/ingresso-logo-v1-desktop-final.svg"
     );
+    expect(screen.getByTestId("div-city-header")).toBeInTheDocument();
+    expect(screen.getByTestId("div-header-input-search")).toBeInTheDocument();
+    expect(loginCreateButton).toBeInTheDocument();
+    expect(helpButton).toBeInTheDocument();
+  });
+
+  it("Deve renderizar o componente 'menu profile' de 'Header'", () => {
+    render(
+      <MemoryRouter>
+        <UserContext.Provider value={{ user: { name: "teste teste", email: "teste@gmail.com" }, setUser: vi.fn() }}>
+          <Header />
+        </UserContext.Provider>
+      </MemoryRouter>
+    );
+
+    expect(screen.getByTestId("button-menu-profile")).toBeInTheDocument();
+    expect(screen.getByText("Olá, teste")).toBeInTheDocument();
+    expect(screen.getByText("Meus Pedidos")).toBeInTheDocument();
   });
 
   it("Deve renderizar o dropdown de 'city' ao clicar no botão e desaparecer ao clicar novamente", async () => {
@@ -41,17 +59,6 @@ describe("Header", () => {
     expect(screen.queryByTestId("city-component")).not.toBeInTheDocument();
   });
 
-  it("Deve renderizar o dropdown de 'search' ao clicar no botão e desaparecer ao clicar novamente", async () => {
-    const { searchButton } = renderHeaderComponents();
-    const user = userEvent.setup();
-
-    await user.click(searchButton);
-    expect(screen.getByTestId("search-component")).toBeInTheDocument();
-
-    await user.click(searchButton);
-    expect(screen.queryByTestId("search-component")).not.toBeInTheDocument();
-  });
-
   it("Deve renderizar o dropdown de 'login/create' ao clicar no botão e desaparecer ao clicar novamente", async () => {
     const { loginCreateButton } = renderHeaderComponents();
     const user = userEvent.setup();
@@ -61,6 +68,25 @@ describe("Header", () => {
 
     await user.click(loginCreateButton);
     expect(screen.queryByTestId("login-create-component")).not.toBeInTheDocument();
+  });
+
+  it("Deve renderizar o dropdown de 'menu profile' ao clicar no botão e desaparecer ao clicar novamente", async () => {
+    render(
+      <MemoryRouter>
+        <UserContext.Provider value={{ user: { name: "teste teste", email: "teste@gmail.com" }, setUser: vi.fn() }}>
+          <Header />
+        </UserContext.Provider>
+      </MemoryRouter>
+    );
+
+    const button = screen.getByTestId("button-menu-profile");
+    const user = userEvent.setup();
+
+    await user.click(button);
+    expect(screen.getByTestId("menu-profile-component")).toBeInTheDocument();
+
+    await user.click(button);
+    expect(screen.queryByTestId("menu-profile-component")).not.toBeInTheDocument();
   });
 
   it("Deve renderizar o dropdown de 'help' ao clicar no botão e desaparecer ao clicar novamente", async () => {
@@ -75,18 +101,14 @@ describe("Header", () => {
   });
 
   it("Deve trocar os componentes do dropdown e fechar ao clicar fora dos componentes", async () => {
-    const { cityButton, searchButton, loginCreateButton, helpButton, container } = renderHeaderComponents();
+    const { cityButton, loginCreateButton, helpButton, container } = renderHeaderComponents();
     const user = userEvent.setup();
 
     await user.click(cityButton);
     expect(screen.getByTestId("city-component")).toBeInTheDocument();
 
-    await user.click(searchButton);
-    expect(screen.queryByTestId("city-component")).not.toBeInTheDocument();
-    expect(screen.getByTestId("search-component")).toBeInTheDocument();
-
     await user.click(loginCreateButton);
-    expect(screen.queryByTestId("search-component")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("city-component")).not.toBeInTheDocument();
     expect(screen.getByTestId("login-create-component")).toBeInTheDocument();
 
     await user.click(helpButton);

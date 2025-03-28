@@ -51,10 +51,6 @@ const Buttons = ({
       date = new Date(2024, Number(form.month) - 1, Number(form.day));
     }
 
-    var num;
-    if (form.number == "") num = undefined;
-    else num = Number(form.number);
-
     const user: UserDTO = {
       name: form.name,
       cpf: form.CPF.replace(/\D/g, ""),
@@ -66,7 +62,7 @@ const Buttons = ({
       address: {
         cep: form.CEP.replace(/\D/g, ""),
         street: form.street,
-        houseNumber: num,
+        houseNumber: form.number,
         complement: form.complement,
         neighborhood: form.neighborhood,
         state: form.state,

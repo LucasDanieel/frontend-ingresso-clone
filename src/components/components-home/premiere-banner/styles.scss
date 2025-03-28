@@ -2,7 +2,7 @@
   height: 150px;
   position: relative;
   border-radius: 8px;
-  
+
   .wrapper-tags {
     display: flex;
     height: 22px;
@@ -21,6 +21,10 @@
     }
   }
 
+  .wrapper-description {
+    margin-bottom: 12px;
+  }
+
   h2 {
     margin: 0;
     margin-top: 10px;
@@ -35,7 +39,6 @@
   .description-premiere-films {
     margin-top: 3px;
     margin-right: 18px;
-    margin-bottom: 16px;
     font-size: 15px;
     display: -webkit-box;
     -webkit-box-orient: vertical;

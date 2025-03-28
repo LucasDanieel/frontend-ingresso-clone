@@ -56,7 +56,7 @@ describe("LoginWithGoogle", () => {
     vi.stubGlobal("location", { href: `${window.location.href}#access_token=teste` });
     mockedAxios.get
       .mockResolvedValueOnce({ data: { verified_email: true, email: "teste@gmail.com" } })
-      .mockResolvedValueOnce({ data: "token-backend" });
+      .mockResolvedValueOnce({ data: { name: "teste", email: "teste@gmail.com", token: "token-backend" } });
 
     render(
       <MemoryRouter>
@@ -66,7 +66,14 @@ describe("LoginWithGoogle", () => {
 
     await waitFor(() => {
       expect(Cookies.set).toHaveBeenCalledWith("access_token", "teste");
-      expect(Cookies.set).toHaveBeenCalledWith("token", "token-backend");
+      expect(Cookies.set).toHaveBeenCalledWith("token", "token-backend", { expires: 10 });
+      expect(Cookies.set).toHaveBeenCalledWith(
+        "info_profile",
+        JSON.stringify({ name: "teste", email: "teste@gmail.com" }),
+        {
+          expires: 10,
+        }
+      );
       expect(mockedAxios.get).toHaveBeenCalledTimes(2);
       expect(mockNavigate).toHaveBeenCalledWith("/minha-conta/edicao-de-cadastro");
     });

@@ -1,8 +1,12 @@
 import { render, screen } from "@testing-library/react";
-import SaveChanges from "../../../src/components/components-profile/save-changes";
 import userEvent from "@testing-library/user-event";
 import axios from "axios";
+import Cookies from "js-cookie";
+
+import SaveChanges from "../../../src/components/components-profile/save-changes";
 import { UserContext } from "../../../src/providers/user-provider";
+
+vi.mock("js-cookie");
 
 vi.mock("axios");
 vi.mock("react-google-recaptcha", () => ({
@@ -84,6 +88,13 @@ describe("SaveChanges", () => {
     await userEvent.click(screen.getByRole("button", { name: "Salvar" }));
 
     expect(mockSetUser).toHaveBeenCalledWith({ name: "Teste", email: "teste@email.com" });
+    expect(Cookies.set).toHaveBeenCalledWith(
+      "info_profile",
+      JSON.stringify({ name: "Teste", email: "teste@email.com" }),
+      {
+        expires: 10,
+      }
+    );
     expect(mockSetProfileUpdated).toHaveBeenCalledWith(true);
   });
 

@@ -1,15 +1,17 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import ConfirmCode from "../../../src/components/components-login/confirm-code";
 import userEvent from "@testing-library/user-event";
 import axios from "axios";
+import Cookies from "js-cookie";
 import { Mocked } from "vitest";
 
+vi.mock("js-cookie");
 vi.mock("axios");
-
 const mokedAxios = axios as Mocked<typeof axios>;
 
 describe("ConfirmCode", () => {
   const maskedUser = {
+    name: "teste",
     email: "teste@gmail.com",
     maskedEmail: "te***@gm***.com",
   };
@@ -46,7 +48,8 @@ describe("ConfirmCode", () => {
   });
 
   it("Deve confirmar o código quando clicar no botão 'Continuar'", async () => {
-    mokedAxios.post.mockResolvedValueOnce({ data: {} });
+    const token = "fake-token";
+    mokedAxios.post.mockResolvedValueOnce({ data: token });
 
     const inputCode0 = screen.getByTestId("input-code-0");
     const button = screen.getByRole("button", { name: "Continuar" });
@@ -55,6 +58,14 @@ describe("ConfirmCode", () => {
     await userEvent.click(button);
 
     expect(mockSetLoading).toHaveBeenCalled();
+    expect(Cookies.set).toHaveBeenCalledWith("token", token, { expires: 10 });
+    expect(Cookies.set).toHaveBeenCalledWith(
+      "info_profile",
+      JSON.stringify({ name: maskedUser.name, email: maskedUser.email }),
+      {
+        expires: 10,
+      }
+    );
     expect(mockNavigate).toHaveBeenCalled();
   });
 

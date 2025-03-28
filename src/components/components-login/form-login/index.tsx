@@ -69,7 +69,8 @@ const FormLogin = ({ wrongCode, setLoading, setMaskedUser, setConfirmCode }: For
     axios
       .post(`/user/login`, userLoginDTO)
       .then((resp) => {
-        setMaskedUser({ email: resp.data, maskedEmail: maskEmail(resp.data) });
+        const { name, email } = resp.data;
+        setMaskedUser({ name: name, email: email, maskedEmail: maskEmail(email) });
         setWrongLogin(false);
         setConfirmCode(true);
       })

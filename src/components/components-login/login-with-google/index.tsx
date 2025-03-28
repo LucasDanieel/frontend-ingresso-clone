@@ -1,8 +1,8 @@
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
 import "./styles.scss";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 const LoginWithGoogle = () => {
   const navigate = useNavigate();
@@ -27,7 +27,11 @@ const LoginWithGoogle = () => {
       axios
         .get(`/user/login-via-google?email=${googleData.data.email}`)
         .then((resp) => {
-          Cookies.set("token", resp.data);
+          const { token, name, email} = resp.data;
+          Cookies.set("token", token, { expires: 10 });
+          Cookies.set("info_profile", JSON.stringify({ name: name, email: email }), {
+            expires: 10,
+          });
           navigate("/minha-conta/edicao-de-cadastro");
         })
         .catch((err) => {

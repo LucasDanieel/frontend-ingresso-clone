@@ -1,0 +1,45 @@
+.container-menu-profile {
+  width: 500px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  h3 {
+    margin: 0;
+    margin-top: 1px;
+    font-size: 18px;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    padding: 0;
+    margin-top: 28px;
+    margin-bottom: 35px;
+    list-style: none;
+
+    li {
+      a {
+        font-size: 18px;
+        font-weight: 500;
+        text-decoration: none;
+        color: rgb(157, 173, 253);
+        cursor: pointer;
+      }
+    }
+  }
+
+  .line-border {
+    height: 1px;
+    background-color: rgb(53, 61, 72);
+  }
+
+  p {
+    display: inline-block;
+    font-size: 18px;
+    margin-top: 33px;
+    margin-bottom: 3px;
+    font-weight: 500;
+    color: rgb(157, 173, 253);
+    cursor: pointer;
+  }
+}

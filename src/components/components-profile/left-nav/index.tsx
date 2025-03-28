@@ -1,5 +1,6 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
+import Cookies from "js-cookie";
 import "./styles.scss";
 
 import { UserContextType } from "../../../@types/user";
@@ -7,7 +8,15 @@ import { UserContext } from "../../../providers/user-provider";
 import { IconDoorOpen, IconForm, IconPersonCircle, IconTicket } from "../../../icons";
 
 const LeftNavProfile = () => {
-  const { user } = useContext(UserContext) as UserContextType;
+  const { user, setUser } = useContext(UserContext) as UserContextType;
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    setUser(null);
+    Cookies.remove("token");
+    Cookies.remove("info_profile");
+    navigate("/minha-conta");
+  };
 
   return (
     <div className="wrapper-nav-profile">
@@ -46,7 +55,7 @@ const LeftNavProfile = () => {
         </ul>
       </div>
       <div className="wrapper-logout">
-        <div className="logout">
+        <div className="logout" onClick={handleLogout} data-testid="button-logout-left-nav">
           <IconDoorOpen />
           <span>Sair</span>
         </div>

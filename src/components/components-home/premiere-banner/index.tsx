@@ -29,7 +29,7 @@ const PremiereBanner = ({ film }: premiereBannerProps) => {
             <span>{film.type}</span>
           </div>
           <h2>{film.name}</h2>
-          <span className="description-premiere-films">{film.description}</span>
+          {/* <span className="description-premiere-films">{film.description}</span> */}
         </div>
       </a>
     </div>

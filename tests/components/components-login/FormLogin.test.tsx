@@ -76,7 +76,7 @@ describe("FormLogin", () => {
   });
 
   it("Deve chamar 'mockSetMaskedUser' e 'mockSetConfirmCode' quando o clique em 'Entrar' for bem-sucedido", async () => {
-    mockedAxios.post.mockResolvedValueOnce({ data: "teste@gmail.com" });
+    mockedAxios.post.mockResolvedValueOnce({ data: { name: "teste", email: "teste@gmail.com" } });
     render(
       <BrowserRouter>
         <FormLogin
@@ -101,6 +101,7 @@ describe("FormLogin", () => {
       password: "123456",
     });
     expect(mockSetMaskedUser).toHaveBeenCalledWith({
+      name: "teste",
       email: "teste@gmail.com",
       maskedEmail: "te***@gm***.com",
     });

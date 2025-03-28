@@ -65,7 +65,7 @@ const Profile = () => {
           navigate("/minha-conta");
         });
     } else {
-      // navigate("/minha-conta");
+      navigate("/minha-conta");
     }
   }, [token]);
 
@@ -84,7 +84,7 @@ const Profile = () => {
       day: data.dateOfBirth ? new Date(data.dateOfBirth).getDate().toString() : "0",
       CEP: address.cep ? applyMask(address.cep, "_____-___", 8) : "",
       street: address.street ? address.street : "",
-      number: address.houseNumber ? address.houseNumber.toString() : "",
+      number: address.houseNumber ? address.houseNumber : "",
       complement: address.complement ? address.complement : "",
       neighborhood: address.neighborhood ? address.neighborhood : "",
       city: address.city ? address.city : "",

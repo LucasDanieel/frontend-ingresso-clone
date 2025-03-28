@@ -19,9 +19,9 @@ describe("PremiereBanner", () => {
     expect(screen.getByText("L")).toBeInTheDocument();
     expect(screen.getByText("Drama")).toBeInTheDocument();
     expect(screen.getByText("Teste")).toBeInTheDocument();
-    expect(
-      screen.getByText("Um ano depois de encerrar o ensino médio, o jovem Isaías Wright não tem planos para o futuro.")
-    ).toBeInTheDocument();
+    // expect(
+    //   screen.getByText("Um ano depois de encerrar o ensino médio, o jovem Isaías Wright não tem planos para o futuro.")
+    // ).toBeInTheDocument();
   });
 
   it("Deve exibir aviso de pré venda e data de estreia", () => {

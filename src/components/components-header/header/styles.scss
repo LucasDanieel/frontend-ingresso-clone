@@ -32,7 +32,7 @@
         }
       }
 
-      .header-buttons-city {
+      .header-button-city {
         border: 0;
         padding: 0;
         color: white;
@@ -109,7 +109,60 @@
         }
 
         .wrapper-login {
-          .header-buttons-login {
+          .header-button-user-profile {
+            border: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            cursor: pointer;
+            color: white;
+            background-color: transparent;
+
+            &:hover {
+              opacity: 0.7;
+            }
+
+            .user-profile-first-letter {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 32px;
+              height: 32px;
+              border-radius: 50%;
+              font-size: 24px;
+              font-weight: bold;
+              background-color: #ffce00;
+            }
+
+            .user-profile-menu {
+              display: flex;
+              flex-direction: column;
+              text-align: start;
+
+              p {
+                margin: 0;
+                font-size: 16px;
+                line-height: 24px;
+                letter-spacing: 0.4px;
+                background: linear-gradient(to right, #ffce00, #ff8000);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                -webkit-text-stroke: 0.3px transparent;
+                color: transparent;
+              }
+
+              span {
+                font-size: 11px;
+                font-weight: bold;
+                line-height: 16px;
+                letter-spacing: 0.5px;
+              }
+            }
+          }
+
+          .header-button-login {
             border: 0;
             padding: 0;
             font-size: 12px;
@@ -123,7 +176,7 @@
           }
         }
 
-        .header-buttons-help {
+        .header-button-help {
           border: 0;
           padding: 0;
           height: 48px;
