@@ -6,12 +6,13 @@ import Login from "../pages/login";
 import Create from "../pages/create";
 import Footer from "../components/components-footer/footer";
 import Header from "../components/components-header/header";
-import Films from "../pages/films";
+import Movies from "../pages/movies";
 import Cinemas from "../pages/cinemas";
+import Cinema from "../pages/cinema";
 import Theaters from "../pages/theaters";
 import News from "../pages/news";
 import Events from "../pages/events";
-import Film from "../pages/film";
+import Movie from "../pages/movie";
 import Profile from "../pages/profile";
 import MyOrders from "../pages/my-orders";
 import WrapperProfile from "../components/components-profile/wrapper-profile";
@@ -27,17 +28,22 @@ const routes = [
   },
   {
     path: "/filmes",
-    element: <Films />,
+    element: <Movies />,
     showHeaderFooter: true,
   },
   {
     path: "/filme/:slug",
-    element: <Film />,
+    element: <Movie />,
     showHeaderFooter: true,
   },
   {
     path: "/cinemas",
     element: <Cinemas />,
+    showHeaderFooter: true,
+  },
+  {
+    path: "/cinema/:slug",
+    element: <Cinema />,
     showHeaderFooter: true,
   },
   {

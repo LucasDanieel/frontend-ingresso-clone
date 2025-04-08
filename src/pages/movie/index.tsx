@@ -4,7 +4,7 @@ import { useContext, useEffect } from "react";
 import { UserContextType } from "../../@types/user";
 import { UserContext } from "../../providers/user-provider";
 
-const Film = () => {
+const Movie = () => {
   const { slug } = useParams();
 
   const { user } = useContext(UserContext) as UserContextType;
@@ -20,4 +20,4 @@ const Film = () => {
   );
 };
 
-export default Film;
+export default Movie;

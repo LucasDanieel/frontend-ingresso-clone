@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "./styles.scss";
 
-const Films = () => {
+const Movies = () => {
   useEffect(() => {
     document.title = "Filmes em São Paulo - Ingresso.com";
   }, []);
@@ -13,4 +13,4 @@ const Films = () => {
   );
 };
 
-export default Films;
+export default Movies;

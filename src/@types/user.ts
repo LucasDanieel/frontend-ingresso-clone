@@ -13,6 +13,19 @@ export type userCreated = {
 export type UserContextType = {
   user: User | null;
   setUser: Dispatch<SetStateAction<User | null>>;
+  cityHistory: cityHistoryType[] | null;
+  setCityHistory: Dispatch<SetStateAction<cityHistoryType[] | null>>;
+  actualCity: cityHistoryType | null;
+  setActualCity: Dispatch<SetStateAction<cityHistoryType | null>>;
+  setUpdateCityHistory: Dispatch<SetStateAction<boolean>>;
+};
+
+export type cityHistoryType = {
+  id: number;
+  name: string;
+  state: string;
+  slug: string;
+  uf: string;
 };
 
 export type UserDTO = {

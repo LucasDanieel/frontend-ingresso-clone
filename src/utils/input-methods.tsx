@@ -157,3 +157,13 @@ const resetAdrress = (
   setForm((s) => ({ ...s, city: "" }));
   setInputCEPWrong(true);
 };
+
+export const toSlug = (text: string) =>
+  text
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");

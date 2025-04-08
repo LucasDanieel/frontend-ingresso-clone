@@ -21,6 +21,26 @@ describe("Header", () => {
     };
   };
 
+  const renderHeaderValuesComponents = () => {
+    render(
+      <MemoryRouter>
+        <UserContext.Provider
+          value={{
+            user: { name: "teste teste", email: "teste@gmail.com" },
+            setUser: vi.fn(),
+            actualCity: { id: 1, name: "São Paulo", state: "São Paulo", slug: "sao-paulo", uf: "SP" },
+            cityHistory: [{ id: 1, name: "São Paulo", state: "São Paulo", slug: "sao-paulo", uf: "SP" }],
+            setActualCity: vi.fn(),
+            setCityHistory: vi.fn(),
+            setUpdateCityHistory: vi.fn(),
+          }}
+        >
+          <Header />
+        </UserContext.Provider>
+      </MemoryRouter>
+    );
+  };
+
   it("Deve renderizar todos os componentes de 'Header'", () => {
     const { logoIngresso, loginCreateButton, helpButton } = renderHeaderComponents();
 
@@ -35,17 +55,17 @@ describe("Header", () => {
   });
 
   it("Deve renderizar o componente 'menu profile' de 'Header'", () => {
-    render(
-      <MemoryRouter>
-        <UserContext.Provider value={{ user: { name: "teste teste", email: "teste@gmail.com" }, setUser: vi.fn() }}>
-          <Header />
-        </UserContext.Provider>
-      </MemoryRouter>
-    );
+    renderHeaderValuesComponents();
 
     expect(screen.getByTestId("button-menu-profile")).toBeInTheDocument();
     expect(screen.getByText("Olá, teste")).toBeInTheDocument();
     expect(screen.getByText("Meus Pedidos")).toBeInTheDocument();
+  });
+
+  it("Deve carregar a cidade atual corretamente", () => {
+    renderHeaderValuesComponents();
+
+    expect(screen.getByTestId("div-city-header")).toHaveTextContent("São Paulo");
   });
 
   it("Deve renderizar o dropdown de 'city' ao clicar no botão e desaparecer ao clicar novamente", async () => {
@@ -71,13 +91,7 @@ describe("Header", () => {
   });
 
   it("Deve renderizar o dropdown de 'menu profile' ao clicar no botão e desaparecer ao clicar novamente", async () => {
-    render(
-      <MemoryRouter>
-        <UserContext.Provider value={{ user: { name: "teste teste", email: "teste@gmail.com" }, setUser: vi.fn() }}>
-          <Header />
-        </UserContext.Provider>
-      </MemoryRouter>
-    );
+    renderHeaderValuesComponents();
 
     const button = screen.getByTestId("button-menu-profile");
     const user = userEvent.setup();

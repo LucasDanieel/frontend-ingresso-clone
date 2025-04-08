@@ -15,12 +15,13 @@ const Header = () => {
   const [loginBool, setLoginBool] = useState<boolean>(false);
   const [helpBool, setHelpBool] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
+  const [left, setLeft] = useState<number>(0);
 
   const refCity = useRef<HTMLButtonElement>(null);
   const refLogin = useRef<HTMLButtonElement>(null);
   const refHelp = useRef<HTMLButtonElement>(null);
 
-  const { user } = useContext(UserContext) as UserContextType;
+  const { user, actualCity } = useContext(UserContext) as UserContextType;
 
   useEffect(() => {
     document.addEventListener("click", clickDocument);
@@ -45,8 +46,6 @@ const Header = () => {
     setLoginBool(false);
     setHelpBool(false);
   };
-
-  const [left, setLeft] = useState<number>(0);
 
   const switchBool = (whitch: string) => {
     if (cityBool == true) setCityBool(false);
@@ -114,11 +113,11 @@ const Header = () => {
           <button className="header-button-city" onClick={() => switchBool("city")} ref={refCity}>
             <div className="city-header" data-testid="div-city-header">
               <IconPointMap />
-              <span>São Paulo</span>
+              <span>{actualCity?.name}</span>
               <IconArrowDownGradient />
             </div>
           </button>
-          {cityBool && <DropdownCity left={left} />}
+          {cityBool && <DropdownCity left={left} setCityBool={setCityBool} />}
           <NavHeader />
           <div className="search-and-login">
             <div className="header-input-search" data-testid="div-header-input-search">
