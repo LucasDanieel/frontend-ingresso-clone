@@ -1,0 +1,65 @@
+.wrapper-search-movies {
+  position: relative;
+  margin-top: 20px;
+  height: 36px;
+
+  .icon-search-movies {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    top: -2px;
+    left: 10px;
+    transition: 0.05s all;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      color: rgb(132, 152, 252);
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      svg {
+        color: rgb(200, 208, 245);
+      }
+    }
+  }
+
+  .search-movies {
+    width: 0px;
+    height: 36px;
+    opacity: 0;
+    transition: 0.2s all;
+  }
+
+  &.show-input {
+    .icon-search-movies {
+      left: 344px;
+      transition: 0.3s all ease-in;
+    }
+
+    .search-movies {
+      width: 390px;
+      opacity: 1;
+    }
+  }
+
+  
+  .wrapper-search-loading {
+    width: 40px;
+    height: 36px;
+    border-radius: 8px;
+    background-color: rgb(52 60 70);
+    animation: pulse 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  }
+
+  @keyframes pulse {
+    50% {
+      opacity: 0.5;
+    }
+  }
+}

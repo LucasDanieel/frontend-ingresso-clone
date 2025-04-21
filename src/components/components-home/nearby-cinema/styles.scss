@@ -1,122 +1,122 @@
-.container-cinemas {
-  width: 100%;
-  user-select: none;
-  padding-bottom: 9px;
+// .container-cinemas {
+//   width: 100%;
+//   user-select: none;
+//   padding-bottom: 9px;
 
-  .title-link {
-    display: flex;
-    align-items: baseline;
-    gap: 6px;
-    margin-top: 10px;
-    margin-bottom: 7px;
+//   .title-link {
+//     display: flex;
+//     align-items: baseline;
+//     gap: 6px;
+//     margin-top: 10px;
+//     margin-bottom: 7px;
 
-    h3 {
-      margin-top: 4px;
-      margin-left: 4px;
-      margin-bottom: 3px;
-      font-size: 24px;
-    }
+//     h3 {
+//       margin-top: 4px;
+//       margin-left: 4px;
+//       margin-bottom: 3px;
+//       font-size: 24px;
+//     }
 
-    svg {
-      fill: rgb(152, 170, 236);
-    }
-  }
+//     svg {
+//       fill: rgb(152, 170, 236);
+//     }
+//   }
 
-  .container-nearby-cinema {
-    position: relative;
-    margin-bottom: 11px;
+//   .container-nearby-cinema {
+//     position: relative;
+//     margin-bottom: 11px;
 
-    .wrapper-buttons {
-      opacity: 0;
+//     .wrapper-buttons {
+//       opacity: 0;
 
-      button {
-        position: absolute;
-        top: calc(50% - 12px);
-        border: none;
-        background-color: transparent;
-        cursor: pointer;
-        z-index: 5;
+//       button {
+//         position: absolute;
+//         top: calc(50% - 12px);
+//         border: none;
+//         background-color: transparent;
+//         cursor: pointer;
+//         z-index: 5;
 
-        svg {
-          width: 24px;
-          height: 24px;
-          color: rgb(152, 170, 236);
-        }
-      }
+//         svg {
+//           width: 24px;
+//           height: 24px;
+//           color: rgb(152, 170, 236);
+//         }
+//       }
 
-      .left {
-        left: 7px;
-      }
+//       .left {
+//         left: 7px;
+//       }
 
-      .right {
-        right: 12px;
-      }
-    }
+//       .right {
+//         right: 12px;
+//       }
+//     }
 
-    .nearby-cinema-scroll {
-      display: flex;
-      gap: 16px;
-      overflow-x: hidden;
+//     .nearby-cinema-scroll {
+//       display: flex;
+//       gap: 16px;
+//       overflow-x: hidden;
 
-      &.active {
-        .wrapper-nearby-cinema {
-          pointer-events: none;
-        }
-      }
-    }
+//       &.active {
+//         .wrapper-nearby-cinema {
+//           pointer-events: none;
+//         }
+//       }
+//     }
 
-    &:hover {
-      .wrapper-buttons {
-        opacity: 1;
-      }
-    }
+//     &:hover {
+//       .wrapper-buttons {
+//         opacity: 1;
+//       }
+//     }
 
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0px;
-      right: 0px;
-      width: 250px;
-      height: 100%;
-      background-image: linear-gradient(to left, rgb(4, 18, 24, 0.98), rgb(4, 18, 24, 0));
-      z-index: 4;
-      pointer-events: none;
-    }
+//     &::after {
+//       content: "";
+//       position: absolute;
+//       top: 0px;
+//       right: 0px;
+//       width: 250px;
+//       height: 100%;
+//       background-image: linear-gradient(to left, rgb(4, 18, 24, 0.98), rgb(4, 18, 24, 0));
+//       z-index: 4;
+//       pointer-events: none;
+//     }
 
-    &::before {
-      content: "";
-      position: absolute;
-      left: 0px;
-      width: 250px;
-      height: 100%;
-      background-image: linear-gradient(to right, rgb(4, 18, 24, 0.98), rgb(4, 18, 24, 0));
-      z-index: 4;
-      pointer-events: none;
-    }
+//     &::before {
+//       content: "";
+//       position: absolute;
+//       left: 0px;
+//       width: 250px;
+//       height: 100%;
+//       background-image: linear-gradient(to right, rgb(4, 18, 24, 0.98), rgb(4, 18, 24, 0));
+//       z-index: 4;
+//       pointer-events: none;
+//     }
 
-    &.hidden-before {
-      .wrapper-buttons {
-        .left {
-          display: none;
-        }
-      }
-      &::before {
-        display: none;
-      }
-    }
+//     &.hidden-before {
+//       .wrapper-buttons {
+//         .left {
+//           display: none;
+//         }
+//       }
+//       &::before {
+//         display: none;
+//       }
+//     }
 
-    &.hidden-after {
-      .wrapper-buttons {
-        .right {
-          display: none;
-        }
-      }
-      &::after {
-        display: none;
-      }
-    }
-  }
-}
+//     &.hidden-after {
+//       .wrapper-buttons {
+//         .right {
+//           display: none;
+//         }
+//       }
+//       &::after {
+//         display: none;
+//       }
+//     }
+//   }
+// }
 
 .wrapper-nearby-cinema {
   position: relative;
@@ -234,16 +234,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 26px;
-    height: 26px;
+    width: 32px;
+    height: 32px;
     right: 19px;
     top: 14px;
     z-index: 2;
     cursor: pointer;
 
     svg {
-      width: 24px;
-      height: 24px;
+      width: 32px;
+      height: 32px;
       color: rgb(152, 170, 236);
     }
   }

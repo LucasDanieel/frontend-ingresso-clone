@@ -1,0 +1,57 @@
+.wrapper-session-description-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 16px;
+
+    .session-description-header-title {
+      display: flex;
+      align-items: center;
+
+      a {
+        text-decoration: none;
+        color: white;
+
+        h3 {
+          font-size: 21px;
+          font-weight: 500;
+          margin: 0;
+        }
+      }
+
+      span {
+        font-style: italic;
+        font-size: 14px;
+        opacity: 0.5;
+        margin-left: 34px;
+      }
+    }
+
+    .session-description-header-icons {
+      display: flex;
+      gap: 24px;
+      padding-right: 8px;
+
+      .icon-session-description {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        padding-right: 16px;
+
+        svg {
+          width: 24px;
+          height: 24px;
+          margin-top: 4px;
+          color: rgb(140, 157, 244);
+        }
+
+        span {
+          letter-spacing: 0.3px;
+          font-size: 14px;
+        }
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }

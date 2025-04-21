@@ -7,7 +7,6 @@ import ButtonGradient from "../../buttons-styles/button-gradient";
 import WrapperDropdown from "../wrapper-dropdown";
 import { cityHistoryType, UserContextType } from "../../../@types/user";
 import { UserContext } from "../../../providers/user-provider";
-import { getCity } from "../../../utils/crud-methods";
 import { toSlug } from "../../../utils/input-methods";
 
 type DropdownCityProps = {
@@ -20,48 +19,22 @@ const DropdownCity = ({ left, setCityBool }: DropdownCityProps) => {
   const [city, setCity] = useState<string>("0");
   const navigate = useNavigate();
 
-  const { actualCity, cityHistory, setUpdateCityHistory } = useContext(UserContext) as UserContextType;
+  const { actualCity, cityHistory } = useContext(UserContext) as UserContextType;
 
   const handleChangeCity = async () => {
     if (city == "0" || state == "0") return alert("Selecione uma opção válida");
 
     if (actualCity?.name == city) return;
 
-    if (cityHistory) {
-      if (cityHistory.findIndex((obj) => obj.name == city) != -1) {
-        const obj = cityHistory.find((obj) => obj.name == city);
-        return obj && handleClickLastCity(obj);
-      }
-
-      var objCity = await getCity(toSlug(city));
-
-      if (objCity) {
-        cityHistory.unshift(objCity);
-        localStorage.setItem("city_history", JSON.stringify(cityHistory));
-
-        setUpdateCityHistory((s) => !s);
-        navigate(`?city=${city}`);
-        setCityBool(false);
-      } else {
-        alert("Cidade não encontrada");
-      }
-    }
+    navigate(`?city=${toSlug(city)}`);
+    setCityBool(false);
   };
 
   const handleClickLastCity = (location: cityHistoryType) => {
     if (actualCity?.name == location.name) return;
 
-    if (cityHistory) {
-      var index = cityHistory.findIndex((obj) => obj.name === location.name);
-      var newCity = cityHistory.splice(index, 1);
-      cityHistory.unshift(newCity[0]);
-
-      localStorage.setItem("city_history", JSON.stringify(cityHistory));
-
-      setUpdateCityHistory((s) => !s);
-      navigate(`?city=${newCity[0].slug}`);
-      setCityBool(false);
-    }
+    navigate(`?city=${location.slug}`);
+    setCityBool(false);
   };
 
   return (

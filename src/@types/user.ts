@@ -17,7 +17,6 @@ export type UserContextType = {
   setCityHistory: Dispatch<SetStateAction<cityHistoryType[] | null>>;
   actualCity: cityHistoryType | null;
   setActualCity: Dispatch<SetStateAction<cityHistoryType | null>>;
-  setUpdateCityHistory: Dispatch<SetStateAction<boolean>>;
 };
 
 export type cityHistoryType = {

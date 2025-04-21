@@ -130,8 +130,8 @@ const Layout = ({ children }: PropsWithChildren) => {
 
 function Router() {
   return (
-    <UserProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <UserProvider>
         <Layout>
           <Routes>
             {routes.map(({ path, element }, index) => (
@@ -139,8 +139,8 @@ function Router() {
             ))}
           </Routes>
         </Layout>
-      </BrowserRouter>
-    </UserProvider>
+      </UserProvider>
+    </BrowserRouter>
   );
 }
 

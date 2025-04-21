@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./styles.scss";
 
-import HeaderFooter from "../../components/header-footer";
+import HeaderFooter from "../../components/components-form/header-footer";
 import ConfirmEmail from "../../components/components-create-login/confirm-email";
 import FormCreateLogin from "../../components/components-create-login/form-create-login";
 import { userCreated } from "../../@types/user";

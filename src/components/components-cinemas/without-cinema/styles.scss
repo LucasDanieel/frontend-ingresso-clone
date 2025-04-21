@@ -1,0 +1,29 @@
+.without-cinema {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  gap: 20px;
+  border-radius: 16px;
+  padding: 16px 32px;
+  margin-top: 16px;
+  background-color: rgb(33 38 45);
+
+  svg {
+    height: 88px;
+    width: 88px;
+  }
+
+  .without-cinema-text {
+    line-height: 28px;
+
+    h3 {
+      margin: 0;
+      font-size: 20px;
+      letter-spacing: 0.1px;
+    }
+
+    span {
+      font-size: 18px;
+    }
+  }
+}

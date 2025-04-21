@@ -1,0 +1,66 @@
+.container-box-cinema {
+  display: flex;
+  align-items: center;
+  width: calc(33.3% - 13px);
+  height: 86px;
+  padding-left: 15px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: rgb(33 38 45);
+
+  .icon-box-cinema {
+    height: 42px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    svg {
+      width: 32px;
+      height: 32px;
+      color: rgb(140, 157, 244);
+    }
+  }
+
+  a {
+    width: 100%;
+    margin-left: 10px;
+    text-decoration: none;
+    color: rgb(206, 206, 206);
+
+    .box-cinema {
+      line-height: 26px;
+      letter-spacing: 0.4px;
+
+      h3 {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      span {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 270px;
+        font-size: 14px;
+        opacity: 0.6;
+      }
+    }
+  }
+
+  .icon-information-cinema {
+    display: flex;
+    gap: 5px;
+    margin-left: 10px;
+    margin-right: 20px;
+    height: 42px;
+
+    svg {
+      width: 18px;
+      height: 18px;
+      fill: rgb(98, 98, 98);
+    }
+  }
+}

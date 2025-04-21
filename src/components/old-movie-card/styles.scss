@@ -33,7 +33,7 @@
         border-color: transparent;
         border-style: solid;
         background-image: linear-gradient(to bottom left, #ff7300, #9560a4, #3478c1);
-  
+
         &:after {
           content: "PRÉ-VENDA";
           position: absolute;
@@ -95,6 +95,23 @@
     border-radius: 16px;
     margin-top: 10px;
     background-color: rgb(52, 60, 70);
+
+    &.today {
+      gap: 4px;
+      span {
+        color: rgb(251, 193, 21);
+      }
+
+      .icon-today {
+        width: 20px;
+        height: 20px;
+
+        svg {
+          width: 19px;
+          height: 19px;
+        }
+      }
+    }
 
     span {
       font-size: 12px;

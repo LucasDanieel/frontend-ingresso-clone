@@ -42,8 +42,8 @@ let inertiaInterval: number;
 
 const applyInertia = (
   ref: RefObject<HTMLDivElement>,
-  setHiddenBefore: (value: boolean) => void,
-  setHiddenAfter: (value: boolean) => void
+  setHiddenBefore?: (value: boolean) => void,
+  setHiddenAfter?: (value: boolean) => void
 ) => {
   if (Math.abs(velocity) > 0.1 && isFinite(velocity)) {
     if (ref.current) {
@@ -53,7 +53,7 @@ const applyInertia = (
   } else {
     clearInterval(inertiaInterval);
 
-    if (ref.current) {
+    if (ref.current && setHiddenAfter && setHiddenBefore) {
       const total = ref.current.scrollLeft + ref.current.clientWidth;
       if (total >= ref.current.scrollWidth) {
         setHiddenAfter(true);
@@ -109,14 +109,15 @@ export const mouse_down = (e: MouseEvent<HTMLDivElement>, ref: RefObject<HTMLDiv
 
 export const mouse_up = (
   ref: RefObject<HTMLDivElement>,
-  setHiddenBefore: (value: boolean) => void,
-  setHiddenAfter: (value: boolean) => void,
+  setHiddenBefore?: (value: boolean) => void,
+  setHiddenAfter?: (value: boolean) => void,
   pagination?: paginationProps[],
   setPagination?: (value: paginationProps[]) => void
 ) => {
   isDown = false;
   const element = ref.current as HTMLElement;
-  element.style.padding = "0px";
+  element.style.paddingLeft = "0px";
+  element.style.paddingRight = "0px";
 
   clearInterval(inertiaInterval);
   inertiaInterval = setInterval(() => applyInertia(ref, setHiddenBefore, setHiddenAfter), 16);

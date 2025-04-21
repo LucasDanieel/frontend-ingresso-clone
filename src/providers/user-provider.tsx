@@ -3,6 +3,7 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import { cityHistoryType, User, UserContextType } from "../@types/user";
 import { getCity } from "../utils/crud-methods";
+import { useSearchParams } from "react-router-dom";
 
 export const UserContext = createContext<UserContextType>({} as UserContextType);
 
@@ -10,8 +11,8 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   const [user, setUser] = useState<User | null>(null);
   const [cityHistory, setCityHistory] = useState<cityHistoryType[] | null>(null);
   const [actualCity, setActualCity] = useState<cityHistoryType | null>(null);
-  const [updateCityHistory, setUpdateCityHistory] = useState<boolean>(false);
 
+  const [searchParams] = useSearchParams();
   const token = Cookies.get("token");
   const info = Cookies.get("info_profile");
 
@@ -35,24 +36,61 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   }, [token]);
 
   useEffect(() => {
-    loadCityHistory();
-  }, [updateCityHistory]);
+    const city = searchParams.get("city");
 
-  const loadCityHistory = async () => {
+    loadCityHistory(city);
+  }, [searchParams]);
+
+  const loadCityHistory = async (city: string | null) => {
     const cityHistory = localStorage.getItem("city_history");
 
     if (cityHistory) {
       const history = JSON.parse(cityHistory) as cityHistoryType[];
-      setActualCity(history[0]);
-      setCityHistory(history);
+
+      if (city) {
+        var index = history.findIndex((obj) => obj.slug === city);
+
+        if (index == -1) {
+          const objCity = await getCity(city);
+
+          if (objCity) {
+            history.unshift(objCity);
+            setActualCity(objCity);
+            setCityHistory(history);
+            localStorage.setItem("city_history", JSON.stringify(history));
+          } else {
+            setActualCity(history[0]);
+            setCityHistory(history);
+          }
+        } else {
+          var newCity = history.splice(index, 1);
+          history.unshift(newCity[0]);
+          setActualCity(history[0]);
+          setCityHistory(history);
+          localStorage.setItem("city_history", JSON.stringify(history));
+        }
+      } else {
+        setActualCity(history[0]);
+        setCityHistory(history);
+      }
     } else {
-      const objCity = await getCity("sao-paulo");
+      var objCity: cityHistoryType | null;
+
+      if (city) {
+        objCity = await getCity(city);
+
+        if (objCity == null) {
+          objCity = await getCity("sao-paulo");
+        }
+      } else {
+        objCity = await getCity("sao-paulo");
+      }
 
       if (objCity) {
         var newHistory = [objCity];
-        localStorage.setItem("city_history", JSON.stringify(newHistory));
         setActualCity(newHistory[0]);
         setCityHistory(newHistory);
+        localStorage.setItem("city_history", JSON.stringify(newHistory));
       } else {
         alert("Cidade não encontrada");
       }
@@ -61,7 +99,14 @@ const UserProvider = ({ children }: PropsWithChildren) => {
 
   return (
     <UserContext.Provider
-      value={{ user, setUser, cityHistory, setCityHistory, actualCity, setActualCity, setUpdateCityHistory }}
+      value={{
+        user,
+        setUser,
+        cityHistory,
+        setCityHistory,
+        actualCity,
+        setActualCity,
+      }}
     >
       {children}
     </UserContext.Provider>

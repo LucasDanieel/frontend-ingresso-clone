@@ -158,8 +158,8 @@ const resetAdrress = (
   setInputCEPWrong(true);
 };
 
-export const toSlug = (text: string) =>
-  text
+export const toSlug = (text: string) => {
+  return text
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
@@ -167,3 +167,21 @@ export const toSlug = (text: string) =>
     .trim()
     .replace(/\s+/g, "-")
     .replace(/-+/g, "-");
+};
+
+export const getDayAndMonth = (date: Date) => {
+  const day = date.getDate().toString();
+  const month = (date.getMonth() + 1).toString();
+  return `${day.length == 1 ? `0${day}` : day}/${month.length == 1 ? `0${month}` : month}`;
+};
+
+export const isToday = (date: Date) => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  return (
+    date.getDate() === today.getDate() &&
+    date.getMonth() === today.getMonth() &&
+    date.getFullYear() === today.getFullYear()
+  );
+};

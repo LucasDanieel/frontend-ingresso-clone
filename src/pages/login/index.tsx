@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "./styles.scss";
 
-import HeaderFooter from "../../components/header-footer";
+import HeaderFooter from "../../components/components-form/header-footer";
 import FormLogin from "../../components/components-login/form-login";
 import ConfirmCode from "../../components/components-login/confirm-code";
 import ModalConfirmedAccount from "../../components/components-login/modal-confirmed-account";
